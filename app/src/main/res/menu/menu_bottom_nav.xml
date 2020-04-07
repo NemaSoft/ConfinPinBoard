@@ -4,21 +4,21 @@
 
     <item
         android:id="@+id/favorites_fragment"
-        android:icon="@drawable/common_google_signin_btn_icon_dark"
+        android:icon="@drawable/selector_favorites_nav_view"
         android:orderInCategory="1"
         android:title="@string/favorites_label"
         app:showAsAction="always" />
 
     <item
         android:id="@+id/list_fragment"
-        android:icon="@drawable/common_google_signin_btn_icon_dark"
+        android:icon="@drawable/selector_board_nav_view"
         android:orderInCategory="2"
         android:title="@string/results_label"
         app:showAsAction="always" />
 
     <item
         android:id="@+id/form_fragment"
-        android:icon="@drawable/common_google_signin_btn_icon_dark"
+        android:icon="@drawable/selector_addform_nav_view"
         android:orderInCategory="3"
         android:title="@string/form_label"
         app:showAsAction="always" />
