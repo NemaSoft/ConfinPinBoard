@@ -2,6 +2,9 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.crashlytics'
+apply plugin: 'com.google.firebase.firebase-perf'
 
 android {
     compileSdkVersion 29
@@ -63,8 +66,10 @@ dependencies {
     implementation "com.google.code.gson:gson:$gson_version"
 
     // Firebase
-    implementation "com.google.firebase:firebase-core:$firebase_core_version"
-    implementation "com.google.firebase:firebase-auth:$firebase_auth_version"
+    implementation "com.google.firebase:firebase-analytics:$firebase_analytics_version"
+    implementation "com.google.firebase:firebase-crashlytics:$firebase_crashlytics_version"
+    implementation "com.google.firebase:firebase-perf:$firebase_performance_version"
+    implementation "com.google.firebase:firebase-messaging:$firebase_messaging_version"
 
     // Testing
     testImplementation "io.mockk:mockk:$mockk_version"
