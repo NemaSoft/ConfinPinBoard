@@ -1,7 +1,8 @@
-package com.coronapptilus.covidpinboard
+package com.coronapptilus.covidpinboard.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.coronapptilus.covidpinboard.R
 
 class MainActivity : AppCompatActivity() {
 
