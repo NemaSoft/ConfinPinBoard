@@ -26,6 +26,7 @@ class SplashActivity: AppCompatActivity(), SplashContract.View {
 
     override fun goToMain() {
         val intent = Intent(this, MainActivity::class.java)
+        finish()
         startActivity(intent)
     }
 }
