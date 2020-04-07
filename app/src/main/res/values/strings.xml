@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">CovidPinBoard</string>
+
+    <string name="favorites_label">Favorites</string>
+    <string name="results_label">Board</string>
+    <string name="form_label">Add</string>
 </resources>
