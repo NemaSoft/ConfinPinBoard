@@ -10,6 +10,10 @@
         android:id="@+id/toolbar"
         android:layout_width="0dp"
         android:layout_height="?attr/actionBarSize"
+        android:contentInsetStart="0dp"
+        android:contentInsetEnd="0dp"
+        app:contentInsetStart="0dp"
+        app:contentInsetEnd="0dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -37,7 +41,7 @@
 
     </androidx.appcompat.widget.Toolbar>
 
-    <fragment
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/nav_host_fragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="0dp"
