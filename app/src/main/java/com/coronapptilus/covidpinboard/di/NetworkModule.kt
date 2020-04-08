@@ -11,6 +11,7 @@ import java.util.concurrent.TimeUnit
 
 object NetworkModule {
 
+    // TODO("Add firebase database base url when it is ready")
     private const val BASE_URL = ""
 
     val networkModule = module {

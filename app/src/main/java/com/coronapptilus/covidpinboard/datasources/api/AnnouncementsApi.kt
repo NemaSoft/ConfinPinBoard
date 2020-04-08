@@ -5,6 +5,7 @@ import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Path
 
+// TODO("Add firebase database url info when it is ready")
 interface AnnouncementsApi {
 
     @GET("")
