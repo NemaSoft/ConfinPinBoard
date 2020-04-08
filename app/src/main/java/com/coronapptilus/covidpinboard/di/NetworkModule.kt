@@ -1,5 +1,6 @@
 package com.coronapptilus.covidpinboard.di
 
+import com.coronapptilus.covidpinboard.BuildConfig
 import com.google.gson.Gson
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import okhttp3.OkHttpClient
@@ -11,8 +12,8 @@ import java.util.concurrent.TimeUnit
 
 object NetworkModule {
 
-    // TODO("Add firebase database base url when it is ready")
-    private const val BASE_URL = ""
+    private const val BASE_URL =
+        "https://firestore.googleapis.com/v1/projects/${BuildConfig.FIREBASE_PROJECT_ID}/databases/(default)/documents/"
 
     val networkModule = module {
         factory { provideGson() }

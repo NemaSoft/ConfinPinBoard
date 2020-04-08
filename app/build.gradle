@@ -17,6 +17,8 @@ android {
         versionCode 1
         versionName "1.0"
 
+        buildConfigField("String", "FIREBASE_PROJECT_ID", '"covid-pin-board-nema"')
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -70,6 +72,8 @@ dependencies {
     implementation "com.google.firebase:firebase-crashlytics:$firebase_crashlytics_version"
     implementation "com.google.firebase:firebase-perf:$firebase_performance_version"
     implementation "com.google.firebase:firebase-messaging:$firebase_messaging_version"
+    implementation "com.google.firebase:firebase-firestore:$firebase_firestore_version"
+    // TODO: Add Firebase Auth in order to securize API calls
 
     // Testing
     testImplementation "io.mockk:mockk:$mockk_version"

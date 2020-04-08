@@ -29,6 +29,7 @@ buildscript {
         firebase_crashlytics_version = '17.0.0-beta03'
         firebase_performance_version = '19.0.5'
         firebase_messaging_version = '20.1.5'
+        firebase_firestore_version = '21.4.2'
 
         // Testing
         mockk_version = '1.8.9'
