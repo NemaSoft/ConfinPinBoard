@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".main.MainActivity">
 
-    <androidx.appcompat.widget.Toolbar
+    <com.coronapptilus.covidpinboard.commons.components.ToolbarView
         android:id="@+id/toolbar"
         android:layout_width="0dp"
         android:layout_height="?attr/actionBarSize"
@@ -39,7 +39,7 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.appcompat.widget.Toolbar>
+    </com.coronapptilus.covidpinboard.commons.components.ToolbarView>
 
     <fragment
         android:id="@+id/nav_host_fragment"
