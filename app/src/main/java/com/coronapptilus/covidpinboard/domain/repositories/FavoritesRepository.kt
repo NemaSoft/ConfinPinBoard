@@ -1,9 +1,10 @@
 package com.coronapptilus.covidpinboard.domain.repositories
 
-// TODO: Add parameter and type after define parameter to save in prefs
+import com.coronapptilus.covidpinboard.domain.models.FavoritesModel
+
 interface FavoritesRepository {
 
-    fun addFavorite()
+    fun addFavorite(id: Long)
 
-    fun getFavorites()
+    fun getFavorites(): FavoritesModel
 }

@@ -1,4 +1,4 @@
-package com.coronapptilus.covidpinboard.repositories.mappers
+package com.coronapptilus.covidpinboard.datasources.mappers
 
 import com.coronapptilus.covidpinboard.commons.extensions.convertDateToTimestamp
 import com.coronapptilus.covidpinboard.commons.extensions.convertTimestampToDate
@@ -21,19 +21,17 @@ class AnnouncementMapper {
             )
         }
 
-    fun mapResponseToDomain(responseModel: AnnouncementResponseModel): AnnouncementModel =
-        with(responseModel) {
-            AnnouncementModel(
-                announcer = announcer ?: "",
-                title = title ?: "",
-                description = description ?: "",
-                place = place ?: "",
-                categories = mapTypesToCategories(categoriesTypes),
-                target = mapTypeToTarget(targetType),
-                date = convertTimestampToDate(timestamp),
-                time = convertTimestampToTime(timestamp)
-            )
-        }
+    fun mapResponseToDomain(responseModel: AnnouncementResponseModel?): AnnouncementModel =
+        AnnouncementModel(
+            announcer = responseModel?.announcer ?: "",
+            title = responseModel?.title ?: "",
+            description = responseModel?.description ?: "",
+            place = responseModel?.place ?: "",
+            categories = mapTypesToCategories(responseModel?.categoriesTypes),
+            target = mapTypeToTarget(responseModel?.targetType),
+            date = convertTimestampToDate(responseModel?.timestamp),
+            time = convertTimestampToTime(responseModel?.timestamp)
+        )
 
     private fun mapCategoriesToType(categories: List<AnnouncementModel.Category>): List<Int> =
         categories.map {
