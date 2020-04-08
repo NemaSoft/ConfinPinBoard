@@ -1,15 +1,18 @@
 package com.coronapptilus.covidpinboard.repositories.impl
 
+import com.coronapptilus.covidpinboard.datasources.ResponseState
+import com.coronapptilus.covidpinboard.domain.models.AnnouncementModel
 import com.coronapptilus.covidpinboard.domain.repositories.AnnouncementsRepository
 import com.coronapptilus.covidpinboard.repositories.datasources.AnnouncementsDataSource
 
-class AnnouncementsRepositoryImpl(dataSource: AnnouncementsDataSource): AnnouncementsRepository {
+class AnnouncementsRepositoryImpl(private val dataSource: AnnouncementsDataSource): AnnouncementsRepository {
 
-    override fun addAnnouncement() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    override suspend fun addAnnouncement(announcement: AnnouncementModel): ResponseState<Nothing> =
+        dataSource.addAnnouncement(announcement)
 
-    override fun getAnnouncements() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    override suspend fun getAnnouncement(id: Long): ResponseState<AnnouncementModel> =
+        dataSource.getAnnouncement(id)
+
+    override suspend fun getAnnouncements(): ResponseState<List<AnnouncementModel>> =
+        dataSource.getAnnouncements()
 }

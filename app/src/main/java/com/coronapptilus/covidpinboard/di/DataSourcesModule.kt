@@ -13,7 +13,7 @@ object DataSourcesModule {
     private const val PREFS_KEY = "favorites_shared_preferences"
 
     val dataSourcesModule = module {
-        factory<AnnouncementsDataSource> { AnnouncementsDataSourceImpl() }
+        factory<AnnouncementsDataSource> { AnnouncementsDataSourceImpl(get(), get()) }
         factory<FavoritesDataSource> {
             FavoritesDataSourceImpl(
                 androidContext().getSharedPreferences(PREFS_KEY, Context.MODE_PRIVATE),

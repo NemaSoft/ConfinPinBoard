@@ -1,6 +1,7 @@
 package com.coronapptilus.covidpinboard
 
 import android.app.Application
+import com.coronapptilus.covidpinboard.di.ApiModule.apiModule
 import com.coronapptilus.covidpinboard.di.DataSourcesModule.dataSourcesModule
 import com.coronapptilus.covidpinboard.di.MappersModule.mappersModule
 import com.coronapptilus.covidpinboard.di.NetworkModule.networkModule
@@ -10,7 +11,7 @@ import com.coronapptilus.covidpinboard.di.UseCasesModule.useCasesModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
-class CovidPinBoardApplication: Application() {
+class CovidPinBoardApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
@@ -23,12 +24,13 @@ class CovidPinBoardApplication: Application() {
             androidContext(this@CovidPinBoardApplication)
             modules(
                 arrayListOf(
-                    networkModule,
                     presentersModule,
                     useCasesModule,
                     repositoriesModule,
                     mappersModule,
-                    dataSourcesModule
+                    dataSourcesModule,
+                    apiModule,
+                    networkModule
                 )
             )
         }

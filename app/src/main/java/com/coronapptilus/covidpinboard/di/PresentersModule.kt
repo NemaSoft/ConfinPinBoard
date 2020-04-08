@@ -4,7 +4,6 @@ import com.coronapptilus.covidpinboard.announcements.form.AnnouncementFormContra
 import com.coronapptilus.covidpinboard.announcements.form.AnnouncementFormPresenter
 import com.coronapptilus.covidpinboard.announcements.list.AnnouncementsListContract
 import com.coronapptilus.covidpinboard.announcements.list.AnnouncementsListPresenter
-import com.coronapptilus.covidpinboard.domain.repositories.AnnouncementsRepository
 import com.coronapptilus.covidpinboard.favorites.AnnouncementsFavoritesContract
 import com.coronapptilus.covidpinboard.favorites.AnnouncementsFavoritesPresenter
 import com.coronapptilus.covidpinboard.splash.SplashContract

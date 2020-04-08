@@ -10,7 +10,7 @@ import com.google.gson.Gson
 class FavoritesDataSourceImpl(
     private val sharedPreferences: SharedPreferences,
     private val gson: Gson,
-    private val favoritesMapper: FavoritesMapper
+    private val mapper: FavoritesMapper
 ) : FavoritesDataSource {
 
     override fun addFavorite(id: Long) {
@@ -25,7 +25,7 @@ class FavoritesDataSourceImpl(
         val favoritesJson = sharedPreferences.getString(FAVORITES_KEY, "") ?: ""
         return if (favoritesJson.isNotEmpty()) {
             val response = gson.fromJson(favoritesJson, FavoritesResponseModel::class.java)
-            favoritesMapper.mapResponseToDomain(response)
+            mapper.mapResponseToDomain(response)
         } else {
             FavoritesModel(emptyList())
         }
