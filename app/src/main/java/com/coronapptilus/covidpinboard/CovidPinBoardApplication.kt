@@ -2,6 +2,7 @@ package com.coronapptilus.covidpinboard
 
 import android.app.Application
 import com.coronapptilus.covidpinboard.di.DataSourcesModule.dataSourcesModule
+import com.coronapptilus.covidpinboard.di.MappersModule.mappersModule
 import com.coronapptilus.covidpinboard.di.PresentersModule.presentersModule
 import com.coronapptilus.covidpinboard.di.RepositoriesModule.repositoriesModule
 import com.coronapptilus.covidpinboard.di.UseCasesModule.useCasesModule
@@ -24,6 +25,7 @@ class CovidPinBoardApplication: Application() {
                     presentersModule,
                     useCasesModule,
                     repositoriesModule,
+                    mappersModule,
                     dataSourcesModule
                 )
             )
