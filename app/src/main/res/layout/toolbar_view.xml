@@ -9,22 +9,22 @@
 
     <!-- TODO: Add App icon -->
     <androidx.appcompat.widget.AppCompatImageView
-        android:src="@mipmap/ic_launcher"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginEnd="@dimen/toolbar_margin_elements" />
+        android:layout_marginEnd="@dimen/toolbar_margin_elements"
+        android:src="@mipmap/ic_launcher" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/toolbar_headtitle"
+        android:id="@+id/headtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        tools:text="@string/favorites_label"
         android:textSize="@dimen/primary_3xl"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        tools:text="@string/favorites_label" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/toolbar_search_input"
+        android:id="@+id/search_input"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
@@ -36,18 +36,18 @@
         android:layout_weight="1" />
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/toolbar_search_button"
-        tools:src="@drawable/ic_search"
+        android:id="@+id/search_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/toolbar_margin_elements" />
+        android:layout_marginEnd="@dimen/toolbar_margin_elements"
+        tools:src="@drawable/ic_search" />
 
     <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/filter_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_filter"
-        android:id="@+id/toolbar_filter_button"
-        android:layout_gravity="center" />
+        android:layout_gravity="center"
+        android:src="@drawable/ic_filter" />
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>

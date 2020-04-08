@@ -8,40 +8,42 @@ import android.widget.LinearLayout
 import com.coronapptilus.covidpinboard.R
 import com.coronapptilus.covidpinboard.commons.extensions.hideKeyboard
 import com.coronapptilus.covidpinboard.commons.extensions.showKeyboard
-import kotlinx.android.synthetic.main.activity_main.view.*
 import kotlinx.android.synthetic.main.toolbar_view.view.*
 
 class ToolbarView(context: Context, attrs: AttributeSet? = null) : LinearLayout(context, attrs) {
 
+    var onFilterButtonClicked: () -> Unit = {}
+
     init {
         LayoutInflater.from(context).inflate(R.layout.toolbar_view, this)
-        toolbar_search_button.setOnClickListener { refresh() }
+        search_button.setOnClickListener { refresh() }
+        filter_button.setOnClickListener { onFilterButtonClicked.invoke() }
     }
 
     private fun refresh() {
         if (!isSearchBoxShowing()) {
             showSearchBox()
             showKeyboard()
-            toolbar_search_button.setImageResource(R.drawable.ic_clear)
-            toolbar_search_input.requestFocus()
+            search_button.setImageResource(R.drawable.ic_clear)
+            search_input.requestFocus()
         } else {
-            toolbar_search_input.setText("")
-            toolbar_search_button.setImageResource(R.drawable.ic_search)
+            search_input.setText("")
+            search_button.setImageResource(R.drawable.ic_search)
             hideKeyboard()
             hideSearchBox()
         }
     }
 
-    private fun isSearchBoxShowing() = toolbar_search_input.visibility == View.VISIBLE
+    private fun isSearchBoxShowing() = search_input.visibility == View.VISIBLE
 
     private fun showSearchBox() {
-        toolbar_headtitle.visibility = View.GONE
-        toolbar_search_input.visibility = View.VISIBLE
+        headtitle.visibility = View.GONE
+        search_input.visibility = View.VISIBLE
     }
 
     private fun hideSearchBox() {
-        toolbar_headtitle.visibility = View.VISIBLE
-        toolbar_search_input.visibility = View.GONE
+        headtitle.visibility = View.VISIBLE
+        search_input.visibility = View.GONE
     }
 
     fun init(selectedTab: Int) {
@@ -53,32 +55,32 @@ class ToolbarView(context: Context, attrs: AttributeSet? = null) : LinearLayout(
     }
 
     private fun setHomeAttributes() {
-        toolbar_headtitle.visibility = View.VISIBLE
-        toolbar_headtitle.text = (resources.getString(R.string.app_name))
-        toolbar_search_input.visibility = View.GONE
-        toolbar_search_input.setText("")
-        toolbar_search_button.visibility = View.VISIBLE
-        toolbar_search_button.setImageResource(R.drawable.ic_search)
-        toolbar_filter_button.visibility = View.VISIBLE
+        headtitle.visibility = View.VISIBLE
+        headtitle.text = (resources.getString(R.string.app_name))
+        search_input.visibility = View.GONE
+        search_input.setText("")
+        search_button.visibility = View.VISIBLE
+        search_button.setImageResource(R.drawable.ic_search)
+        filter_button.visibility = View.VISIBLE
     }
 
     private fun setFavoritesAttributes() {
-        toolbar_headtitle.visibility = View.VISIBLE
-        toolbar_headtitle.text = (resources.getString(R.string.favorites_label))
-        toolbar_search_input.visibility = View.GONE
-        toolbar_search_input.setText("")
-        toolbar_search_button.visibility = View.VISIBLE
-        toolbar_search_button.setImageResource(R.drawable.ic_search)
-        toolbar_filter_button.visibility = View.VISIBLE
+        headtitle.visibility = View.VISIBLE
+        headtitle.text = (resources.getString(R.string.favorites_label))
+        search_input.visibility = View.GONE
+        search_input.setText("")
+        search_button.visibility = View.VISIBLE
+        search_button.setImageResource(R.drawable.ic_search)
+        filter_button.visibility = View.VISIBLE
     }
 
     private fun setFormAttributes() {
-        toolbar_headtitle.visibility = View.VISIBLE
-        toolbar_headtitle.text = (resources.getString(R.string.app_name))
-        toolbar_search_input.visibility = View.GONE
-        toolbar_search_input.setText("")
-        toolbar_filter_button.visibility = View.GONE
-        toolbar_search_button.visibility = View.GONE
+        headtitle.visibility = View.VISIBLE
+        headtitle.text = (resources.getString(R.string.app_name))
+        search_input.visibility = View.GONE
+        search_input.setText("")
+        filter_button.visibility = View.GONE
+        search_button.visibility = View.GONE
     }
 
     companion object {
