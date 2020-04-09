@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--Text-->
+    <dimen name="default_textSize">16sp</dimen>
+    <dimen name="default_titleFormSize">20sp</dimen>
+
+    <!--Margins, paddings, spaces-->
+    <dimen name="default_margin_16">16dp</dimen>
+    <dimen name="default_margin_bottom">8dp</dimen>
+
+</resources>

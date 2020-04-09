@@ -8,4 +8,16 @@
     <string name="today_pattern">Avui a les %s</string>
     <string name="tomorrow_pattern">Demà a les %s</string>
     <string name="date_time_pattern">El %s a les %s</string>
+
+    <!--AddForm-->
+    <string name="addForm_TitleStatement">Afegeix el teu pin</string>
+    <string name="announcer">Anunciant</string>
+    <string name="title">Títol</string>
+    <string name="place">Lloc</string>
+    <string name="date">Data</string>
+    <string name="time">Hora</string>
+    <string name="target">Públic</string>
+    <string name="category">Categoria</string>
+    <string name="description">Descripció</string>
+    <string name="place_tip">Link URL, telèfon, correu electrònic</string>
 </resources>

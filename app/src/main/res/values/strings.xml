@@ -8,4 +8,17 @@
     <string name="today_pattern">Today at %s</string>
     <string name="tomorrow_pattern">Tomorrow at %s</string>
     <string name="date_time_pattern">%s at %s</string>
+
+    <!--AddForm-->
+    <string name="addForm_TitleStatement">Add your pin</string>
+    <string name="announcer">Announcer</string>
+    <string name="title">Title</string>
+    <string name="place">Place</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+    <string name="target">Target</string>
+    <string name="category">Category</string>
+    <string name="description">Description</string>
+    <string name="place_tip">URL link, telephone, e-mail</string>
+
 </resources>
