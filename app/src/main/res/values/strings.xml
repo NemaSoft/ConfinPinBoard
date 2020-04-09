@@ -21,4 +21,6 @@
     <string name="description">Description</string>
     <string name="place_tip">URL link, telephone, e-mail</string>
 
+    <string name="addButton">Add</string>
+
 </resources>

@@ -20,4 +20,6 @@
     <string name="category">Categoria</string>
     <string name="description">Descripció</string>
     <string name="place_tip">Link URL, telèfon, correu electrònic</string>
+
+    <string name="addButton">Afegir</string>
 </resources>
