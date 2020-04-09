@@ -1,9 +1,13 @@
 package com.coronapptilus.covidpinboard.domain.repositories
 
-// TODO: Add parameter and type after announcement model is defined
+import com.coronapptilus.covidpinboard.datasources.ResponseState
+import com.coronapptilus.covidpinboard.domain.models.AnnouncementModel
+
 interface AnnouncementsRepository {
 
-    fun addAnnouncement()
+    suspend fun addAnnouncement(announcement: AnnouncementModel): ResponseState<Nothing>
 
-    fun getAnnouncements()
+    suspend fun getAnnouncement(id: Long): ResponseState<AnnouncementModel>
+
+    suspend fun getAnnouncements(): ResponseState<List<AnnouncementModel>>
 }

@@ -9,5 +9,6 @@
 
     <!--Text Sizes -->
     <dimen name="primary_3xl">22sp</dimen>
+    <dimen name="primary_l">16sp</dimen>
 
 </resources>
