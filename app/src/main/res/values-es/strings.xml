@@ -18,4 +18,25 @@
     <string name="target_header">Público:</string>
     <string name="date_header">Fecha:</string>
     <string name="organizer_header">Organizador:</string>
+
+    <!-- Filter -->
+    <string name="category_filter">Filtro por categorías</string>
+
+    <!-- Categories -->
+    <string name="sport">Deporte</string>
+    <string name="cook">Cocina</string>
+    <string name="music">Musica</string>
+    <string name="dance">Danza</string>
+    <string name="theater">Teatro</string>
+    <string name="literature">Literatura</string>
+    <string name="cinema">Cinema</string>
+    <string name="conference">Conferencia</string>
+    <string name="interview">Entrevista</string>
+    <string name="workshop">Taller</string>
+    <string name="formation">Formación</string>
+    <string name="donation">Donación</string>
+    <string name="crafts">Manualidad</string>
+    <string name="storyteller">Cuentacuentos</string>
+    <string name="others">Otros</string>
+
 </resources>
