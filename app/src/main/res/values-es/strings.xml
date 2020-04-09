@@ -1,11 +1,21 @@
 <resources>
     <string name="app_name">CovidPinBoard</string>
 
-    <string name="favorites_label">Favorites</string>
-    <string name="results_label">Board</string>
-    <string name="form_label">Add</string>
+    <!-- Labels NavBar -->
+    <string name="favorites_label">Favoritos</string>
+    <string name="results_label">Tablero</string>
+    <string name="form_label">Añadir</string>
 
+    <!-- Date Formats -->
     <string name="today_pattern">Hoy a las %s</string>
     <string name="tomorrow_pattern">Mañana a las %s</string>
     <string name="date_time_pattern">El %s a las %s</string>
+
+    <!-- Dialog -->
+    <string name="description_header">Descripción:</string>
+    <string name="place_header">Lugar:</string>
+    <string name="category_header">Categoría/s:</string>
+    <string name="target_header">Público:</string>
+    <string name="date_header">Fecha:</string>
+    <string name="organizer_header">Organizador:</string>
 </resources>

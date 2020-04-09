@@ -37,6 +37,10 @@ buildscript {
         junit_version = '4.12'
         junit_ext_version = '1.1.1'
         espresso_version = '3.2.0'
+
+        //Glide
+        glide_version = "4.11.0"
+
     }
     repositories {
         google()
