@@ -20,6 +20,16 @@ class ToolbarView(context: Context, attrs: AttributeSet? = null) : LinearLayout(
         filter_button.setOnClickListener { onFilterButtonClicked.invoke() }
     }
 
+    fun init(selectedTab: Int) {
+        when (selectedTab) {
+            0 -> setHomeAttributes()
+            1 -> setFavoritesAttributes()
+            else -> setFormAttributes()
+        }
+    }
+
+    fun getSearchTerm() = search_input.text ?: ""
+
     private fun refresh() {
         if (!isSearchBoxShowing()) {
             showSearchBox()
@@ -44,14 +54,6 @@ class ToolbarView(context: Context, attrs: AttributeSet? = null) : LinearLayout(
     private fun hideSearchBox() {
         headtitle.visibility = View.VISIBLE
         search_input.visibility = View.GONE
-    }
-
-    fun init(selectedTab: Int) {
-        when (selectedTab) {
-            0 -> setHomeAttributes()
-            1 -> setFavoritesAttributes()
-            else -> setFormAttributes()
-        }
     }
 
     private fun setHomeAttributes() {
