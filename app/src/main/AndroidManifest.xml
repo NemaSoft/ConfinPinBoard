@@ -32,7 +32,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".main.MainActivity" />
+        <activity
+            android:name=".main.MainActivity"
+            android:windowSoftInputMode="adjustPan|adjustResize" />
 
     </application>
 

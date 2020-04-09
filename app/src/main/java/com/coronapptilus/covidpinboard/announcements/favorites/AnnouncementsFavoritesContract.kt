@@ -1,4 +1,4 @@
-package com.coronapptilus.covidpinboard.favorites
+package com.coronapptilus.covidpinboard.announcements.favorites
 
 import com.coronapptilus.covidpinboard.commons.base.BaseContract
 
