@@ -5,9 +5,9 @@ import com.coronapptilus.covidpinboard.domain.models.AnnouncementModel
 
 interface AnnouncementsRepository {
 
-    suspend fun addAnnouncement(announcement: AnnouncementModel): ResponseState<Nothing>
+    suspend fun addAnnouncement(announcement: AnnouncementModel): ResponseState<String>
 
-    suspend fun getAnnouncement(id: Long): ResponseState<AnnouncementModel>
+    suspend fun getAnnouncement(id: String): ResponseState<AnnouncementModel>
 
     suspend fun getAnnouncements(): ResponseState<List<AnnouncementModel>>
 }

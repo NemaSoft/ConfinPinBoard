@@ -7,10 +7,10 @@ import com.coronapptilus.covidpinboard.repositories.datasources.AnnouncementsDat
 
 class AnnouncementsRepositoryImpl(private val dataSource: AnnouncementsDataSource): AnnouncementsRepository {
 
-    override suspend fun addAnnouncement(announcement: AnnouncementModel): ResponseState<Nothing> =
+    override suspend fun addAnnouncement(announcement: AnnouncementModel): ResponseState<String> =
         dataSource.addAnnouncement(announcement)
 
-    override suspend fun getAnnouncement(id: Long): ResponseState<AnnouncementModel> =
+    override suspend fun getAnnouncement(id: String): ResponseState<AnnouncementModel> =
         dataSource.getAnnouncement(id)
 
     override suspend fun getAnnouncements(): ResponseState<List<AnnouncementModel>> =

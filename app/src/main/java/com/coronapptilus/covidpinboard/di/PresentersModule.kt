@@ -14,8 +14,8 @@ object PresentersModule {
 
     val presentersModule = module {
         factory<SplashContract.Presenter> { SplashPresenter() }
-        factory<AnnouncementFormContract.Presenter> { AnnouncementFormPresenter() }
-        factory<AnnouncementsListContract.Presenter> { AnnouncementsListPresenter() }
+        factory<AnnouncementFormContract.Presenter> { AnnouncementFormPresenter(get()) }
+        factory<AnnouncementsListContract.Presenter> { AnnouncementsListPresenter(get()) }
         factory<AnnouncementsFavoritesContract.Presenter> { AnnouncementsFavoritesPresenter() }
     }
 }

@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class AnnouncementResponseModel(
     @SerializedName("id")
-    val id: Long? = null,
+    val id: String? = null,
 
     @SerializedName("announcer")
     val announcer: String? = null,
@@ -24,6 +24,9 @@ data class AnnouncementResponseModel(
     @SerializedName("targetType")
     val targetType: Int? = null,
 
-    @SerializedName("timestamp")
-    val timestamp: Long? = null
+    @SerializedName("startTimestamp")
+    val startTimestamp: Long? = null,
+
+    @SerializedName("endTimestamp")
+    val endTimestamp: Long? = null
 )

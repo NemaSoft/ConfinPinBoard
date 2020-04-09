@@ -6,5 +6,5 @@ import com.coronapptilus.covidpinboard.domain.repositories.AnnouncementsReposito
 
 class GetAnnouncementUseCase(private val repository: AnnouncementsRepository) {
 
-    suspend fun execute(id: Long): ResponseState<AnnouncementModel> = repository.getAnnouncement(id)
+    suspend fun execute(id: String): ResponseState<AnnouncementModel> = repository.getAnnouncement(id)
 }

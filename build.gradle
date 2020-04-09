@@ -30,6 +30,7 @@ buildscript {
         firebase_performance_version = '19.0.5'
         firebase_messaging_version = '20.1.5'
         firebase_firestore_version = '21.4.2'
+        firebase_auth_version = '19.3.0'
 
         // Testing
         mockk_version = '1.8.9'

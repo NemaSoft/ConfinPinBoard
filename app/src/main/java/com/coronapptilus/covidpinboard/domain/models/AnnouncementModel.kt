@@ -1,14 +1,17 @@
 package com.coronapptilus.covidpinboard.domain.models
 
 data class AnnouncementModel(
+    val id: String,
     val announcer: String,
     val title: String,
     val description: String,
     val place: String,
     val categories: List<Category>,
     val target: Target,
-    val date: String,
-    val time: String
+    val startDate: String,
+    val startTime: String,
+    val endDate: String,
+    val endTime: String
 ) {
 
     sealed class Category(val type: Int) {
@@ -32,5 +35,6 @@ data class AnnouncementModel(
     sealed class Target(val type: Int) {
         object Adults: Target(1)
         object Children: Target(2)
+        object Family: Target(3)
     }
 }

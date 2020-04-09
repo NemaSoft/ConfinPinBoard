@@ -11,26 +11,31 @@ class AnnouncementMapper {
     fun mapDomainToResponse(domainModel: AnnouncementModel): AnnouncementResponseModel =
         with(domainModel) {
             AnnouncementResponseModel(
+                id = id,
                 announcer = announcer,
                 title = title,
                 description = description,
                 place = place,
                 categoriesTypes = mapCategoriesToType(categories),
                 targetType = mapTargetToType(target),
-                timestamp = convertDateToTimestamp(date, time)
+                startTimestamp = convertDateToTimestamp(startDate, startTime),
+                endTimestamp = convertDateToTimestamp(endDate, endTime)
             )
         }
 
     fun mapResponseToDomain(responseModel: AnnouncementResponseModel?): AnnouncementModel =
         AnnouncementModel(
+            id = responseModel?.id ?: "",
             announcer = responseModel?.announcer ?: "",
             title = responseModel?.title ?: "",
             description = responseModel?.description ?: "",
             place = responseModel?.place ?: "",
             categories = mapTypesToCategories(responseModel?.categoriesTypes),
             target = mapTypeToTarget(responseModel?.targetType),
-            date = convertTimestampToDate(responseModel?.timestamp),
-            time = convertTimestampToTime(responseModel?.timestamp)
+            startDate = convertTimestampToDate(responseModel?.startTimestamp),
+            startTime = convertTimestampToTime(responseModel?.startTimestamp),
+            endDate = convertTimestampToDate(responseModel?.endTimestamp),
+            endTime = convertTimestampToTime(responseModel?.endTimestamp)
         )
 
     private fun mapCategoriesToType(categories: List<AnnouncementModel.Category>): List<Int> =
@@ -79,12 +84,14 @@ class AnnouncementMapper {
         when (target) {
             AnnouncementModel.Target.Adults -> AnnouncementModel.Target.Adults.type
             AnnouncementModel.Target.Children -> AnnouncementModel.Target.Children.type
+            AnnouncementModel.Target.Family -> AnnouncementModel.Target.Family.type
         }
 
     private fun mapTypeToTarget(type: Int?): AnnouncementModel.Target =
         when (type) {
             AnnouncementModel.Target.Adults.type -> AnnouncementModel.Target.Adults
             AnnouncementModel.Target.Children.type -> AnnouncementModel.Target.Children
+            AnnouncementModel.Target.Family.type -> AnnouncementModel.Target.Family
             else -> AnnouncementModel.Target.Adults
         }
 }
