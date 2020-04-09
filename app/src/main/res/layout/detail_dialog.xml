@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:layout_margin="40dp"
+    android:layout_margin="@dimen/dialog_side_margin"
     android:background="@drawable/stroke"
     android:orientation="vertical">
 
@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:background="@color/design_default_color_primary_dark"
         android:gravity="center"
-        android:padding="4dp">
+        android:padding="@dimen/dialog_header_padding">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/dialog_title"
@@ -39,8 +39,8 @@
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:padding="8dp">
+        android:layout_height="@dimen/dialog_scroll_max_height"
+        android:padding="@dimen/dialog_padding">
 
         <ScrollView
             android:layout_width="match_parent"
@@ -54,8 +54,8 @@
                 <androidx.appcompat.widget.AppCompatTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginBottom="4dp"
+                    android:layout_marginStart="@dimen/dialog_headers_identation"
+                    android:layout_marginBottom="@dimen/dialog_line_break"
                     android:text="@string/description_header"
                     android:textStyle="bold" />
 
@@ -63,14 +63,14 @@
                     android:id="@+id/dialog_description"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="12dp"
+                    android:layout_marginBottom="@dimen/dialog_paragraph_break"
                     tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi iaculis at nulla vitae lacinia. Nullam feugiat ornare arcu, non pellentesque libero commodo vitae. Cras varius mauris ut orci ultrices bibendum. Etiam quis nisl sagittis, interdum massa non, porta sem. Suspendisse iaculis magna ac enim aliquet" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginBottom="4dp"
+                    android:layout_marginStart="@dimen/dialog_headers_identation"
+                    android:layout_marginBottom="@dimen/dialog_line_break"
                     android:text="@string/place_header"
                     android:textStyle="bold" />
 
@@ -78,25 +78,25 @@
                     android:id="@+id/dialog_place"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="12dp"
+                    android:layout_marginBottom="@dimen/dialog_paragraph_break"
                     tools:text="random place" />
 
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginBottom="4dp"
+                    android:layout_marginStart="@dimen/dialog_headers_identation"
+                    android:layout_marginBottom="@dimen/dialog_line_break"
                     android:orientation="horizontal">
 
                     <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="16dp"
-                        android:layout_height="16dp"
+                        android:layout_width="@dimen/dialog_header_image_size"
+                        android:layout_height="@dimen/dialog_header_image_size"
                         android:src="@drawable/ic_tag" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="4dp"
+                        android:layout_marginStart="@dimen/dialog_image_header_space"
                         android:text="@string/category_header"
                         android:textStyle="bold" />
 
@@ -106,26 +106,26 @@
                     android:id="@+id/dialog_categories"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="12dp"
+                    android:layout_marginBottom="@dimen/dialog_paragraph_break"
                     tools:text="Sports, dance" />
 
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginBottom="4dp"
+                    android:layout_marginStart="@dimen/dialog_headers_identation"
+                    android:layout_marginBottom="@dimen/dialog_line_break"
                     android:orientation="horizontal">
 
                     <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/dialog_target_image"
-                        android:layout_width="16dp"
-                        android:layout_height="16dp"
+                        android:layout_width="@dimen/dialog_header_image_size"
+                        android:layout_height="@dimen/dialog_header_image_size"
                         tools:src="@drawable/ic_target_families" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="4dp"
+                        android:layout_marginStart="@dimen/dialog_image_header_space"
                         android:text="@string/target_header"
                         android:textStyle="bold" />
 
@@ -135,25 +135,25 @@
                     android:id="@+id/dialog_target"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="12dp"
+                    android:layout_marginBottom="@dimen/dialog_paragraph_break"
                     tools:text="Families" />
 
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginBottom="4dp"
+                    android:layout_marginStart="@dimen/dialog_headers_identation"
+                    android:layout_marginBottom="@dimen/dialog_line_break"
                     android:orientation="horizontal">
 
                     <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="16dp"
-                        android:layout_height="16dp"
+                        android:layout_width="@dimen/dialog_header_image_size"
+                        android:layout_height="@dimen/dialog_header_image_size"
                         android:src="@drawable/ic_time" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="4dp"
+                        android:layout_marginStart="@dimen/dialog_image_header_space"
                         android:text="@string/date_header"
                         android:textStyle="bold" />
 
@@ -163,25 +163,25 @@
                     android:id="@+id/dialog_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="12dp"
+                    android:layout_marginBottom="@dimen/dialog_paragraph_break"
                     tools:text="Avui a les 17:00h" />
 
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginBottom="4dp"
+                    android:layout_marginStart="@dimen/dialog_headers_identation"
+                    android:layout_marginBottom="@dimen/dialog_line_break"
                     android:orientation="horizontal">
 
                     <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="16dp"
-                        android:layout_height="16dp"
+                        android:layout_width="@dimen/dialog_header_image_size"
+                        android:layout_height="@dimen/dialog_header_image_size"
                         android:src="@drawable/ic_organizer" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="4dp"
+                        android:layout_marginStart="@dimen/dialog_image_header_space"
                         android:text="@string/organizer_header"
                         android:textStyle="bold" />
 
@@ -191,7 +191,7 @@
                     android:id="@+id/dialog_organizer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="12dp"
+                    android:layout_marginBottom="@dimen/dialog_paragraph_break"
                     tools:text="Paquito Paco" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
@@ -203,7 +203,7 @@
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="@dimen/dialog_padding"
         android:gravity="center"
         android:orientation="horizontal">
 
@@ -214,8 +214,8 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/dialog_favorites_button"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="@dimen/dialog_bottom_buttons_size"
+            android:layout_height="@dimen/dialog_bottom_buttons_size"
             android:src="@drawable/ic_favorite_inactive" />
 
         <Space
@@ -225,8 +225,8 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/dialog_share_button"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="@dimen/dialog_bottom_buttons_size"
+            android:layout_height="@dimen/dialog_bottom_buttons_size"
             android:src="@drawable/ic_share" />
 
         <Space
