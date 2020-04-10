@@ -73,18 +73,19 @@ class AnnouncementMapper {
                 AnnouncementModel.Category.StoryTeller.type -> AnnouncementModel.Category.StoryTeller
                 else -> AnnouncementModel.Category.Others
             }
-        } ?: listOf(AnnouncementModel.Category.Others)
+        } ?: emptyList()
 
     private fun mapTargetToType(target: AnnouncementModel.Target): Int =
         when (target) {
             AnnouncementModel.Target.Adults -> AnnouncementModel.Target.Adults.type
             AnnouncementModel.Target.Children -> AnnouncementModel.Target.Children.type
+            AnnouncementModel.Target.Undefined -> AnnouncementModel.Target.Undefined.type
         }
 
     private fun mapTypeToTarget(type: Int?): AnnouncementModel.Target =
         when (type) {
             AnnouncementModel.Target.Adults.type -> AnnouncementModel.Target.Adults
             AnnouncementModel.Target.Children.type -> AnnouncementModel.Target.Children
-            else -> AnnouncementModel.Target.Adults
+            else -> AnnouncementModel.Target.Undefined
         }
 }

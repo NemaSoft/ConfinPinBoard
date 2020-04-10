@@ -12,10 +12,33 @@
     <string name="date_time_pattern">El %s a las %s</string>
 
     <!-- Dialog -->
-    <string name="description_header">Descripción:</string>
-    <string name="place_header">Lugar:</string>
-    <string name="category_header">Categoría/s:</string>
-    <string name="target_header">Público:</string>
-    <string name="date_header">Fecha:</string>
-    <string name="organizer_header">Organizador:</string>
+    <string name="description_header">Descripción</string>
+    <string name="place_header">Lugar</string>
+    <string name="category_header">Categoría/s</string>
+    <string name="target_header">Público</string>
+    <string name="date_header">Fecha</string>
+    <string name="organizer_header">Organizador</string>
+    <string name="error_message">Este evento no tiene </string>
+
+    <!-- Categories -->
+    <string name="sport">Deporte</string>
+    <string name="cook">Cocina</string>
+    <string name="music">Música</string>
+    <string name="dance">Baile</string>
+    <string name="theater">Teatro</string>
+    <string name="literature">Literatura</string>
+    <string name="cinema">Cine</string>
+    <string name="conference">Conferencia</string>
+    <string name="interview">Entrevista</string>
+    <string name="workshop">Taller</string>
+    <string name="formation">Formación</string>
+    <string name="donation">Donación</string>
+    <string name="crafts">Manualidades</string>
+    <string name="storyteller">Cuenta cuentos</string>
+    <string name="others">Otros</string>
+
+    <!-- Targets -->
+    <string name="adults">Adultos</string>
+    <string name="children">Niños</string>
+
 </resources>

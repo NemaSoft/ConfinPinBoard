@@ -34,12 +34,16 @@ fun convertDateToTimestamp(dateText: String, timeText: String): Long? =
         it.time / 1000
     }
 
-fun Context.formatDate(dateText: String, timeText: String): String =
-    when {
+fun Context.formatDate(dateText: String, timeText: String): String {
+    if (dateText.isEmpty()||timeText.isEmpty()){
+        return ""
+    }
+    return when {
         isToday(dateText) -> getString(R.string.today_pattern, timeText)
         isTomorrow(dateText) -> getString(R.string.tomorrow_pattern, timeText)
         else -> getString(R.string.date_time_pattern, dateText, timeText)
     }
+}
 
 private fun isToday(dateText: String): Boolean {
     val currentTimestamp = Calendar.getInstance().timeInMillis / 1000

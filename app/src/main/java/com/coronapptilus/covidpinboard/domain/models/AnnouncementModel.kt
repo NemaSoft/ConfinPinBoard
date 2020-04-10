@@ -32,5 +32,6 @@ data class AnnouncementModel(
     sealed class Target(val type: Int) {
         object Adults : Target(1)
         object Children : Target(2)
+        object Undefined : Target(3)
     }
 }

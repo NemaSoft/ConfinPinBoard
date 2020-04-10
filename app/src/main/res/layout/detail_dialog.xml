@@ -89,11 +89,13 @@
                     android:orientation="horizontal">
 
                     <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/dialog_categories_image"
                         android:layout_width="@dimen/dialog_header_image_size"
                         android:layout_height="@dimen/dialog_header_image_size"
                         android:src="@drawable/ic_tag" />
 
                     <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/dialog_categories_header"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/dialog_image_header_space"
@@ -123,6 +125,7 @@
                         tools:src="@drawable/ic_target_families" />
 
                     <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/dialog_target_header"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/dialog_image_header_space"
@@ -146,11 +149,13 @@
                     android:orientation="horizontal">
 
                     <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/dialog_date_image"
                         android:layout_width="@dimen/dialog_header_image_size"
                         android:layout_height="@dimen/dialog_header_image_size"
                         android:src="@drawable/ic_time" />
 
                     <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/dialog_date_header"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/dialog_image_header_space"
@@ -174,11 +179,13 @@
                     android:orientation="horizontal">
 
                     <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/dialog_organizer_image"
                         android:layout_width="@dimen/dialog_header_image_size"
                         android:layout_height="@dimen/dialog_header_image_size"
                         android:src="@drawable/ic_organizer" />
 
                     <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/dialog_organizer_header"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/dialog_image_header_space"
