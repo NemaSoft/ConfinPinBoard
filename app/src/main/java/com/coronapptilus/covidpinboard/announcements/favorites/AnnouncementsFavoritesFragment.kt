@@ -5,6 +5,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import com.coronapptilus.covidpinboard.R
 import com.coronapptilus.covidpinboard.commons.components.ToolbarView
+import com.coronapptilus.covidpinboard.commons.extensions.convertDateToTimestamp
 import com.coronapptilus.covidpinboard.utils.CalendarUtils
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_announcements_favorites.*
@@ -22,13 +23,9 @@ class AnnouncementsFavoritesFragment : Fragment(
 
         //TODO BORRAR: botón de ejemplo y el startActivity cuando se aplique el addToCalendar donde corresponda.
         button.setOnClickListener {
-            val beginTime: Calendar =
-                Calendar.getInstance()
-            beginTime.set(2020, 3, 8, 19, 30)
+            val beginTime= convertDateToTimestamp("09/03/2020","19:30") ?: 0
 
-            val endTime: Calendar =
-                Calendar.getInstance()
-            endTime.set(2020, 3, 8, 20, 30)
+            val endTime = convertDateToTimestamp("09/03/2020","20:30") ?: 0
 
             val calendarIntent =
                 CalendarUtils.addToCalendar(

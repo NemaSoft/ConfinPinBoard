@@ -16,7 +16,7 @@ fun convertTimestampToDateTime(timestamp: Long?): String =
 fun convertTimestampToDate(timestamp: Long?): String =
     timestamp?.let {
         val calendar = Calendar.getInstance().apply {
-            timeInMillis = (timestamp * 1000)
+            timeInMillis = timestamp
         }
         DateFormat.format("dd/MM/yyyy", calendar).toString()
     } ?: ""
@@ -24,18 +24,19 @@ fun convertTimestampToDate(timestamp: Long?): String =
 fun convertTimestampToTime(timestamp: Long?): String =
     timestamp?.let {
         val calendar = Calendar.getInstance().apply {
-            timeInMillis = (timestamp * 1000)
+            timeInMillis = timestamp
         }
         DateFormat.format("HH:mm", calendar).toString()
     } ?: ""
 
 fun convertDateToTimestamp(dateText: String, timeText: String): Long? =
-    SimpleDateFormat("dd/MM/yyyy HH:mm").parse(dateText.plus(" ").plus(timeText))?.let {
-        it.time / 1000
-    }
+    SimpleDateFormat(
+        "dd/MM/yyyy HH:mm",
+        Locale.getDefault()
+    ).parse(dateText.plus(" ").plus(timeText))?.time
 
 fun Context.formatDate(dateText: String, timeText: String): String {
-    if (dateText.isEmpty()||timeText.isEmpty()){
+    if (dateText.isEmpty() || timeText.isEmpty()) {
         return ""
     }
     return when {
@@ -46,7 +47,7 @@ fun Context.formatDate(dateText: String, timeText: String): String {
 }
 
 private fun isToday(dateText: String): Boolean {
-    val currentTimestamp = Calendar.getInstance().timeInMillis / 1000
+    val currentTimestamp = Calendar.getInstance().timeInMillis
     val currentDate = convertTimestampToDate(currentTimestamp)
 
     return currentDate == dateText
@@ -56,7 +57,7 @@ private fun isTomorrow(dateText: String): Boolean {
     val calendar = Calendar.getInstance().apply {
         add(Calendar.DAY_OF_YEAR, 1)
     }
-    val tomorrowTimestamp = calendar.timeInMillis / 1000
+    val tomorrowTimestamp = calendar.timeInMillis
     val tomorrowDate = convertTimestampToDate(tomorrowTimestamp)
 
     return tomorrowDate == dateText
