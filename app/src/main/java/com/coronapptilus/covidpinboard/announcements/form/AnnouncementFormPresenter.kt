@@ -2,15 +2,22 @@ package com.coronapptilus.covidpinboard.announcements.form
 
 import android.content.Context
 import com.coronapptilus.covidpinboard.R
+import com.coronapptilus.covidpinboard.datasources.ResponseState
 import com.coronapptilus.covidpinboard.domain.models.AnnouncementModel
 import com.coronapptilus.covidpinboard.domain.usecases.AddAnnouncementUseCase
 import kotlinx.coroutines.*
+import java.util.*
 
 class AnnouncementFormPresenter(
     private val addAnnouncementUseCase: AddAnnouncementUseCase
 ) : AnnouncementFormContract.Presenter {
 
     override var view: AnnouncementFormContract.View? = null
+    private var targetList: List<AnnouncementModel.Target> = listOf()
+
+    companion object {
+        const val TARGET_EXTRA_POSITION = 1
+    }
 
     private val job = SupervisorJob()
     private val errorHandler = CoroutineExceptionHandler { _, _ -> }
@@ -25,22 +32,22 @@ class AnnouncementFormPresenter(
         coroutineScope.cancel()
     }
 
-    override fun addAnnouncement() {
+    override fun addAnnouncement(announcement: AnnouncementModel) {
         coroutineScope.launch {
-            // TODO("Create announcement from form data")
-            //val announcement = AnnouncementModel()
-
             withContext(Dispatchers.IO) {
-//                val response = addAnnouncementUseCase.execute(announcement)
-//                if (response is ResponseState.Success) {
-                // Announcement was added
-//                }
+                val response = addAnnouncementUseCase.execute(announcement)
+                if (response is ResponseState.Success) {
+//                 Announcement was added
+                    //TODO mostrar toast y cambiar al listado general
+                }
+
+                view?.hideProgress()
             }
         }
     }
 
     override fun getSpinnerTargetList(context: Context): List<String> {
-        val targetList: List<AnnouncementModel.Target> = listOf(
+        this.targetList = listOf(
             AnnouncementModel.Target.Adults,
             AnnouncementModel.Target.Children,
             AnnouncementModel.Target.Familiar
@@ -57,14 +64,62 @@ class AnnouncementFormPresenter(
         return targetListNames
     }
 
-    override fun submitForm() {
-        if (!validateForm()) return
+    override fun getTargetType(targetPosition: Int): AnnouncementModel.Target? {
+        if (this.targetList.isNotEmpty() && targetPosition > 0) {
+            return this.targetList[targetPosition - TARGET_EXTRA_POSITION]
+        }
 
-        // TODO
+        return null
     }
 
-    override fun validateForm(): Boolean {
-        // TODO
-        return false
+    override fun submitForm(
+        announcer: String,
+        title: String,
+        description: String,
+        place: String,
+        categories: List<AnnouncementModel.Category>,
+        target: AnnouncementModel.Target?,
+        startingdate: String,
+        startingTime: String,
+        endingDate: String,
+        endingTime: String
+    ) {
+
+        view?.showProgress()
+
+        if (!validateForm()) {
+            view?.hideProgress()
+            return
+        }
+
+        val id = UUID.randomUUID().toString()
+
+        val announcement = AnnouncementModel(
+            id,
+            announcer,
+            title,
+            description,
+            place,
+            categories,
+            AnnouncementModel.Target.Familiar, // TODO conservar para que no pete. Borrar una vez esté validado y  poner el "target"
+            startingdate,
+            startingTime,
+            endingDate,
+            endingTime
+        )
+
+        addAnnouncement(announcement)
     }
+
+    private fun validateForm(): Boolean {
+        // TODO MARIA
+        return validateInputForms()
+    }
+
+    private fun validateInputForms(): Boolean {
+        // TODO MARIA
+        return true
+    }
+
+
 }

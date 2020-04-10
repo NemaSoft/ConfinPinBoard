@@ -12,6 +12,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.coronapptilus.covidpinboard.R
 import com.coronapptilus.covidpinboard.commons.components.ToolbarView
+import com.coronapptilus.covidpinboard.domain.models.AnnouncementModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_announcement_form.*
 import org.koin.android.ext.android.inject
@@ -32,11 +33,24 @@ class AnnouncementFormFragment : Fragment(R.layout.fragment_announcement_form),
         setupSpinnerView()
 
         addForm_addButton.setOnClickListener {
-            this.presenter.submitForm()
+            getAnnouncementInfo()
         }
     }
 
-    override fun setupPickersViews() {
+    override fun onPause() {
+        super.onPause()
+        this.presenter.detachView()
+    }
+
+    override fun showProgress() {
+        progressView.visibility = View.VISIBLE
+    }
+
+    override fun hideProgress() {
+        progressView.visibility = View.GONE
+    }
+
+    private fun setupPickersViews() {
 
         val pickersListener: View.OnClickListener = View.OnClickListener {
             when (it) {
@@ -53,7 +67,7 @@ class AnnouncementFormFragment : Fragment(R.layout.fragment_announcement_form),
         addForm_endTimePickerButton.setOnClickListener(pickersListener)
     }
 
-    override fun setupSpinnerView() {
+    private fun setupSpinnerView() {
         val targetListNames = presenter.getSpinnerTargetList(context!!)
 
         val adapter = object :
@@ -100,19 +114,6 @@ class AnnouncementFormFragment : Fragment(R.layout.fragment_announcement_form),
         }
     }
 
-    override fun onPause() {
-        super.onPause()
-        this.presenter.detachView()
-    }
-
-    override fun showProgress() {
-        progressView.visibility = View.VISIBLE
-    }
-
-    override fun hideProgress() {
-        progressView.visibility = View.GONE
-    }
-
     private fun showDatePickerDialog(view: View) {
         // Current date
         val calendar: Calendar = Calendar.getInstance(Locale.getDefault())
@@ -143,7 +144,6 @@ class AnnouncementFormFragment : Fragment(R.layout.fragment_announcement_form),
             )
 
             datePickerDialog.datePicker.minDate = calendar.timeInMillis
-
             datePickerDialog.show()
         }
     }
@@ -176,5 +176,35 @@ class AnnouncementFormFragment : Fragment(R.layout.fragment_announcement_form),
             )
             timePickerDialog.show()
         }
+    }
+
+    private fun getAnnouncementInfo() {
+
+        val announcer = addForm_announcer.text.toString()
+        val title = addForm_title.text.toString()
+        val description = addForm_description.text.toString()
+        val place = addForm_place.text.toString()
+        val categories = listOf<AnnouncementModel.Category>() // TODO introducir lista
+
+        val targetPosition = addForm_targetSpinner.selectedItemPosition
+        val target = presenter.getTargetType(targetPosition)
+
+        val startingDate = addForm_startingDate.text.toString()
+        val startingTime = addForm_startingTime.text.toString()
+        val endingDate = addForm_endingDate.text.toString()
+        val endingTime = addForm_endingTime.text.toString()
+
+        this.presenter.submitForm(
+            announcer,
+            title,
+            description,
+            place,
+            categories,
+            target,
+            startingDate,
+            startingTime,
+            endingDate,
+            endingTime
+        )
     }
 }
