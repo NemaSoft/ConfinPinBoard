@@ -1,6 +1,4 @@
-package com.coronapptilus.covidpinboard.favorites
-
-import com.coronapptilus.covidpinboard.commons.base.BaseContract
+package com.coronapptilus.covidpinboard.announcements.favorites
 
 class AnnouncementsFavoritesPresenter: AnnouncementsFavoritesContract.Presenter {
 

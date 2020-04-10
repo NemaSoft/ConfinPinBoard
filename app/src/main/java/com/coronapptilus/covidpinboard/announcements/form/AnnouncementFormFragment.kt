@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.coronapptilus.covidpinboard.R
+import com.coronapptilus.covidpinboard.commons.components.ToolbarView
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_announcement_form.*
 import java.util.*
 
@@ -16,6 +18,8 @@ class AnnouncementFormFragment : Fragment(R.layout.fragment_announcement_form),
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        activity?.toolbar?.init(ToolbarView.FORM)
+
         this.presenter.attachView(this)
         setupPickersViews()
 

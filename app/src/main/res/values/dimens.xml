@@ -1,7 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!--Text-->
+    <!-- Toolbar -->
+    <dimen name="toolbar_padding">8dp</dimen>
+    <dimen name="toolbar_margin_elements">8dp</dimen>
+
+    <!-- Dialog -->
+    <dimen name="dialog_header_padding">4dp</dimen>
+    <dimen name="dialog_side_margin">40dp</dimen>
+    <dimen name="dialog_scroll_max_height">200dp</dimen>
+    <dimen name="dialog_padding">8dp</dimen>
+    <dimen name="dialog_headers_identation">8dp</dimen>
+    <dimen name="dialog_line_break">4dp</dimen>
+    <dimen name="dialog_paragraph_break">12dp</dimen>
+    <dimen name="dialog_image_header_space">4dp</dimen>
+    <dimen name="dialog_header_image_size">16dp</dimen>
+    <dimen name="dialog_bottom_buttons_size">40dp</dimen>
+
+    <!--Text Sizes -->
+    <dimen name="primary_3xl">22sp</dimen>
+    <dimen name="primary_l">16sp</dimen>
     <dimen name="default_textSize">16sp</dimen>
     <dimen name="default_titleFormSize">20sp</dimen>
 

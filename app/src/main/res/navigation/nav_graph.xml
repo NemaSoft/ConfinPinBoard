@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/favorites_fragment"
-        android:name="com.coronapptilus.covidpinboard.favorites.AnnouncementsFavoritesFragment"
+        android:name="com.coronapptilus.covidpinboard.announcements.favorites.AnnouncementsFavoritesFragment"
         android:label="favorites_fragment"
         tools:layout="@layout/fragment_announcements_favorites"/>
 
