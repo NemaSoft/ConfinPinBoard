@@ -12,10 +12,38 @@
     <string name="date_time_pattern">%s at %s</string>
 
     <!-- Dialog -->
-    <string name="description_header">Description:</string>
-    <string name="place_header">Place:</string>
-    <string name="category_header">Category / Categories:</string>
-    <string name="target_header">Target:</string>
-    <string name="date_header">Date:</string>
-    <string name="organizer_header">Organizer:</string>
+    <string name="description_header">Description</string>
+    <string name="place_header">Place</string>
+    <string name="category_header">Category / Categories</string>
+    <string name="target_header">Target</string>
+    <string name="date_header">Date</string>
+    <string name="organizer_header">Organizer</string>
+    <string name="error_message">This event has no </string>
+
+    <!-- Categories -->
+    <string name="sport">Sport</string>
+    <string name="cook">Cook</string>
+    <string name="music">Music</string>
+    <string name="dance">Dance</string>
+    <string name="theater">Theater</string>
+    <string name="literature">Literature</string>
+    <string name="cinema">Cinema</string>
+    <string name="conference">Conference</string>
+    <string name="interview">Interview</string>
+    <string name="workshop">WorkShop</string>
+    <string name="formation">Formation</string>
+    <string name="donation">Donation</string>
+    <string name="crafts">Crafts</string>
+    <string name="storyteller">StoryTeller</string>
+    <string name="others">Others</string>
+
+    <!-- Targets -->
+    <string name="adults">Adults</string>
+    <string name="children">Children</string>
+
+
+    <!-- Filter -->
+    <string name="category_filter">Category Filter</string>
+
+
 </resources>

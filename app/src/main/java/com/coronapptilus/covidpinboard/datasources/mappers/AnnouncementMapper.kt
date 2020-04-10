@@ -85,6 +85,7 @@ class AnnouncementMapper {
             AnnouncementModel.Target.Adults -> AnnouncementModel.Target.Adults.type
             AnnouncementModel.Target.Children -> AnnouncementModel.Target.Children.type
             AnnouncementModel.Target.Family -> AnnouncementModel.Target.Family.type
+            AnnouncementModel.Target.Undefined -> AnnouncementModel.Target.Undefined.type
         }
 
     private fun mapTypeToTarget(type: Int?): AnnouncementModel.Target =
@@ -92,6 +93,6 @@ class AnnouncementMapper {
             AnnouncementModel.Target.Adults.type -> AnnouncementModel.Target.Adults
             AnnouncementModel.Target.Children.type -> AnnouncementModel.Target.Children
             AnnouncementModel.Target.Family.type -> AnnouncementModel.Target.Family
-            else -> AnnouncementModel.Target.Adults
+            else -> AnnouncementModel.Target.Undefined
         }
 }
