@@ -1,5 +1,6 @@
 package com.coronapptilus.covidpinboard.announcements.commons.filter.adapter
 
+import android.view.View
 import android.view.ViewGroup
 import android.widget.RelativeLayout
 import androidx.appcompat.widget.AppCompatImageView
@@ -27,9 +28,9 @@ class FilterViewHolder(parent: ViewGroup) :
             val icon by lazy { findViewById<AppCompatImageView>(R.id.filter_item_icon) }
             val category by lazy { findViewById<AppCompatTextView>(R.id.filter_item_text) }
 
-            category.text = item.title
+            item.title?.let {category.text = it} ?: category.apply { visibility = View.GONE }
             icon.setImageResource(item.icon)
-            if (item.checked) mainLayout.setBackgroundColor(ContextCompat.getColor(context, R.color.design_bottom_navigation_shadow_color))
+            if (item.checked) mainLayout.setBackgroundColor(item.color)
             else mainLayout.setBackgroundColor(ContextCompat.getColor(context, android.R.color.transparent))
         }
 

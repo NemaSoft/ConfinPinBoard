@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import com.coronapptilus.covidpinboard.announcements.commons.filter.model.FilterCategoryModel
 import com.coronapptilus.covidpinboard.commons.base.BaseRecyclerViewAdapter
 import com.coronapptilus.covidpinboard.domain.models.AnnouncementModel
+import com.coronapptilus.covidpinboard.utils.CategoryUtils.getCategoryColor
 import com.coronapptilus.covidpinboard.utils.CategoryUtils.getCategoryIcon
 import com.coronapptilus.covidpinboard.utils.CategoryUtils.getCategoryString
 
@@ -24,7 +25,8 @@ class FilterGridAdapter(
                         it.type,
                         context.getCategoryIcon(it),
                         context.getCategoryString(it),
-                        false
+                        false,
+                        context.getCategoryColor(it)
                     )
                 })
             }

@@ -13,12 +13,9 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.coronapptilus.covidpinboard.R
 import com.coronapptilus.covidpinboard.announcements.commons.filter.adapter.FilterGridAdapter
-import com.coronapptilus.covidpinboard.announcements.commons.filter.model.FilterCategoryModel
 import com.coronapptilus.covidpinboard.commons.extensions.hideKeyboard
 import com.coronapptilus.covidpinboard.commons.extensions.showKeyboard
 import com.coronapptilus.covidpinboard.utils.CategoryUtils.getAllCategories
-import com.coronapptilus.covidpinboard.utils.CategoryUtils.getCategoryIcon
-import com.coronapptilus.covidpinboard.utils.CategoryUtils.getCategoryString
 import kotlinx.android.synthetic.main.toolbar_view.view.*
 
 class ToolbarView(context: Context, attrs: AttributeSet? = null) : LinearLayout(context, attrs) {
