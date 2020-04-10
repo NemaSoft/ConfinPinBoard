@@ -16,6 +16,8 @@ object PresentersModule {
         factory<SplashContract.Presenter> { SplashPresenter() }
         factory<AnnouncementFormContract.Presenter> { AnnouncementFormPresenter(get()) }
         factory<AnnouncementsListContract.Presenter> { AnnouncementsListPresenter(get()) }
-        factory<AnnouncementsFavoritesContract.Presenter> { AnnouncementsFavoritesPresenter() }
+        factory<AnnouncementsFavoritesContract.Presenter> {
+            AnnouncementsFavoritesPresenter(get(), get(), get())
+        }
     }
 }

@@ -1,9 +1,7 @@
 package com.coronapptilus.covidpinboard.announcements.list
 
-import android.util.Log
 import com.coronapptilus.covidpinboard.datasources.ResponseState
 import com.coronapptilus.covidpinboard.domain.models.AnnouncementModel
-import com.coronapptilus.covidpinboard.domain.usecases.GetAnnouncementUseCase
 import com.coronapptilus.covidpinboard.domain.usecases.GetAnnouncementsUseCase
 import kotlinx.coroutines.*
 
@@ -27,6 +25,10 @@ class AnnouncementsListPresenter(
     }
 
     override fun init() {
+        getAnnouncements()
+    }
+
+    private fun getAnnouncements() {
         coroutineScope.launch {
             var announcements: List<AnnouncementModel> = emptyList()
             withContext(Dispatchers.IO) {
@@ -35,6 +37,7 @@ class AnnouncementsListPresenter(
                     announcements = response.result
                 }
             }
+            view?.update(announcements)
         }
     }
 }

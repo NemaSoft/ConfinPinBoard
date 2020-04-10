@@ -6,9 +6,9 @@ import com.coronapptilus.covidpinboard.repositories.datasources.FavoritesDataSou
 
 class FavoritesRepositoryImpl(private val dataSource: FavoritesDataSource): FavoritesRepository {
 
-    override fun addFavorite(id: Long) {
-        dataSource.addFavorite(id)
-    }
+    override fun addFavorite(id: String) { dataSource.addFavorite(id) }
 
     override fun getFavorites(): FavoritesModel = dataSource.getFavorites()
+
+    override fun removeFavorite(id: String) { dataSource.removeFavorite(id) }
 }

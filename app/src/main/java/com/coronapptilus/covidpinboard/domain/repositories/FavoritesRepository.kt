@@ -4,7 +4,9 @@ import com.coronapptilus.covidpinboard.domain.models.FavoritesModel
 
 interface FavoritesRepository {
 
-    fun addFavorite(id: Long)
+    fun addFavorite(id: String)
 
     fun getFavorites(): FavoritesModel
+
+    fun removeFavorite(id: String)
 }

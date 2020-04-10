@@ -1,5 +1,6 @@
 package com.coronapptilus.covidpinboard.datasources.impl
 
+import com.coronapptilus.covidpinboard.commons.extensions.isAvailable
 import com.coronapptilus.covidpinboard.commons.extensions.safeCall
 import com.coronapptilus.covidpinboard.datasources.ResponseState
 import com.coronapptilus.covidpinboard.datasources.mappers.AnnouncementMapper
@@ -26,17 +27,22 @@ class AnnouncementsDataSourceImpl(
             }
         }
 
-    override suspend fun getAnnouncement(id: String): ResponseState<AnnouncementModel> =
+    override suspend fun getAnnouncementsByIds(ids: List<String>): ResponseState<List<AnnouncementModel>> =
         safeCall {
-            suspendCoroutine<AnnouncementModel> { cont ->
+            suspendCoroutine<List<AnnouncementModel>> { cont ->
                 database.collection(COLLECTION_NAME)
-                    .whereEqualTo(ID_KEY, id)
+                    .whereIn(ID_KEY, ids)
                     .get()
                     .addOnSuccessListener { documentsSnapshots ->
-                        val response = documentsSnapshots.first()
-                            .toObject(AnnouncementResponseModel::class.java)
-                        val announcement = mapper.mapResponseToDomain(response)
-                        cont.resume(announcement)
+                        val announcements =
+                            documentsSnapshots.toObjects(AnnouncementResponseModel::class.java)
+                                .filterNotNull()
+                                .filter {
+                                    existsContent(it.title, it.description, it.place)
+                                            && checkAvailability(it.endTimestamp)
+                                }
+                                .map { mapper.mapResponseToDomain(it) }
+                        cont.resume(announcements)
                     }
                     .addOnFailureListener { error -> cont.resumeWithException(error) }
             }
@@ -51,6 +57,10 @@ class AnnouncementsDataSourceImpl(
                         val announcements =
                             documentsSnapshots.toObjects(AnnouncementResponseModel::class.java)
                                 .filterNotNull()
+                                .filter {
+                                    existsContent(it.title, it.description, it.place)
+                                            && checkAvailability(it.endTimestamp)
+                                }
                                 .map { mapper.mapResponseToDomain(it) }
                         cont.resume(announcements)
                     }
@@ -62,6 +72,10 @@ class AnnouncementsDataSourceImpl(
         title != null && title.isNotEmpty()
                 && description != null && description.isNotEmpty()
                 && place != null && place.isNotEmpty()
+
+    private fun checkAvailability(endTimestamp: Long?): Boolean =
+        endTimestamp != null && isAvailable(endTimestamp)
+
 
     companion object {
         private const val COLLECTION_NAME = "announcements"
