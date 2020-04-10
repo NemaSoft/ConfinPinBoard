@@ -23,5 +23,7 @@ interface AnnouncementFormContract {
         fun submitForm()
 
         fun validateForm(): Boolean
+
+        fun addAnnouncement()
     }
 }

@@ -3,14 +3,17 @@ package com.coronapptilus.covidpinboard.domain.models
 import com.coronapptilus.covidpinboard.R
 
 data class AnnouncementModel(
+    val id: String,
     val announcer: String,
     val title: String,
     val description: String,
     val place: String,
     val categories: List<Category>,
     val target: Target,
-    val date: String,
-    val time: String
+    val startDate: String,
+    val startTime: String,
+    val endDate: String,
+    val endTime: String
 ) {
 
     sealed class Category(val type: Int) {
@@ -31,9 +34,10 @@ data class AnnouncementModel(
         object Others : Category(15)
     }
 
-    sealed class Target(val type: Int, val name: Int) {
+    sealed class Target(val type: Int, val name: Int?) {
         object Adults : Target(1, R.string.adults)
         object Children : Target(2, R.string.children)
         object Familiar : Target(3, R.string.familiar)
+        object Undefined : Target(4, null)
     }
 }

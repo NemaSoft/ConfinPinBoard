@@ -1,16 +1,43 @@
 package com.coronapptilus.covidpinboard.announcements.list
 
-import com.coronapptilus.covidpinboard.commons.base.BaseContract
+import com.coronapptilus.covidpinboard.datasources.ResponseState
+import com.coronapptilus.covidpinboard.domain.models.AnnouncementModel
+import com.coronapptilus.covidpinboard.domain.usecases.GetAnnouncementsUseCase
+import kotlinx.coroutines.*
 
-class AnnouncementsListPresenter: AnnouncementsListContract.Presenter {
+class AnnouncementsListPresenter(
+    private val getAnnouncementsUseCase: GetAnnouncementsUseCase
+): AnnouncementsListContract.Presenter {
 
     override var view: AnnouncementsListContract.View? = null
 
+    private val job = SupervisorJob()
+    private val errorHandler = CoroutineExceptionHandler { _, _ ->  }
+    private val coroutineScope = CoroutineScope(job + Dispatchers.Main + errorHandler)
+
     override fun attachView(newView: AnnouncementsListContract.View) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        view = newView
     }
 
     override fun detachView() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        view = null
+        coroutineScope.cancel()
+    }
+
+    override fun init() {
+        getAnnouncements()
+    }
+
+    private fun getAnnouncements() {
+        coroutineScope.launch {
+            var announcements: List<AnnouncementModel> = emptyList()
+            withContext(Dispatchers.IO) {
+                val response = getAnnouncementsUseCase.execute()
+                if (response is ResponseState.Success) {
+                    announcements = response.result
+                }
+            }
+            view?.update(announcements)
+        }
     }
 }

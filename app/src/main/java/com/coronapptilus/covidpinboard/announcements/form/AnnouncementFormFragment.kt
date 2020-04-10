@@ -14,12 +14,13 @@ import com.coronapptilus.covidpinboard.R
 import com.coronapptilus.covidpinboard.commons.components.ToolbarView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_announcement_form.*
+import org.koin.android.ext.android.inject
 import java.util.*
 
 class AnnouncementFormFragment : Fragment(R.layout.fragment_announcement_form),
     AnnouncementFormContract.View {
 
-    private var presenter: AnnouncementFormContract.Presenter = AnnouncementFormPresenter()
+    private val presenter: AnnouncementFormContract.Presenter by inject()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

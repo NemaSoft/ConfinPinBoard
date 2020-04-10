@@ -1,5 +1,5 @@
 package com.coronapptilus.covidpinboard.domain.models
 
 data class FavoritesModel(
-    val favorites: List<Long>
+    val favorites: List<String>
 )

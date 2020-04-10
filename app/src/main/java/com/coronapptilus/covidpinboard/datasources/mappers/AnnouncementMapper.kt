@@ -11,26 +11,31 @@ class AnnouncementMapper {
     fun mapDomainToResponse(domainModel: AnnouncementModel): AnnouncementResponseModel =
         with(domainModel) {
             AnnouncementResponseModel(
+                id = id,
                 announcer = announcer,
                 title = title,
                 description = description,
                 place = place,
                 categoriesTypes = mapCategoriesToType(categories),
                 targetType = mapTargetToType(target),
-                timestamp = convertDateToTimestamp(date, time)
+                startTimestamp = convertDateToTimestamp(startDate, startTime),
+                endTimestamp = convertDateToTimestamp(endDate, endTime)
             )
         }
 
     fun mapResponseToDomain(responseModel: AnnouncementResponseModel?): AnnouncementModel =
         AnnouncementModel(
+            id = responseModel?.id ?: "",
             announcer = responseModel?.announcer ?: "",
             title = responseModel?.title ?: "",
             description = responseModel?.description ?: "",
             place = responseModel?.place ?: "",
             categories = mapTypesToCategories(responseModel?.categoriesTypes),
             target = mapTypeToTarget(responseModel?.targetType),
-            date = convertTimestampToDate(responseModel?.timestamp),
-            time = convertTimestampToTime(responseModel?.timestamp)
+            startDate = convertTimestampToDate(responseModel?.startTimestamp),
+            startTime = convertTimestampToTime(responseModel?.startTimestamp),
+            endDate = convertTimestampToDate(responseModel?.endTimestamp),
+            endTime = convertTimestampToTime(responseModel?.endTimestamp)
         )
 
     private fun mapCategoriesToType(categories: List<AnnouncementModel.Category>): List<Int> =
@@ -80,6 +85,7 @@ class AnnouncementMapper {
             AnnouncementModel.Target.Adults -> AnnouncementModel.Target.Adults.type
             AnnouncementModel.Target.Children -> AnnouncementModel.Target.Children.type
             AnnouncementModel.Target.Familiar -> AnnouncementModel.Target.Familiar.type
+            AnnouncementModel.Target.Undefined -> AnnouncementModel.Target.Undefined.type
         }
 
     private fun mapTypeToTarget(type: Int?): AnnouncementModel.Target =
@@ -87,6 +93,6 @@ class AnnouncementMapper {
             AnnouncementModel.Target.Adults.type -> AnnouncementModel.Target.Adults
             AnnouncementModel.Target.Children.type -> AnnouncementModel.Target.Children
             AnnouncementModel.Target.Familiar.type -> AnnouncementModel.Target.Familiar
-            else -> AnnouncementModel.Target.Adults
+            else -> AnnouncementModel.Target.Undefined
         }
 }
