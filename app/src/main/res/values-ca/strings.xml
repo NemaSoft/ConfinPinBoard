@@ -12,20 +12,18 @@
     <string name="date_time_pattern">El %s a les %s</string>
 
     <!-- Dialog -->
-    <string name="description_header">Descripció:</string>
-    <string name="place_header">Lloc:</string>
-    <string name="category_header">Categoria/es:</string>
-    <string name="target_header">Públic:</string>
-    <string name="date_header">Data:</string>
-    <string name="organizer_header">Organitzador:</string>
-
-    <!-- Filter -->
-    <string name="category_filter">Filtre per categories</string>
+    <string name="description_header">Descripció</string>
+    <string name="place_header">Lloc</string>
+    <string name="category_header">Categoria/es</string>
+    <string name="target_header">Públic</string>
+    <string name="date_header">Data</string>
+    <string name="organizer_header">Organitzador</string>
+    <string name="error_message">Aquest esdeveniment no té </string>
 
     <!-- Categories -->
     <string name="sport">Esport</string>
     <string name="cook">Cuina</string>
-    <string name="music">Musica</string>
+    <string name="music">Música</string>
     <string name="dance">Dansa</string>
     <string name="theater">Teatre</string>
     <string name="literature">Literatura</string>
@@ -35,8 +33,15 @@
     <string name="workshop">Taller</string>
     <string name="formation">Formació</string>
     <string name="donation">Donació</string>
-    <string name="crafts">Manualitat</string>
-    <string name="storyteller">Contacontes</string>
+    <string name="crafts">Manualitats</string>
+    <string name="storyteller">Conta contes</string>
     <string name="others">Altres</string>
+
+    <!-- Targets -->
+    <string name="adults">Adults</string>
+    <string name="children">Nens</string>
+
+    <!-- Filter -->
+    <string name="category_filter">Filtre per categories</string>
 
 </resources>

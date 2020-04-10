@@ -79,6 +79,7 @@ class AnnouncementMapper {
         when (target) {
             AnnouncementModel.Target.Adults -> AnnouncementModel.Target.Adults.type
             AnnouncementModel.Target.Children -> AnnouncementModel.Target.Children.type
+            else -> AnnouncementModel.Target.Adults.type
         }
 
     private fun mapTypeToTarget(type: Int?): AnnouncementModel.Target =
