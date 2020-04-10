@@ -15,6 +15,7 @@ import android.widget.ArrayAdapter
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.AppCompatButton
+import androidx.appcompat.widget.AppCompatEditText
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
@@ -54,7 +55,7 @@ class AnnouncementFormFragment : Fragment(R.layout.fragment_announcement_form),
                 showFilterDialog { list ->
                     categories.clear()
                     categories.addAll(list)
-                    addForm_categories.text = Editable.Factory.getInstance().newEditable(list.map { getCategoryString(it)}.joinToString())
+                    addForm_categories.text = list.joinToString { getCategoryString(it) }.toEditable()
                 }
             }
         }
@@ -77,17 +78,17 @@ class AnnouncementFormFragment : Fragment(R.layout.fragment_announcement_form),
 
         val pickersListener: View.OnClickListener = View.OnClickListener {
             when (it) {
-                addForm_startDatePickerButton -> showDatePickerDialog(it)
-                addForm_endDatePickerButton -> showDatePickerDialog(it)
-                addForm_startTimePickerButton -> showTimePickerDialog(it)
-                addForm_endTimePickerButton -> showTimePickerDialog(it)
+                addForm_startingDate -> showDatePickerDialog(it)
+                addForm_endingDate -> showDatePickerDialog(it)
+                addForm_startingTime -> showTimePickerDialog(it)
+                addForm_endingTime -> showTimePickerDialog(it)
             }
         }
 
-        addForm_startDatePickerButton.setOnClickListener(pickersListener)
-        addForm_endDatePickerButton.setOnClickListener(pickersListener)
-        addForm_startTimePickerButton.setOnClickListener(pickersListener)
-        addForm_endTimePickerButton.setOnClickListener(pickersListener)
+        addForm_startingDate.setOnClickListener(pickersListener)
+        addForm_endingDate.setOnClickListener(pickersListener)
+        addForm_startingTime.setOnClickListener(pickersListener)
+        addForm_endingTime.setOnClickListener(pickersListener)
     }
 
     private fun setupSpinnerView() {
@@ -157,8 +158,8 @@ class AnnouncementFormFragment : Fragment(R.layout.fragment_announcement_form),
                     )
 
                     when (view) {
-                        addForm_startDatePickerButton -> addForm_startingDate.text = formattedDate
-                        addForm_endDatePickerButton -> addForm_endingDate.text = formattedDate
+                        addForm_startingDate -> addForm_startingDate.text = formattedDate.toEditable()
+                        addForm_endingDate -> addForm_endingDate.text = formattedDate.toEditable()
                     }
                 },
                 year,
@@ -189,8 +190,8 @@ class AnnouncementFormFragment : Fragment(R.layout.fragment_announcement_form),
                     )
 
                     when (view) {
-                        addForm_startTimePickerButton -> addForm_startingTime.text = formattedHour
-                        addForm_endTimePickerButton -> addForm_endingTime.text = formattedHour
+                        addForm_startingTime -> addForm_startingTime.text = formattedHour.toEditable()
+                        addForm_endingTime -> addForm_endingTime.text = formattedHour.toEditable()
                     }
                 },
                 hour,
@@ -261,4 +262,6 @@ class AnnouncementFormFragment : Fragment(R.layout.fragment_announcement_form),
 
         mBuilder.show()
     }
+
+    private fun String.toEditable(): Editable = Editable.Factory.getInstance().newEditable(this)
 }
