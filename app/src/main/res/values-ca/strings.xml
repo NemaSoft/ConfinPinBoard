@@ -41,4 +41,7 @@
     <string name="adults">Adults</string>
     <string name="children">Nens</string>
 
+    <!-- Filter -->
+    <string name="category_filter">Filtre per categories</string>
+
 </resources>

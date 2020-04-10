@@ -9,16 +9,7 @@ import com.coronapptilus.covidpinboard.utils.DetailDialogUtils
 import com.coronapptilus.covidpinboard.domain.models.AnnouncementModel
 import kotlinx.android.synthetic.main.detail_dialog.view.*
 
-class AnnouncementsListAdapter(private val dataList: List<AnnouncementModel>) :
-    BaseRecyclerViewAdapter<BaseRecyclerViewAdapter.BaseViewHolder<AnnouncementModel>,AnnouncementModel>() {
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): BaseViewHolder<AnnouncementModel> {}
-
-    override fun onBindViewHolder(holder: BaseViewHolder<AnnouncementModel>, position: Int) {
-
-    }
+class AnnouncementsListAdapter :
 
     private fun showDetailDialog(item: AnnouncementModel, parent: ViewGroup){
 
