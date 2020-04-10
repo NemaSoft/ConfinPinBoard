@@ -1,5 +1,7 @@
 package com.coronapptilus.covidpinboard.domain.models
 
+import com.coronapptilus.covidpinboard.R
+
 data class AnnouncementModel(
     val announcer: String,
     val title: String,
@@ -29,9 +31,9 @@ data class AnnouncementModel(
         object Others : Category(15)
     }
 
-    sealed class Target(val type: Int) {
-        object Adults : Target(1)
-        object Children : Target(2)
-        object Family : Target(3)
+    sealed class Target(val type: Int, val name: Int) {
+        object Adults : Target(1, R.string.adults)
+        object Children : Target(2, R.string.children)
+        object Familiar : Target(3, R.string.familiar)
     }
 }

@@ -2,8 +2,13 @@ package com.coronapptilus.covidpinboard.announcements.form
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
+import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.coronapptilus.covidpinboard.R
 import com.coronapptilus.covidpinboard.commons.components.ToolbarView
@@ -22,6 +27,8 @@ class AnnouncementFormFragment : Fragment(R.layout.fragment_announcement_form),
 
         this.presenter.attachView(this)
         setupPickersViews()
+        // TODO retocar formatos hora/día
+        setupSpinnerView()
 
         addForm_addButton.setOnClickListener {
             this.presenter.submitForm()
@@ -43,6 +50,53 @@ class AnnouncementFormFragment : Fragment(R.layout.fragment_announcement_form),
         addForm_endDatePickerButton.setOnClickListener(pickersListener)
         addForm_startTimePickerButton.setOnClickListener(pickersListener)
         addForm_endTimePickerButton.setOnClickListener(pickersListener)
+    }
+
+    override fun setupSpinnerView() {
+        val targetListNames = presenter.getSpinnerTargetList(context!!)
+
+        val adapter = object :
+            ArrayAdapter<String>(context!!, R.layout.spinner_layout_color, targetListNames) {
+            override fun isEnabled(position: Int): Boolean {
+                return position != 0
+            }
+
+            override fun getDropDownView(
+                position: Int,
+                convertView: View?,
+                parent: ViewGroup
+            ): View {
+                val view: View = super.getDropDownView(position, convertView, parent)
+                val item: TextView = view as TextView
+
+                if (position == 0) {
+                    item.setTextColor(Color.GRAY)
+                } else {
+                    item.setTextColor(Color.BLACK)
+                }
+
+                return view
+            }
+        }
+
+        addForm_targetSpinner.adapter = adapter
+        adapter.notifyDataSetChanged()
+
+        addForm_targetSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            // TODO cambiar el color del texto original en el textview una vez se clicka
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                //TODO("Not yet implemented")
+            }
+
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                //TODO("Not yet implemented")
+            }
+        }
     }
 
     override fun onPause() {
@@ -119,9 +173,7 @@ class AnnouncementFormFragment : Fragment(R.layout.fragment_announcement_form),
                 minute,
                 true
             )
-
             timePickerDialog.show()
         }
     }
-
 }

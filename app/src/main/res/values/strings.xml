@@ -40,6 +40,7 @@
     <!-- Targets -->
     <string name="adults">Adults</string>
     <string name="children">Children</string>
+    <string name="familiar">Familiar</string>
 
     <!-- Filter -->
     <string name="category_filter">Category Filter</string>
@@ -62,6 +63,8 @@
     <string name="time_end"> Ending time</string>
     <string name="form_formattedDate" translatable="false">"%s / %s / %s"</string>
     <string name="form_formattedHour" translatable="false">"%s : %s"</string>
+
+    <string name="chooseATarget">Choose a target</string>
 
     <string name="addButton">Add</string>
 

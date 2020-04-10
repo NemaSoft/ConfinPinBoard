@@ -40,6 +40,7 @@
     <!-- Targets -->
     <string name="adults">Adultos</string>
     <string name="children">Niños</string>
+    <string name="familiar">Familiar</string>
 
     <!-- Filter -->
     <string name="category_filter">Filtro por categorías</string>
@@ -61,6 +62,7 @@
     <string name="time_start">Hora de inicio</string>
     <string name="time_end">Hora final</string>
 
+    <string name="chooseATarget">Selecciona un público</string>
     <string name="addButton">Añadir</string>
 
 </resources>
