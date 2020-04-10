@@ -4,12 +4,12 @@ import android.view.View
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 
-abstract class BaseRecyclerViewAdapter<T : BaseRecyclerViewAdapter.BaseViewHolder<V>, V> : RecyclerView.Adapter<T>() {
+abstract class BaseRecyclerViewAdapter<T : BaseRecyclerViewViewHolder<V>, V> : RecyclerView.Adapter<T>() {
 
     private var dataSet: MutableList<V> = ArrayList()
 
     override fun onBindViewHolder(holder: T, position: Int) {
-        holder.bind(dataSet[position])
+        holder.update(dataSet[position])
     }
 
     override fun getItemCount(): Int = dataSet.size
