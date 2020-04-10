@@ -12,6 +12,7 @@
     <string name="date_time_pattern">El %s a les %s</string>
 
     <!-- Dialog -->
+    <string name="title">Títol</string>
     <string name="description_header">Descripció</string>
     <string name="place_header">Lloc</string>
     <string name="category_header">Categoria/es</string>

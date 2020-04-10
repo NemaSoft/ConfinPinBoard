@@ -36,5 +36,4 @@ data class AnnouncementModel(
         object Children : Target(2)
         object Undefined : Target(3)
     }
-
 }

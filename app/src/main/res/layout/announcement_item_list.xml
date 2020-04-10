@@ -3,9 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:background="@android:color/white"
     android:layout_margin="8dp"
+    android:background="@android:color/white"
+    android:orientation="vertical"
     android:padding="16dp">
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -28,16 +28,40 @@
         tools:text="Here it comes the place" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/item_announcer_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_organizer" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/item_announcer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            tools:text="Esport" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="start"
         android:orientation="horizontal">
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:layout_gravity="center_vertical"
             android:id="@+id/item_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
             tools:background="@color/colorAccent"
             tools:src="@drawable/ic_category_sport" />
 
@@ -50,18 +74,19 @@
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:gravity="center_vertical"
-                android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/item_categories_list_image"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_tag" />
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/item_category_list"
+                    android:id="@+id/item_categories_list"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -77,14 +102,14 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
+                <!-- TODO: Change icon when ready -->
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/item_announcer_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_organizer" />
+                    android:src="@drawable/ic_time" />
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/item_announcer"
+                    android:id="@+id/item_start_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -105,9 +130,9 @@
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="wrap_content"
-                android:gravity="center_vertical"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
+                android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <androidx.appcompat.widget.AppCompatImageView
@@ -119,8 +144,8 @@
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/item_target"
                     android:layout_width="wrap_content"
-                    android:layout_marginStart="8dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
                     android:ellipsize="end"
                     android:maxLines="1"
                     tools:text="Esport" />
@@ -129,20 +154,21 @@
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="wrap_content"
-                android:gravity="center_vertical"
                 android:layout_height="wrap_content"
+                android:gravity="center_vertical"
                 android:orientation="horizontal">
 
+                <!-- TODO: Change icon when ready -->
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_time" />
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/item_date"
+                    android:id="@+id/item_ending_date"
                     android:layout_width="wrap_content"
-                    android:layout_marginStart="8dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
                     android:ellipsize="end"
                     android:maxLines="1"
                     tools:text="Esport" />
@@ -151,25 +177,13 @@
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/item_report_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            tools:src="@drawable/ic_report" />
-
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:layout_marginTop="8dp"
         android:id="@+id/item_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:ellipsize="end"
         android:maxLines="3"
         tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi iaculis at nulla vitae lacinia. Nullam feugiat ornare arcu, non pellentesque libero commodo vitae. Cras varius mauris ut orci ultrices bibendum. Etiam quis nisl sagittis, interdum massa non, porta sem. Suspendisse iaculis magna ac enim aliquet" />

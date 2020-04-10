@@ -12,6 +12,7 @@
     <string name="date_time_pattern">%s at %s</string>
 
     <!-- Dialog -->
+    <string name="title">Title</string>
     <string name="description_header">Description</string>
     <string name="place_header">Place</string>
     <string name="category_header">Category / Categories</string>

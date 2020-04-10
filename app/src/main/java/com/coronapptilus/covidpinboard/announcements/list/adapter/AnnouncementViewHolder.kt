@@ -9,6 +9,7 @@ import com.coronapptilus.covidpinboard.commons.extensions.convertDateToTimestamp
 import com.coronapptilus.covidpinboard.domain.models.AnnouncementModel
 import com.coronapptilus.covidpinboard.utils.CalendarUtils
 import com.coronapptilus.covidpinboard.utils.DetailDialogUtils
+import com.coronapptilus.covidpinboard.utils.ListItemUtils
 import kotlinx.android.synthetic.main.detail_dialog.view.*
 
 class AnnouncementViewHolder(private val parent: ViewGroup) :
@@ -24,7 +25,9 @@ class AnnouncementViewHolder(private val parent: ViewGroup) :
     }
 
     override fun update(item: AnnouncementModel) {
-        this.item=item
+        this.item = item
+        ListItemUtils.resetView(itemView)
+        ListItemUtils.getFilledItem(item, itemView)
     }
 
     private fun showDetailDialog() {
