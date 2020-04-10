@@ -18,7 +18,7 @@ object DetailDialogUtils {
             dialog_categories.text = getFormattedCategories(getCategoriesNames(context, item.categories))
             dialog_target_image.setImageResource(setTargetIcon(item.target))
             dialog_target.text = getFormattedTarget(context, item.target)
-            dialog_date.text = dialogView.context.formatDate(item.date, item.time)
+            dialog_date.text = dialogView.context.formatDate(item.startDate, item.startTime)
             dialog_organizer.text = item.announcer
 
             if (dialog_categories.text.isEmpty()) {
@@ -130,6 +130,7 @@ object DetailDialogUtils {
         when (target) {
             AnnouncementModel.Target.Adults -> R.drawable.ic_target_adults
             AnnouncementModel.Target.Children -> R.drawable.ic_target_kids
+            AnnouncementModel.Target.Family -> R.drawable.ic_target_families
             AnnouncementModel.Target.Undefined -> 0
         }
 
@@ -138,6 +139,7 @@ object DetailDialogUtils {
         when (target) {
             AnnouncementModel.Target.Adults -> context.resources.getString(R.string.adults)
             AnnouncementModel.Target.Children -> context.resources.getString(R.string.children)
+            AnnouncementModel.Target.Family -> context.resources.getString(R.string.families)
             AnnouncementModel.Target.Undefined -> ""
         }
 }

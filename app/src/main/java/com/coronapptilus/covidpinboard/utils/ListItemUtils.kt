@@ -2,6 +2,7 @@ package com.coronapptilus.covidpinboard.utils
 
 import android.content.Context
 import android.view.View
+import androidx.core.content.ContextCompat
 import com.coronapptilus.covidpinboard.R
 import com.coronapptilus.covidpinboard.commons.extensions.formatDate
 import com.coronapptilus.covidpinboard.domain.models.AnnouncementModel
@@ -16,10 +17,12 @@ object ListItemUtils {
             item_place.text = ""
             item_announcer.text = ""
             item_image.setImageResource(R.drawable.ic_category_others)
+            item_image.background = null
             item_categories_list.text = ""
             item_target_image.setImageResource(R.drawable.ic_target_adults)
             item_target.text = ""
             item_start_date.text = ""
+            item_ending_date.text = ""
             item_description.text = ""
 
             item_target_image.visibility = View.VISIBLE
@@ -33,12 +36,19 @@ object ListItemUtils {
             item_title.text = getFormattedTitle(context, item.title)
             item_place.text = getFormattedPlace(context, item.place)
             item_announcer.text = item.announcer
-            item_image.setImageResource(setCategoryImage(item.categories))
+            item_image.setImageResource(getIconId(item.categories))
+            item_image.setBackgroundColor(
+                getItemImageBackgroundColorId(
+                    context,
+                    getIconId(item.categories)
+                )
+            )
             item_categories_list.text =
                 getFormattedCategories(getCategoriesNames(context, item.categories))
             item_target_image.setImageResource(setTargetIcon(item.target))
             item_target.text = getFormattedTarget(context, item.target)
-            item_start_date.text = itemView.context.formatDate(item.date, item.time)
+            item_start_date.text = itemView.context.formatDate(item.startDate, item.startTime)
+            item_ending_date.text = itemView.context.formatDate(item.endDate, item.endTime)
             item_description.text = item.description
 
             if (item_target.text.isEmpty()) {
@@ -114,7 +124,11 @@ object ListItemUtils {
                     AnnouncementModel.Category.Formation -> categoriesNames.add(context.getString(R.string.formation))
                     AnnouncementModel.Category.Donation -> categoriesNames.add(context.getString(R.string.donation))
                     AnnouncementModel.Category.Crafts -> categoriesNames.add(context.getString(R.string.crafts))
-                    AnnouncementModel.Category.StoryTeller -> categoriesNames.add(context.getString(R.string.storyteller))
+                    AnnouncementModel.Category.StoryTeller -> categoriesNames.add(
+                        context.getString(
+                            R.string.storyteller
+                        )
+                    )
                     AnnouncementModel.Category.Others -> categoriesNames.add(context.getString(R.string.others))
                 }
             }
@@ -122,8 +136,7 @@ object ListItemUtils {
         }
     }
 
-    private fun setCategoryImage(categories: List<AnnouncementModel.Category>): Int {
-
+    private fun getIconId(categories: List<AnnouncementModel.Category>): Int {
         return if (categories.isEmpty()) {
             R.drawable.ic_category_others
         } else {
@@ -149,10 +162,34 @@ object ListItemUtils {
         }
     }
 
+    private fun getItemImageBackgroundColorId(context: Context, iconId: Int): Int =
+        when (iconId) {
+            R.drawable.ic_category_sport -> ContextCompat.getColor(context, R.color.sport)
+            R.drawable.ic_category_cook -> ContextCompat.getColor(context, R.color.cook)
+            R.drawable.ic_category_music -> ContextCompat.getColor(context, R.color.music)
+            R.drawable.ic_category_dance -> ContextCompat.getColor(context, R.color.dance)
+            R.drawable.ic_category_theater -> ContextCompat.getColor(context, R.color.theater)
+            R.drawable.ic_category_literature -> ContextCompat.getColor(context, R.color.literature)
+            R.drawable.ic_category_cinema -> ContextCompat.getColor(context, R.color.cinema)
+            R.drawable.ic_category_conference -> ContextCompat.getColor(context, R.color.conference)
+            R.drawable.ic_category_interview -> ContextCompat.getColor(context, R.color.interview)
+            R.drawable.ic_category_workshop -> ContextCompat.getColor(context, R.color.workshop)
+            R.drawable.ic_category_formation -> ContextCompat.getColor(context, R.color.formation)
+            R.drawable.ic_category_donation -> ContextCompat.getColor(context, R.color.donation)
+            R.drawable.ic_category_crafts -> ContextCompat.getColor(context, R.color.crafts)
+            R.drawable.ic_category_storyteller -> ContextCompat.getColor(
+                context,
+                R.color.storyteller
+            )
+            else -> ContextCompat.getColor(context, R.color.others)
+        }
+
+
     private fun setTargetIcon(target: AnnouncementModel.Target): Int =
         when (target) {
             AnnouncementModel.Target.Adults -> R.drawable.ic_target_adults
-            else -> R.drawable.ic_target_kids
+            AnnouncementModel.Target.Children -> R.drawable.ic_target_kids
+            else -> R.drawable.ic_target_families
         }
 
 
@@ -160,6 +197,7 @@ object ListItemUtils {
         when (target) {
             AnnouncementModel.Target.Adults -> context.resources.getString(R.string.adults)
             AnnouncementModel.Target.Children -> context.resources.getString(R.string.children)
+            AnnouncementModel.Target.Family -> context.resources.getString(R.string.families)
             AnnouncementModel.Target.Undefined -> ""
         }
 

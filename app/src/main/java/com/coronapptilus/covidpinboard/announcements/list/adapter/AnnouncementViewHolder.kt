@@ -48,9 +48,8 @@ class AnnouncementViewHolder(private val parent: ViewGroup) :
                 item.title,
                 item.description,
                 item.place,
-                convertDateToTimestamp(item.date, item.time) ?: 0L,
-                // TODO: Add ending time in Model, Mapper, Response Model
-                convertDateToTimestamp(item.date, item.time) ?: 0L
+                convertDateToTimestamp(item.startDate, item.startTime) ?: 0L,
+                convertDateToTimestamp(item.endDate, item.endTime) ?: 0L
             )
         }
 

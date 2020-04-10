@@ -44,6 +44,7 @@
     <!-- Targets -->
     <string name="adults">Adultos</string>
     <string name="children">Niños</string>
+    <string name="families">Familias</string>
 
     <!-- Filter -->
     <string name="category_filter">Filtro por categorías</string>

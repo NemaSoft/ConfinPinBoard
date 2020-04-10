@@ -148,6 +148,7 @@
                     android:layout_marginBottom="@dimen/dialog_line_break"
                     android:orientation="horizontal">
 
+                    <!-- TODO: Change icon when ready -->
                     <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/dialog_date_image"
                         android:layout_width="@dimen/dialog_header_image_size"

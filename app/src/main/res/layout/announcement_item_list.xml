@@ -62,7 +62,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            tools:background="@color/colorAccent"
+            tools:background="@color/sport"
             tools:src="@drawable/ic_category_sport" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
@@ -102,11 +102,10 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
-                <!-- TODO: Change icon when ready -->
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_time" />
+                    android:src="@drawable/ic_start_time" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/item_start_date"
@@ -158,11 +157,10 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
-                <!-- TODO: Change icon when ready -->
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_time" />
+                    android:src="@drawable/ic_end_time" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/item_ending_date"
