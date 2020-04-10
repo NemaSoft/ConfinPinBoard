@@ -43,17 +43,23 @@ class FilterGridAdapter(
         }
     }
 
-    fun setCheckedCategories(checked:List<Int>){
-        checked.forEach { catId -> data.find { it.id == catId }?.checked = true }
+    fun setCheckedCategories(checked: List<AnnouncementModel.Category>) {
+        checked.forEach { catId -> data.find { it.id == catId.type }?.checked = true }
         setData(data)
         notifyDataSetChanged()
     }
 
-    fun getCheckedCategories(): List<Int>{
-        return data.filter { it.checked }.map { it.id }
+    fun getCheckedCategories(): List<AnnouncementModel.Category> {
+        return mutableListOf<AnnouncementModel.Category>().apply {
+            data.filter { it.checked }
+                .map { it.id }
+                .forEach { id ->
+                    dataList.find { it.type == id }?.let { category -> add(category) }
+            }
+        }
     }
 
-    private fun toggleChecked(position: Int){
+    private fun toggleChecked(position: Int) {
         data[position].checked = !data[position].checked
         setData(data)
         notifyDataSetChanged()

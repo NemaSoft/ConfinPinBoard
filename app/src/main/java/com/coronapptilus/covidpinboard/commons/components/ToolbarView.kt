@@ -15,14 +15,15 @@ import com.coronapptilus.covidpinboard.R
 import com.coronapptilus.covidpinboard.announcements.commons.filter.adapter.FilterGridAdapter
 import com.coronapptilus.covidpinboard.commons.extensions.hideKeyboard
 import com.coronapptilus.covidpinboard.commons.extensions.showKeyboard
+import com.coronapptilus.covidpinboard.domain.models.AnnouncementModel
 import com.coronapptilus.covidpinboard.utils.CategoryUtils.getAllCategories
 import kotlinx.android.synthetic.main.toolbar_view.view.*
 
 class ToolbarView(context: Context, attrs: AttributeSet? = null) : LinearLayout(context, attrs) {
 
 
-    var checkedCategories = listOf<Int>()
-    var onFilterButtonClicked: (List<Int>) -> Unit = {
+    private var checkedCategories = listOf<AnnouncementModel.Category>()
+    private var onFilterButtonClicked: (List<AnnouncementModel.Category>) -> Unit = {
         checkedCategories= it
     }
 
@@ -107,7 +108,7 @@ class ToolbarView(context: Context, attrs: AttributeSet? = null) : LinearLayout(
         const val COLUMN_WIDTH = 120f
     }
 
-    private fun showFilterDialog(callBack: (List<Int>) -> Unit) {
+    private fun showFilterDialog(callBack: (List<AnnouncementModel.Category>) -> Unit) {
 
         val dialogView = LayoutInflater.from(context).inflate(R.layout.filter_dialog,null)
         val closeButton = dialogView.findViewById<AppCompatImageView>(R.id.filter_dialog_close_button)
