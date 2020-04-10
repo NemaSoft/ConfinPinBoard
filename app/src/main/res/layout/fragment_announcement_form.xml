@@ -38,6 +38,7 @@
             android:layout_marginBottom="@dimen/default_margin_bottom"
             android:orientation="vertical">
 
+
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -46,9 +47,13 @@
                     android:id="@+id/addForm_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_edit"
+                    android:drawablePadding="10dp"
+                    android:ems="10"
                     android:hint="@string/title"
                     android:maxLines="2"
                     android:textSize="@dimen/primary_l" />
+
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -59,8 +64,12 @@
                     android:id="@+id/addForm_announcer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_edit"
+                    android:drawablePadding="10dp"
+                    android:ems="10"
                     android:hint="@string/announcer"
-                    android:textSize="@dimen/primary_l" />
+                    android:textSize="@dimen/primary_l"/>
+
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -71,8 +80,12 @@
                     android:id="@+id/addForm_place"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_edit"
+                    android:drawablePadding="10dp"
+                    android:ems="10"
                     android:hint="@string/place"
-                    android:textSize="@dimen/primary_l" />
+                    android:textSize="@dimen/primary_l"/>
+
             </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -190,11 +203,23 @@
                 android:spinnerMode="dropdown"
                 android:textSize="@dimen/primary_l" />
 
-            <Spinner
-                android:id="@+id/addForm_categorySpinner"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/primary_l" />
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/addForm_categories"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_edit"
+                    android:drawablePadding="10dp"
+                    android:ems="10"
+                    android:focusable="false"
+                    android:hint="@string/categories"
+                    android:inputType="text"
+                    android:textSize="@dimen/primary_l"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -204,8 +229,12 @@
                     android:id="@+id/addForm_description"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:drawableStart="@drawable/ic_edit"
+                    android:drawablePadding="10dp"
+                    android:ems="10"
                     android:hint="@string/description"
-                    android:textSize="@dimen/primary_l" />
+                    android:textSize="@dimen/primary_l"/>
+
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button

@@ -2,17 +2,29 @@ package com.coronapptilus.covidpinboard.announcements.form
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
+import android.text.Editable
+import android.util.DisplayMetrics
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.widget.AppCompatButton
+import androidx.appcompat.widget.AppCompatImageView
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.coronapptilus.covidpinboard.R
+import com.coronapptilus.covidpinboard.announcements.commons.filter.adapter.FilterGridAdapter
 import com.coronapptilus.covidpinboard.commons.components.ToolbarView
 import com.coronapptilus.covidpinboard.domain.models.AnnouncementModel
+import com.coronapptilus.covidpinboard.utils.CategoryUtils
+import com.coronapptilus.covidpinboard.utils.CategoryUtils.getCategoryString
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_announcement_form.*
 import org.koin.android.ext.android.inject
@@ -22,6 +34,7 @@ class AnnouncementFormFragment : Fragment(R.layout.fragment_announcement_form),
     AnnouncementFormContract.View {
 
     private val presenter: AnnouncementFormContract.Presenter by inject()
+    private val categories = mutableListOf<AnnouncementModel.Category>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -34,6 +47,16 @@ class AnnouncementFormFragment : Fragment(R.layout.fragment_announcement_form),
 
         addForm_addButton.setOnClickListener {
             getAnnouncementInfo()
+        }
+
+        addForm_categories.setOnClickListener {
+            context?.apply {
+                showFilterDialog { list ->
+                    categories.clear()
+                    categories.addAll(list)
+                    addForm_categories.text = Editable.Factory.getInstance().newEditable(list.map { getCategoryString(it)}.joinToString())
+                }
+            }
         }
     }
 
@@ -184,7 +207,6 @@ class AnnouncementFormFragment : Fragment(R.layout.fragment_announcement_form),
         val title = addForm_title.text.toString()
         val description = addForm_description.text.toString()
         val place = addForm_place.text.toString()
-        val categories = listOf<AnnouncementModel.Category>() // TODO introducir lista
 
         val targetPosition = addForm_targetSpinner.selectedItemPosition
         val target = presenter.getTargetType(targetPosition)
@@ -206,5 +228,37 @@ class AnnouncementFormFragment : Fragment(R.layout.fragment_announcement_form),
             endingDate,
             endingTime
         )
+    }
+
+    private fun Context.showFilterDialog(callBack: (List<AnnouncementModel.Category>) -> Unit) {
+
+        val dialogView = LayoutInflater.from(this).inflate(R.layout.filter_dialog,null)
+        val closeButton = dialogView.findViewById<AppCompatImageView>(R.id.filter_dialog_close_button)
+        val okButton = dialogView.findViewById<AppCompatButton>(R.id.filter_dialog_ok_button)
+        val recyclerView = dialogView.findViewById<RecyclerView>(R.id.filter_dialog_recyclerview)
+
+
+        val filterGridAdapter= FilterGridAdapter(this, CategoryUtils.getAllCategories())
+        filterGridAdapter.setCheckedCategories(categories)
+
+        val displayMetrics: DisplayMetrics = resources.displayMetrics
+        val screenWidthDp = displayMetrics.widthPixels / displayMetrics.density
+
+        recyclerView.adapter = filterGridAdapter
+        recyclerView.layoutManager = GridLayoutManager(context, (screenWidthDp / ToolbarView.COLUMN_WIDTH + 0.5).toInt())
+
+
+        val mBuilder = AlertDialog.Builder(this).setView(dialogView).create()
+
+        closeButton.setOnClickListener {
+            mBuilder.dismiss()
+        }
+
+        okButton.setOnClickListener {
+            callBack.invoke(filterGridAdapter.getCheckedCategories())
+            mBuilder.dismiss()
+        }
+
+        mBuilder.show()
     }
 }
