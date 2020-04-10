@@ -32,6 +32,8 @@ class AnnouncementViewHolder(private val parent: ViewGroup) :
 
     private fun showDetailDialog() {
 
+        var isFavoritesClicked = false
+
         val dialogView =
             LayoutInflater.from(itemView.context).inflate(R.layout.detail_dialog, parent)
 
@@ -41,7 +43,15 @@ class AnnouncementViewHolder(private val parent: ViewGroup) :
 
         dialogView.dialog_close_button.setOnClickListener { mBuilder.dismiss() }
 
-        dialogView.dialog_favorites_button.setOnClickListener { }
+        dialogView.dialog_favorites_button.setOnClickListener {
+            if (!isFavoritesClicked){
+                isFavoritesClicked = true
+                dialogView.dialog_favorites_button.setImageResource(R.drawable.ic_favorite_active)
+            }else{
+                isFavoritesClicked = false
+                dialogView.dialog_favorites_button.setImageResource(R.drawable.ic_favorite_inactive)
+            }
+        }
 
         dialogView.dialog_share_button.setOnClickListener {
             CalendarUtils.addToCalendar(
