@@ -41,6 +41,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/addForm_title"
                     android:layout_width="match_parent"
@@ -53,6 +54,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/addForm_announcer"
                     android:layout_width="match_parent"
@@ -64,6 +66,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/addForm_place"
                     android:layout_width="match_parent"
@@ -72,17 +75,113 @@
                     android:textSize="@dimen/default_textSize" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <Button
-                android:id="@+id/addForm_datePickerButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/date" />
 
-            <Button
-                android:id="@+id/addForm_timePickerButton"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/time" />
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+
+                    <View
+                        android:id="@+id/addForm_startDatePickerButton"
+                        android:layout_width="@dimen/dateSquaredButton"
+                        android:layout_height="@dimen/dateSquaredButton"
+                        android:layout_weight="1"
+                        android:background="@drawable/common_google_signin_btn_icon_dark" />
+
+                    <TextView
+                        android:id="@+id/addForm_startingDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:layout_weight="4"
+                        android:hint="@string/date_start"
+                        android:textAllCaps="false" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <View
+                        android:id="@+id/addForm_startTimePickerButton"
+                        android:layout_width="@dimen/dateSquaredButton"
+                        android:layout_height="@dimen/dateSquaredButton"
+                        android:layout_weight="1"
+                        android:background="@drawable/common_google_signin_btn_icon_dark" />
+
+                    <TextView
+                        android:id="@+id/addForm_startingTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:layout_weight="4"
+                        android:hint="@string/time_start"
+                        android:textAllCaps="false" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <View
+                        android:id="@+id/addForm_endDatePickerButton"
+                        android:layout_width="@dimen/dateSquaredButton"
+                        android:layout_height="@dimen/dateSquaredButton"
+                        android:layout_weight="1"
+                        android:background="@drawable/common_google_signin_btn_icon_dark" />
+
+                    <TextView
+                        android:id="@+id/addForm_endingDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:layout_weight="4"
+                        android:hint="@string/date_end"
+                        android:textAllCaps="false" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <View
+                        android:id="@+id/addForm_endTimePickerButton"
+                        android:layout_width="@dimen/dateSquaredButton"
+                        android:layout_height="@dimen/dateSquaredButton"
+                        android:layout_weight="1"
+                        android:background="@drawable/common_google_signin_btn_icon_dark" />
+
+                    <TextView
+                        android:id="@+id/addForm_endingTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:layout_weight="4"
+                        android:hint="@string/time_end"
+                        android:textAllCaps="false" />
+
+                </LinearLayout>
+
+            </LinearLayout>
 
             <Spinner
                 android:id="@+id/addForm_targetSpinner"
@@ -99,6 +198,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/addForm_description"
                     android:layout_width="match_parent"
@@ -111,8 +211,8 @@
                 android:id="@+id/addForm_addButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/addButton"
                 android:layout_marginTop="@dimen/default_margin_16"
+                android:text="@string/addButton"
                 android:textAlignment="center"
                 android:textAllCaps="false"
                 android:textSize="@dimen/default_titleFormSize" />
@@ -128,5 +228,4 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

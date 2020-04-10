@@ -12,5 +12,7 @@
     <!--Progress bar-->
     <dimen name="progressbar_height">24dp</dimen>
 
+    <!--Buttons-->
+    <dimen name="dateSquaredButton">48dp</dimen>
 
 </resources>

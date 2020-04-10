@@ -4,7 +4,19 @@ import com.coronapptilus.covidpinboard.commons.base.BaseContract
 
 interface AnnouncementFormContract {
 
-    interface View : BaseContract.View {}
+    interface View : BaseContract.View {
 
-    interface Presenter : BaseContract.Presenter<View> {}
+        fun setupPickersViews()
+
+        fun showProgress()
+
+        fun hideProgress()
+    }
+
+    interface Presenter : BaseContract.Presenter<View> {
+
+        fun submitForm()
+
+        fun validateForm(): Boolean
+    }
 }
