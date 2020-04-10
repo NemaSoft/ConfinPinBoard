@@ -6,6 +6,8 @@
     <string name="results_label">Tablero</string>
     <string name="form_label">Añadir</string>
 
+    <string name="search">Buscar</string>
+
     <!-- Date Formats -->
     <string name="today_pattern">Hoy a las %s</string>
     <string name="tomorrow_pattern">Mañana a las %s</string>
@@ -21,6 +23,7 @@
     <string name="error_message">Este evento no tiene </string>
 
     <!-- Categories -->
+    <string name="categories">Categorías</string>
     <string name="sport">Deporte</string>
     <string name="cook">Cocina</string>
     <string name="music">Música</string>
@@ -41,9 +44,6 @@
     <string name="adults">Adultos</string>
     <string name="children">Niños</string>
     <string name="familiar">Familiar</string>
-
-    <!-- Filter -->
-    <string name="category_filter">Filtro por categorías</string>
 
     <!--AddForm-->
     <string name="addForm_TitleStatement">Añade tu pin</string>

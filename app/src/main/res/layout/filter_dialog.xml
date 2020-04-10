@@ -12,7 +12,7 @@
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/design_default_color_primary_dark"
+        android:background="@color/colorPrimary"
         android:gravity="center"
         android:padding="@dimen/dialog_header_padding">
 
@@ -20,8 +20,9 @@
             android:id="@+id/filter_dialog_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/category_filter"
+            android:text="@string/categories"
             android:textColor="@android:color/white"
+            android:paddingStart="8dp"
             android:textSize="@dimen/primary_l" />
 
         <Space

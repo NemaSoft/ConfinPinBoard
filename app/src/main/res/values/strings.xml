@@ -6,6 +6,8 @@
     <string name="results_label">Board</string>
     <string name="form_label">Add</string>
 
+    <string name="search">Search</string>
+
     <!-- Date Formats -->
     <string name="today_pattern">Today at %s</string>
     <string name="tomorrow_pattern">Tomorrow at %s</string>
@@ -21,6 +23,7 @@
     <string name="error_message">This event has no </string>
 
     <!-- Categories -->
+    <string name="categories">Categories</string>
     <string name="sport">Sport</string>
     <string name="cook">Cook</string>
     <string name="music">Music</string>
@@ -41,9 +44,6 @@
     <string name="adults">Adults</string>
     <string name="children">Children</string>
     <string name="familiar">Familiar</string>
-
-    <!-- Filter -->
-    <string name="category_filter">Category Filter</string>
 
     <!--AddForm-->
     <string name="addForm_TitleStatement">Add your pin</string>
