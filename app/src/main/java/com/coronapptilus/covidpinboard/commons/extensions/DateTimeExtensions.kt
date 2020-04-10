@@ -62,3 +62,9 @@ private fun isTomorrow(dateText: String): Boolean {
 
     return tomorrowDate == dateText
 }
+
+fun isAvailable(endTimestamp: Long): Boolean {
+    val currentTimestamp = Calendar.getInstance().timeInMillis
+
+    return currentTimestamp < endTimestamp
+}

@@ -1,10 +1,17 @@
 package com.coronapptilus.covidpinboard.announcements.list
 
 import com.coronapptilus.covidpinboard.commons.base.BaseContract
+import com.coronapptilus.covidpinboard.domain.models.AnnouncementModel
 
 interface AnnouncementsListContract {
 
-    interface View : BaseContract.View {}
+    interface View : BaseContract.View {
 
-    interface Presenter : BaseContract.Presenter<View> {}
+        fun update(announcement: List<AnnouncementModel>)
+    }
+
+    interface Presenter : BaseContract.Presenter<View> {
+
+        fun init()
+    }
 }

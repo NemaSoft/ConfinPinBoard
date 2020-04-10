@@ -13,7 +13,7 @@ class FavoritesDataSourceImpl(
     private val mapper: FavoritesMapper
 ) : FavoritesDataSource {
 
-    override fun addFavorite(id: Long) {
+    override fun addFavorite(id: String) {
         val favoritesJson = getFavoritesJson(id)
         with(sharedPreferences.edit()) {
             putString(FAVORITES_KEY, favoritesJson)
@@ -31,10 +31,26 @@ class FavoritesDataSourceImpl(
         }
     }
 
-    private fun getFavoritesJson(id: Long): String {
-        val favorites: MutableList<Long> = getFavorites().favorites
+    override fun removeFavorite(id: String) {
+        val favoritesJson = removeFavoriteFromJson(id)
+        with(sharedPreferences.edit()) {
+            putString(FAVORITES_KEY, favoritesJson)
+            commit()
+        }
+    }
+
+    private fun getFavoritesJson(id: String): String {
+        val favorites: MutableList<String> = getFavorites().favorites
                 .toMutableList()
-                .apply { add(id) }
+                .apply { if (!contains(id)) { add(id) } }
+        val response = FavoritesResponseModel(favorites)
+        return gson.toJson(response)
+    }
+
+    private fun removeFavoriteFromJson(id: String): String {
+        val favorites: MutableList<String> = getFavorites().favorites
+                .toMutableList()
+                .apply { if (contains(id)) { remove(id) } }
         val response = FavoritesResponseModel(favorites)
         return gson.toJson(response)
     }

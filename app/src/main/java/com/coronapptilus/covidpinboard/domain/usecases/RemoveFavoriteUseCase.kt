@@ -2,7 +2,7 @@ package com.coronapptilus.covidpinboard.domain.usecases
 
 import com.coronapptilus.covidpinboard.domain.repositories.FavoritesRepository
 
-class AddFavoriteUseCase(private val repository: FavoritesRepository) {
+class RemoveFavoriteUseCase(private val repository: FavoritesRepository) {
 
-    fun execute(id: String) { repository.addFavorite(id) }
+    fun execute(id: String) { repository.removeFavorite(id) }
 }
