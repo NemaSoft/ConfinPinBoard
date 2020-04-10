@@ -6,6 +6,8 @@
     <string name="results_label">Board</string>
     <string name="form_label">Add</string>
 
+    <string name="search">Search</string>
+
     <!-- Date Formats -->
     <string name="today_pattern">Today at %s</string>
     <string name="tomorrow_pattern">Tomorrow at %s</string>
@@ -22,6 +24,7 @@
     <string name="error_message">This event has no </string>
 
     <!-- Categories -->
+    <string name="categories">Categories</string>
     <string name="sport">Sport</string>
     <string name="cook">Cook</string>
     <string name="music">Music</string>

@@ -6,6 +6,8 @@
     <string name="results_label">Tauler</string>
     <string name="form_label">Afegir</string>
 
+    <string name="search">Cercar</string>
+
     <!-- Date Formats -->
     <string name="today_pattern">Avui a les %s</string>
     <string name="tomorrow_pattern">Demà a les %s</string>
@@ -22,6 +24,7 @@
     <string name="error_message">Aquest esdeveniment no té </string>
 
     <!-- Categories -->
+    <string name="categories">Categories</string>
     <string name="sport">Esport</string>
     <string name="cook">Cuina</string>
     <string name="music">Música</string>
@@ -44,5 +47,4 @@
 
     <!-- Filter -->
     <string name="category_filter">Filtre per categories</string>
-
 </resources>
