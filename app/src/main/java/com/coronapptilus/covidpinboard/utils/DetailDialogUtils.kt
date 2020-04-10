@@ -22,7 +22,7 @@ object DetailDialogUtils {
             dialog_organizer.text = item.announcer
 
             if (dialog_categories.text.isEmpty()) {
-                dialog_categories.visibility = View.GONE
+                dialog_categories_image.visibility = View.GONE
                 dialog_categories_header.visibility = View.GONE
                 dialog_categories.visibility = View.GONE
             }

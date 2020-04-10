@@ -1,32 +1,27 @@
 package com.coronapptilus.covidpinboard.commons.base
 
-import android.view.View
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 
-abstract class BaseRecyclerViewAdapter<T : BaseRecyclerViewViewHolder<V>, V> : RecyclerView.Adapter<T>() {
+abstract class BaseRecyclerViewAdapter<T, V : BaseRecyclerViewViewHolder<T>> :
+    RecyclerView.Adapter<V>() {
 
-    private var dataSet: MutableList<V> = ArrayList()
+    private var dataSet: MutableList<T> = ArrayList()
 
-    override fun onBindViewHolder(holder: T, position: Int) {
+    override fun onBindViewHolder(holder: V, position: Int) {
         holder.update(dataSet[position])
     }
 
     override fun getItemCount(): Int = dataSet.size
 
-    fun setData(data: List<V>) {
+    fun setData(data: List<T>) {
         updateAndNotifyDataListChanged(data.toMutableList())
     }
 
-    private fun updateAndNotifyDataListChanged(dataList: MutableList<V>) {
+    private fun updateAndNotifyDataListChanged(dataList: MutableList<T>) {
         val diffResult = DiffUtil.calculateDiff(DiffCallBack(dataList, dataSet), true)
         dataSet.clear()
         dataSet.addAll(dataList)
         diffResult.dispatchUpdatesTo(this)
-    }
-
-    abstract class BaseViewHolder<in V> constructor(itemView: View)
-        : RecyclerView.ViewHolder(itemView) {
-        abstract fun bind(item: V)
     }
 }
