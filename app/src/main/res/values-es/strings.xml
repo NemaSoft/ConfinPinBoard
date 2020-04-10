@@ -19,7 +19,8 @@
     <string name="place_header">Lugar</string>
     <string name="category_header">Categoría/s</string>
     <string name="target_header">Público</string>
-    <string name="date_header">Fecha</string>
+    <string name="start_date_header">Inicio</string>
+    <string name="end_date_header">Final</string>
     <string name="organizer_header">Organizador</string>
     <string name="error_message">Este evento no tiene </string>
 

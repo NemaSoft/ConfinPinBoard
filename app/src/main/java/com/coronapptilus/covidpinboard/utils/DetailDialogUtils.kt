@@ -15,10 +15,12 @@ object DetailDialogUtils {
             dialog_title.text = getFormattedTitle(context, item.title)
             dialog_description.text = getFormattedDescription(context, item.description)
             dialog_place.text = getFormattedPlace(context, item.place)
-            dialog_categories.text = getFormattedCategories(getCategoriesNames(context, item.categories))
+            dialog_categories.text =
+                getFormattedCategories(getCategoriesNames(context, item.categories))
             dialog_target_image.setImageResource(setTargetIcon(item.target))
             dialog_target.text = getFormattedTarget(context, item.target)
-            dialog_date.text = dialogView.context.formatDate(item.startDate, item.startTime)
+            dialog_start_date.text = dialogView.context.formatDate(item.startDate, item.startTime)
+            dialog_end_date.text = dialogView.context.formatDate(item.endDate, item.endTime)
             dialog_organizer.text = item.announcer
 
             if (dialog_categories.text.isEmpty()) {
@@ -31,10 +33,15 @@ object DetailDialogUtils {
                 dialog_target_header.visibility = View.GONE
                 dialog_target.visibility = View.GONE
             }
-            if (dialog_date.text.isEmpty()) {
-                dialog_date_image.visibility = View.GONE
-                dialog_date_header.visibility = View.GONE
-                dialog_date.visibility = View.GONE
+            if (dialog_start_date.text.isEmpty()) {
+                dialog_start_date_image.visibility = View.GONE
+                dialog_start_date_header.visibility = View.GONE
+                dialog_start_date.visibility = View.GONE
+            }
+            if (dialog_end_date.text.isEmpty()){
+                dialog_end_date_image.visibility = View.GONE
+                dialog_end_date_header.visibility = View.GONE
+                dialog_end_date.visibility = View.GONE
             }
             if (dialog_organizer.text.isEmpty()) {
                 dialog_organizer_image.visibility = View.GONE

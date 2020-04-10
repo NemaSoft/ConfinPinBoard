@@ -19,7 +19,8 @@
     <string name="place_header">Place</string>
     <string name="category_header">Category / Categories</string>
     <string name="target_header">Target</string>
-    <string name="date_header">Date</string>
+    <string name="start_date_header">Start</string>
+    <string name="end_date_header">End</string>
     <string name="organizer_header">Organizer</string>
     <string name="error_message">This event has no </string>
 

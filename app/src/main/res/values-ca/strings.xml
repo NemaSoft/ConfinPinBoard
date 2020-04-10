@@ -19,7 +19,8 @@
     <string name="place_header">Lloc</string>
     <string name="category_header">Categoria/es</string>
     <string name="target_header">Públic</string>
-    <string name="date_header">Data</string>
+    <string name="start_date_header">Inici</string>
+    <string name="end_date_header">Fi</string>
     <string name="organizer_header">Organitzador</string>
     <string name="error_message">Aquest esdeveniment no té </string>
 
