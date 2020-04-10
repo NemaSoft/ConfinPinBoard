@@ -48,7 +48,7 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/title"
                     android:maxLines="2"
-                    android:textSize="@dimen/default_textSize" />
+                    android:textSize="@dimen/primary_l" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -60,7 +60,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/announcer"
-                    android:textSize="@dimen/default_textSize" />
+                    android:textSize="@dimen/primary_l" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -72,7 +72,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/place"
-                    android:textSize="@dimen/default_textSize" />
+                    android:textSize="@dimen/primary_l" />
             </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -187,13 +187,13 @@
                 android:id="@+id/addForm_targetSpinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/default_textSize" />
+                android:textSize="@dimen/primary_l" />
 
             <Spinner
                 android:id="@+id/addForm_categorySpinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/default_textSize" />
+                android:textSize="@dimen/primary_l" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -204,7 +204,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="@string/description"
-                    android:textSize="@dimen/default_textSize" />
+                    android:textSize="@dimen/primary_l" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
