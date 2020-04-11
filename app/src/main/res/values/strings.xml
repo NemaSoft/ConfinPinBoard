@@ -71,4 +71,11 @@
     <!-- Filter -->
     <string name="category_filter">Category Filter</string>
 
+    <!-- Form errors -->
+    <string name="mandatory_field_error">This field is mandatory</string>
+    <string name="target_error">A target should be specified</string>
+    <string name="category_error">You should choose one category al least</string>
+    <string name="dateTime_error">Incorrect date or time</string>
+    <string name="description_error">Specify a proper description</string>
+
 </resources>

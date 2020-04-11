@@ -14,6 +14,8 @@ interface AnnouncementFormContract {
 
         fun showMessage(message: String)
 
+        fun setErrorMessage(message : Int, formItem: FormItem)
+
         fun navigateToBoardFragment()
     }
 

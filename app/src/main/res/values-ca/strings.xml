@@ -70,5 +70,10 @@
 
     <!-- Filter -->
     <string name="category_filter">Filtre per categories</string>
+    <string name="mandatory_field_error">Aquest camp és obligatori</string>
+    <string name="target_error">Es necessita especificar un públic</string>
+    <string name="category_error">Escull una categoria com a mínim</string>
+    <string name="dateTime_error">Data o hora incorrectes</string>
+    <string name="description_error">Especifica una descripció correcta</string>
 
 </resources>

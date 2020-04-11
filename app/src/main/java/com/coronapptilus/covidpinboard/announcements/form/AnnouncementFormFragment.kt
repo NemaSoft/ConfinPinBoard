@@ -275,6 +275,24 @@ class AnnouncementFormFragment : Fragment(R.layout.fragment_announcement_form),
         Toast.makeText(context, message, Toast.LENGTH_LONG).show()
     }
 
+    override fun setErrorMessage(message: Int, formItem: FormItem) {
+        when (formItem) {
+            FormItem.ANNOUNCER -> announcerEditTextParent.error = getString(message)
+            FormItem.TITLE -> titleEditTextParent.error = getString(message)
+            FormItem.PLACE -> placeEditTextParent.error = getString(message)
+            FormItem.DATE -> {
+                dateForm_error.text = getString(message)
+                dateForm_error.visibility = View.VISIBLE
+            }
+            FormItem.TARGET -> {
+                targetForm_error.text = getString(message)
+                targetForm_error.visibility = View.VISIBLE
+            }
+            FormItem.CATEGORIES -> categoriesEditTextParent.error = getString(message)
+            FormItem.DESCRIPTION -> descriptionEditTextParent.error = getString(message)
+        }
+    }
+
     override fun navigateToBoardFragment() {
         view?.findNavController()?.navigate(R.id.action_form_fragment_to_list_fragment)
         // TODO. investigar porqué se quedan las tabs activas
