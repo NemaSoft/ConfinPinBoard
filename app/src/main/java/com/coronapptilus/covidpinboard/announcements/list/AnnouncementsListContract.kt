@@ -17,5 +17,7 @@ interface AnnouncementsListContract {
         fun init()
 
         fun onAnnouncementItemClicked(announcement: AnnouncementModel)
+
+        fun getAnnouncementsByCategories(categories: List<AnnouncementModel.Category>)
     }
 }

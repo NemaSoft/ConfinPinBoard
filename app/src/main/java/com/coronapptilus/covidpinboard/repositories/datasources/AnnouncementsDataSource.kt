@@ -7,7 +7,8 @@ interface AnnouncementsDataSource {
 
     suspend fun addAnnouncement(announcement: AnnouncementModel): ResponseState<String>
 
-    suspend fun getAnnouncementsByIds(ids: List<String>): ResponseState<List<AnnouncementModel>>
-
-    suspend fun getAnnouncements(): ResponseState<List<AnnouncementModel>>
+    suspend fun getAnnouncements(
+        ids: List<String>,
+        categories: List<AnnouncementModel.Category>
+    ): ResponseState<List<AnnouncementModel>>
 }

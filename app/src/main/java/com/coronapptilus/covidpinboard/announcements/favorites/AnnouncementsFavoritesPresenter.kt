@@ -2,7 +2,7 @@ package com.coronapptilus.covidpinboard.announcements.favorites
 
 import com.coronapptilus.covidpinboard.datasources.ResponseState
 import com.coronapptilus.covidpinboard.domain.models.AnnouncementModel
-import com.coronapptilus.covidpinboard.domain.usecases.GetAnnouncementsByIdsUseCase
+import com.coronapptilus.covidpinboard.domain.usecases.GetAnnouncementsUseCase
 import com.coronapptilus.covidpinboard.domain.usecases.GetFavoritesUseCase
 import com.coronapptilus.covidpinboard.domain.usecases.RemoveFavoriteUseCase
 import kotlinx.coroutines.*
@@ -10,7 +10,7 @@ import kotlinx.coroutines.*
 class AnnouncementsFavoritesPresenter(
     private val getFavoritesUseCase: GetFavoritesUseCase,
     private val removeFavoriteUseCase: RemoveFavoriteUseCase,
-    private val getAnnouncementsByIdsUseCase: GetAnnouncementsByIdsUseCase
+    private val getAnnouncementsUseCase: GetAnnouncementsUseCase
 ) : AnnouncementsFavoritesContract.Presenter {
 
     override var view: AnnouncementsFavoritesContract.View? = null
@@ -48,7 +48,7 @@ class AnnouncementsFavoritesPresenter(
                 .takeIf { it.isNotEmpty() }
                 ?.let { announcementsIds ->
                     withContext(Dispatchers.IO) {
-                        val response = getAnnouncementsByIdsUseCase.execute(announcementsIds)
+                        val response = getAnnouncementsUseCase.execute(announcementsIds)
                         (response as? ResponseState.Success)?.result
                     }
                 } ?: emptyList()

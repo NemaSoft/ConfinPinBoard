@@ -21,10 +21,9 @@ import kotlinx.android.synthetic.main.toolbar_view.view.*
 
 class ToolbarView(context: Context, attrs: AttributeSet? = null) : LinearLayout(context, attrs) {
 
-
     private var checkedCategories = listOf<AnnouncementModel.Category>()
     private var onFilterButtonClicked: (List<AnnouncementModel.Category>) -> Unit = {
-        checkedCategories= it
+        checkedCategories = it
     }
 
     init {
@@ -39,6 +38,10 @@ class ToolbarView(context: Context, attrs: AttributeSet? = null) : LinearLayout(
             1 -> setFavoritesAttributes()
             else -> setFormAttributes()
         }
+    }
+
+    fun setOnFilterButtonClicked(onFilterButtonClicked: (List<AnnouncementModel.Category>) -> Unit) {
+        this.onFilterButtonClicked = onFilterButtonClicked
     }
 
     fun getSearchTerm() = search_input.text ?: ""
@@ -132,7 +135,8 @@ class ToolbarView(context: Context, attrs: AttributeSet? = null) : LinearLayout(
             mBuilder.dismiss()
         }
         okButton.setOnClickListener {
-            callBack.invoke(filterGridAdapter.getCheckedCategories())
+            checkedCategories = filterGridAdapter.getCheckedCategories()
+            callBack.invoke(checkedCategories)
             mBuilder.dismiss()
         }
 

@@ -19,12 +19,15 @@ import org.koin.android.ext.android.inject
 class AnnouncementsListFragment : Fragment(R.layout.fragment_announcement_list),
     AnnouncementsListContract.View {
 
-    private val adapter = AnnouncementsListAdapter()
-
     private val presenter: AnnouncementsListContract.Presenter by inject()
 
+    private val adapter = AnnouncementsListAdapter()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        activity?.toolbar?.init(ToolbarView.HOME)
+        activity?.toolbar?.apply {
+            init(ToolbarView.HOME)
+            setOnFilterButtonClicked { presenter.getAnnouncementsByCategories(it) }
+        }
         announcement_list.adapter = adapter
         adapter.onItemClicked = { presenter.onAnnouncementItemClicked(it) }
 
@@ -41,9 +44,20 @@ class AnnouncementsListFragment : Fragment(R.layout.fragment_announcement_list),
     override fun update(announcements: List<AnnouncementModel>) {
         adapter.setData(announcements)
         if (announcements.isEmpty()) {
-            announcement_list.visibility = View.GONE
-            fallback_image.visibility = View.VISIBLE
+            showEmptyScreen()
+        } else {
+            hideEmptyScreen()
         }
+    }
+
+    private fun showEmptyScreen() {
+        announcement_list.visibility = View.GONE
+        fallback_image.visibility = View.VISIBLE
+    }
+
+    private fun hideEmptyScreen() {
+        announcement_list.visibility = View.VISIBLE
+        fallback_image.visibility = View.GONE
     }
 
     override fun showAnnouncementDetail(announcement: AnnouncementModel) {

@@ -7,7 +7,6 @@ object UseCasesModule {
 
     val useCasesModule = module {
         factory { AddAnnouncementUseCase(get()) }
-        factory { GetAnnouncementsByIdsUseCase(get()) }
         factory { GetAnnouncementsUseCase(get()) }
         factory { AddFavoriteUseCase(get()) }
         factory { GetFavoritesUseCase(get()) }

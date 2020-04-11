@@ -7,7 +7,9 @@ import com.coronapptilus.covidpinboard.datasources.mappers.AnnouncementMapper
 import com.coronapptilus.covidpinboard.datasources.models.AnnouncementResponseModel
 import com.coronapptilus.covidpinboard.domain.models.AnnouncementModel
 import com.coronapptilus.covidpinboard.repositories.datasources.AnnouncementsDataSource
+import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.QuerySnapshot
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
@@ -27,12 +29,14 @@ class AnnouncementsDataSourceImpl(
             }
         }
 
-    override suspend fun getAnnouncementsByIds(ids: List<String>): ResponseState<List<AnnouncementModel>> =
+    override suspend fun getAnnouncements(
+        ids: List<String>,
+        categories: List<AnnouncementModel.Category>
+    ): ResponseState<List<AnnouncementModel>> =
         safeCall {
             suspendCoroutine<List<AnnouncementModel>> { cont ->
-                database.collection(COLLECTION_NAME)
-                    .whereIn(ID_KEY, ids)
-                    .get()
+                val categoriesTypes = mapper.mapCategoriesToType(categories)
+                getQueryTask(ids, categoriesTypes)
                     .addOnSuccessListener { documentsSnapshots ->
                         val announcements =
                             documentsSnapshots.toObjects(AnnouncementResponseModel::class.java)
@@ -48,25 +52,24 @@ class AnnouncementsDataSourceImpl(
             }
         }
 
-    override suspend fun getAnnouncements(): ResponseState<List<AnnouncementModel>> =
-        safeCall {
-            suspendCoroutine<List<AnnouncementModel>> { cont ->
-                database.collection(COLLECTION_NAME)
+    private fun getQueryTask(
+        ids: List<String>,
+        categoriesTypes: List<Int>
+    ): Task<QuerySnapshot> {
+        val collectionRef = database.collection(COLLECTION_NAME)
+
+        return when {
+            ids.isEmpty() && categoriesTypes.isNotEmpty() ->
+                collectionRef.whereArrayContainsAny(CATEGORIES_KEY, categoriesTypes).get()
+            ids.isNotEmpty() && categoriesTypes.isEmpty() ->
+                collectionRef.whereIn(ID_KEY, ids).get()
+            ids.isNotEmpty() && categoriesTypes.isNotEmpty() ->
+                collectionRef.whereIn(ID_KEY, ids)
+                    .whereArrayContainsAny(CATEGORIES_KEY, categoriesTypes)
                     .get()
-                    .addOnSuccessListener { documentsSnapshots ->
-                        val announcements =
-                            documentsSnapshots.toObjects(AnnouncementResponseModel::class.java)
-                                .filterNotNull()
-                                .filter {
-                                    existsContent(it.title, it.description, it.place)
-                                            && checkAvailability(it.endTimestamp)
-                                }
-                                .map { mapper.mapResponseToDomain(it) }
-                        cont.resume(announcements)
-                    }
-                    .addOnFailureListener { error -> cont.resumeWithException(error) }
-            }
+            else -> collectionRef.get()
         }
+    }
 
     private fun existsContent(title: String?, description: String?, place: String?): Boolean =
         title != null && title.isNotEmpty()
@@ -80,5 +83,6 @@ class AnnouncementsDataSourceImpl(
     companion object {
         private const val COLLECTION_NAME = "announcements"
         private const val ID_KEY = "id"
+        private const val CATEGORIES_KEY = "categoriesTypes"
     }
 }
