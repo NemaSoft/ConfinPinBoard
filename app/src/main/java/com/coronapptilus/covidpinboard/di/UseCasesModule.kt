@@ -11,5 +11,6 @@ object UseCasesModule {
         factory { AddFavoriteUseCase(get()) }
         factory { GetFavoritesUseCase(get()) }
         factory { RemoveFavoriteUseCase(get()) }
+        factory { IsFavoriteUseCase(get()) }
     }
 }

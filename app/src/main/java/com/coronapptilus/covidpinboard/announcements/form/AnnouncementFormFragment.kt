@@ -153,7 +153,7 @@ class AnnouncementFormFragment : Fragment(R.layout.fragment_announcement_form),
                 context!!,
                 DatePickerDialog.OnDateSetListener { _, dYear, dMonth, dDay ->
                     val formattedDate = String.format(
-                        getString(R.string.form_formattedDate),
+                        DATE_FORMAT,
                         CalendarUtils.twoDigits(dDay),
                         CalendarUtils.twoDigits(dMonth + 1),
                         dYear
@@ -187,7 +187,7 @@ class AnnouncementFormFragment : Fragment(R.layout.fragment_announcement_form),
                 context!!,
                 TimePickerDialog.OnTimeSetListener { _, dHour, dMinute ->
                     val formattedHour = String.format(
-                        getString(R.string.form_formattedHour),
+                        TIME_FORMAT,
                         CalendarUtils.twoDigits(dHour),
                         CalendarUtils.twoDigits(dMinute)
                     )
@@ -271,12 +271,17 @@ class AnnouncementFormFragment : Fragment(R.layout.fragment_announcement_form),
 
     private fun String.toEditable(): Editable = Editable.Factory.getInstance().newEditable(this)
 
-    override fun showMessage(message: String){
+    override fun showMessage(message: String) {
         Toast.makeText(context, message, Toast.LENGTH_LONG).show()
     }
 
     override fun navigateToBoardFragment() {
         view?.findNavController()?.navigate(R.id.action_form_fragment_to_list_fragment)
         // TODO. investigar porqué se quedan las tabs activas
+    }
+
+    companion object {
+        private const val DATE_FORMAT = "%s / %s / %s"
+        private const val TIME_FORMAT = "%s : %s"
     }
 }

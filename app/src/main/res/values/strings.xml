@@ -35,7 +35,7 @@
     <string name="cinema">Cinema</string>
     <string name="conference">Conference</string>
     <string name="interview">Interview</string>
-    <string name="workshop">WorkShop</string>
+    <string name="workshop">Workshop</string>
     <string name="formation">Formation</string>
     <string name="donation">Donation</string>
     <string name="crafts">Crafts</string>
@@ -63,11 +63,8 @@
     <string name="date_end"> Ending date</string>
     <string name="time_start"> Starting time</string>
     <string name="time_end"> Ending time</string>
-    <string name="form_formattedDate" translatable="false">"%s / %s / %s"</string>
-    <string name="form_formattedHour" translatable="false">"%s : %s"</string>
 
     <string name="chooseATarget">Choose a target</string>
-
     <string name="addButton">Add</string>
     <string name="families">Families</string>
 

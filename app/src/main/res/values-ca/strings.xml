@@ -66,8 +66,9 @@
 
     <string name="chooseATarget">Escull un públic</string>
     <string name="addButton">Afegir</string>
-    <string name="families">Families</string>
+    <string name="families">Famílies</string>
 
     <!-- Filter -->
     <string name="category_filter">Filtre per categories</string>
+
 </resources>
