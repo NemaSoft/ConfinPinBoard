@@ -2,14 +2,14 @@ package com.coronapptilus.covidpinboard.splash
 
 import kotlinx.coroutines.*
 import kotlinx.coroutines.Dispatchers.Main
-import okhttp3.internal.waitMillis
+import java.util.concurrent.TimeUnit
 
-class SplashPresenter: SplashContract.Presenter {
+class SplashPresenter : SplashContract.Presenter {
 
     override var view: SplashContract.View? = null
 
     private val job = SupervisorJob()
-    private val errorHandler = CoroutineExceptionHandler { _, _ ->  }
+    private val errorHandler = CoroutineExceptionHandler { _, _ -> }
     private val coroutineScope = CoroutineScope(job + Main + errorHandler)
 
     override fun attachView(newView: SplashContract.View) {
@@ -23,8 +23,12 @@ class SplashPresenter: SplashContract.Presenter {
 
     override fun applyDelay() {
         coroutineScope.launch {
-            delay(2000L)
+            delay(SPLASH_DURATION)
             view?.goToMain()
         }
+    }
+
+    companion object {
+        private val SPLASH_DURATION: Long = TimeUnit.SECONDS.toMillis(2)
     }
 }

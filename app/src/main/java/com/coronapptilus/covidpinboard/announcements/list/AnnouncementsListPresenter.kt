@@ -7,12 +7,12 @@ import kotlinx.coroutines.*
 
 class AnnouncementsListPresenter(
     private val getAnnouncementsUseCase: GetAnnouncementsUseCase
-): AnnouncementsListContract.Presenter {
+) : AnnouncementsListContract.Presenter {
 
     override var view: AnnouncementsListContract.View? = null
 
     private val job = SupervisorJob()
-    private val errorHandler = CoroutineExceptionHandler { _, _ ->  }
+    private val errorHandler = CoroutineExceptionHandler { _, _ -> }
     private val coroutineScope = CoroutineScope(job + Dispatchers.Main + errorHandler)
 
     override fun attachView(newView: AnnouncementsListContract.View) {
@@ -37,25 +37,11 @@ class AnnouncementsListPresenter(
                     announcements = response.result
                 }
             }
-            view?.update(listOf(mockAnnouncementModel))
+            view?.update(announcements)
         }
     }
 
-    private val categories = listOf<AnnouncementModel.Category>(AnnouncementModel.Category.Sport)
-    private val target = AnnouncementModel.Target.Family
-
-    // TODO: Check different casuistics with this mockk model
-    private val mockAnnouncementModel = AnnouncementModel(
-        id = "123",
-        announcer = "Pepe",
-        title = "Hola",
-        description = "asdasfasdasd",
-        place = "asdasd",
-        categories = categories,
-        target = target,
-        startDate = "12/07/2020",
-        startTime = "12:00",
-        endDate = "12/07/2020",
-        endTime = "13:00"
-    )
+    override fun onAnnouncementItemClicked(announcement: AnnouncementModel) {
+        view?.showAnnouncementDetail(announcement)
+    }
 }

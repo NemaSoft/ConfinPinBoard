@@ -8,7 +8,7 @@ class FavoritesMapper {
     fun mapResponseToDomain(responseModel: FavoritesResponseModel): FavoritesModel =
         with(responseModel) {
             FavoritesModel(
-                favorites = favorites
+                favoritesAnnouncementsIds = favorites
             )
         }
 }
