@@ -253,7 +253,7 @@
             android:id="@+id/dialog_favorites_button"
             android:layout_width="@dimen/dialog_bottom_buttons_size"
             android:layout_height="@dimen/dialog_bottom_buttons_size"
-            android:src="@drawable/ic_favorite_inactive" />
+            android:src="@drawable/selector_favorites" />
 
         <Space
             android:layout_width="0dp"

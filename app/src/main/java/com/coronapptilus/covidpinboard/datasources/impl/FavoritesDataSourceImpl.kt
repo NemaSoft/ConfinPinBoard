@@ -39,18 +39,29 @@ class FavoritesDataSourceImpl(
         }
     }
 
+    override fun isFavorite(announcementId: String): Boolean =
+        getFavorites().favoritesAnnouncementsIds.contains(announcementId)
+
     private fun getFavoritesJson(announcementId: String): String {
         val favorites: MutableList<String> = getFavorites().favoritesAnnouncementsIds
-                .toMutableList()
-                .apply { if (!contains(announcementId)) { add(announcementId) } }
+            .toMutableList()
+            .apply {
+                if (!contains(announcementId)) {
+                    add(announcementId)
+                }
+            }
         val response = FavoritesResponseModel(favorites)
         return gson.toJson(response)
     }
 
     private fun removeFavoriteFromJson(announcementId: String): String {
         val favorites: MutableList<String> = getFavorites().favoritesAnnouncementsIds
-                .toMutableList()
-                .apply { if (contains(announcementId)) { remove(announcementId) } }
+            .toMutableList()
+            .apply {
+                if (contains(announcementId)) {
+                    remove(announcementId)
+                }
+            }
         val response = FavoritesResponseModel(favorites)
         return gson.toJson(response)
     }
