@@ -6,9 +6,9 @@
     <dimen name="toolbar_margin_elements">8dp</dimen>
 
     <!-- Dialog -->
-    <dimen name="dialog_header_padding">4dp</dimen>
-    <dimen name="dialog_side_margin">40dp</dimen>
-    <dimen name="dialog_scroll_max_height">200dp</dimen>
+    <dimen name="dialog_header_padding">8dp</dimen>
+    <dimen name="dialog_side_margin">20dp</dimen>
+    <dimen name="dialog_scroll_max_height">300dp</dimen>
     <dimen name="dialog_padding">8dp</dimen>
     <dimen name="dialog_headers_identation">8dp</dimen>
     <dimen name="dialog_line_break">4dp</dimen>

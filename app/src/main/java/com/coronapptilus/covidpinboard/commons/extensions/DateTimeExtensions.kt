@@ -29,11 +29,15 @@ fun convertTimestampToTime(timestamp: Long?): String =
         DateFormat.format("HH:mm", calendar).toString()
     } ?: ""
 
-fun convertDateToTimestamp(dateText: String, timeText: String): Long? =
-    SimpleDateFormat(
+fun convertDateToTimestamp(dateText: String, timeText: String): Long? {
+    if (dateText.isEmpty()||timeText.isEmpty()){
+        return 0
+    }
+    return SimpleDateFormat(
         "dd/MM/yyyy HH:mm",
         Locale.getDefault()
     ).parse(dateText.plus(" ").plus(timeText))?.time
+}
 
 fun Context.formatDate(dateText: String, timeText: String): String {
     if (dateText.isEmpty() || timeText.isEmpty()) {
