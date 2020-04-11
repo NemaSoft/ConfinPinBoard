@@ -20,11 +20,14 @@
     <!--Text Sizes -->
     <dimen name="primary_3xl">22sp</dimen>
     <dimen name="primary_l">16sp</dimen>
+    <dimen name="primary_m">12sp</dimen>
     <dimen name="default_titleFormSize">20sp</dimen>
 
     <!--Margins, paddings, spaces-->
     <dimen name="default_margin_16">16dp</dimen>
+    <dimen name="default_margin_24">24dp</dimen>
     <dimen name="default_margin_bottom">8dp</dimen>
+    <dimen name="default_margin_S">4dp</dimen>
 
     <!--Progress bar-->
     <dimen name="progressbar_height">24dp</dimen>
