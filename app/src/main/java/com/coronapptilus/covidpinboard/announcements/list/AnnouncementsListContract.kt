@@ -9,7 +9,7 @@ interface AnnouncementsListContract {
 
         fun update(announcements: List<AnnouncementModel>)
 
-        fun showAnnouncementDetail(announcement: AnnouncementModel)
+        fun showAnnouncementDetail(announcement: AnnouncementModel, isFavorite: Boolean)
     }
 
     interface Presenter : BaseContract.Presenter<View> {
@@ -17,5 +17,7 @@ interface AnnouncementsListContract {
         fun init()
 
         fun onAnnouncementItemClicked(announcement: AnnouncementModel)
+
+        fun onFavoriteButtonClicked(announcementId: String, isFavoriteSelected: Boolean)
     }
 }

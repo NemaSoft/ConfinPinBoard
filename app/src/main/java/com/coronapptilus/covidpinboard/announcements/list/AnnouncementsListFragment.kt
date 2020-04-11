@@ -46,21 +46,16 @@ class AnnouncementsListFragment : Fragment(R.layout.fragment_announcement_list),
         }
     }
 
-    override fun showAnnouncementDetail(announcement: AnnouncementModel) {
-        var isFavoritesClicked = false
-
+    override fun showAnnouncementDetail(announcement: AnnouncementModel, isFavorite: Boolean) {
         val dialogView = View.inflate(context, R.layout.detail_dialog, null)
-
         val filledDialog = DetailDialogUtils.getFilledDialog(announcement, dialogView)
 
         // Favorites functionality
-        dialogView.dialog_favorites_button.setOnClickListener {
-            if (!isFavoritesClicked) {
-                isFavoritesClicked = true
-                dialogView.dialog_favorites_button.setImageResource(R.drawable.ic_favorite_active)
-            } else {
-                isFavoritesClicked = false
-                dialogView.dialog_favorites_button.setImageResource(R.drawable.ic_favorite_inactive)
+        dialogView.dialog_favorites_button.apply {
+            isSelected = isFavorite
+            setOnClickListener {
+                isSelected != isSelected
+                presenter.onFavoriteButtonClicked(announcement.id, isSelected)
             }
         }
 
