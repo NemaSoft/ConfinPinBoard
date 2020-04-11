@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:padding="@dimen/toolbar_padding">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="@dimen/toolbar_margin_elements"
+        android:src="@mipmap/ic_covid_pin_board" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/headtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="@dimen/primary_3xl"
+        android:textStyle="bold"
+        tools:text="@string/favorites_label" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/search_input"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:hint="@string/search"
+        app:backgroundTint="@color/colorAccent"
+        tools:visibility="visible" />
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/search_button"
+        android:layout_width="32dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/toolbar_margin_elements"
+        tools:src="@drawable/ic_search" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/filter_button"
+        android:layout_width="32dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_filter" />
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

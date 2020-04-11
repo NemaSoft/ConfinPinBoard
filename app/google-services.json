@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "217538145645",
+    "firebase_url": "https://covid-pin-board-nema.firebaseio.com",
+    "project_id": "covid-pin-board-nema",
+    "storage_bucket": "covid-pin-board-nema.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:217538145645:android:2a947baa2a61d9ad9bbe64",
+        "android_client_info": {
+          "package_name": "com.coronapptilus.covidpinboard"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "217538145645-g4r272rpghuhn2d45opop1khdjac9ugt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDBuy4UEFgZt-7qOmru7W0weKs5zRL7Z0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "217538145645-g4r272rpghuhn2d45opop1khdjac9ugt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

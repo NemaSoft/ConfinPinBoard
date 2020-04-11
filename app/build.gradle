@@ -2,6 +2,9 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.crashlytics'
+apply plugin: 'com.google.firebase.firebase-perf'
 
 android {
     compileSdkVersion 29
@@ -13,6 +16,8 @@ android {
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
+
+        buildConfigField("String", "FIREBASE_PROJECT_ID", '"covid-pin-board-nema"')
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -63,7 +68,11 @@ dependencies {
     implementation "com.google.code.gson:gson:$gson_version"
 
     // Firebase
-    implementation "com.google.firebase:firebase-core:$firebase_core_version"
+    implementation "com.google.firebase:firebase-analytics:$firebase_analytics_version"
+    implementation "com.google.firebase:firebase-crashlytics:$firebase_crashlytics_version"
+    implementation "com.google.firebase:firebase-perf:$firebase_performance_version"
+    implementation "com.google.firebase:firebase-messaging:$firebase_messaging_version"
+    implementation "com.google.firebase:firebase-firestore:$firebase_firestore_version"
     implementation "com.google.firebase:firebase-auth:$firebase_auth_version"
 
     // Testing
@@ -72,4 +81,7 @@ dependencies {
     androidTestImplementation "io.mockk:mockk-android:$mockk_version"
     androidTestImplementation "androidx.test.ext:junit:$junit_ext_version"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
+
+    //Glide
+    implementation "com.github.bumptech.glide:glide:$glide_version"
 }

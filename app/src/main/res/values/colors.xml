@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
+    <color name="colorPrimary">#874f29</color>
+    <color name="colorPrimaryDark">#55321a</color>
+    <color name="colorAccent">#ffaf40</color>
+
+    <color name="recycler_background">#999999</color>
+
+    <color name="sport">#A93226</color>
+    <color name="cook">#AF7AC5</color>
+    <color name="music">#D68910</color>
+    <color name="dance">#2471A3</color>
+    <color name="theater">#229954</color>
+    <color name="literature">#F4D03F</color>
+    <color name="cinema">#5DADE2</color>
+    <color name="conference">#EB984E</color>
+    <color name="interview">#48C9B0</color>
+    <color name="workshop">#EC7063</color>
+    <color name="formation">#138D75</color>
+    <color name="donation">#D35400</color>
+    <color name="crafts">#7D3C98</color>
+    <color name="storyteller">#58D68D</color>
+    <color name="others">#AAB7B8</color>
+
 </resources>
