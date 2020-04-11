@@ -61,12 +61,14 @@ class AnnouncementsListFragment : Fragment(R.layout.fragment_announcement_list),
 
         // Calendar functionality
         dialogView.dialog_share_button.setOnClickListener {
-            CalendarUtils.addToCalendar(
-                announcement.title,
-                announcement.description,
-                announcement.place,
-                convertDateToTimestamp(announcement.startDate, announcement.startTime) ?: 0L,
-                convertDateToTimestamp(announcement.endDate, announcement.endTime) ?: 0L
+            startActivity(
+                CalendarUtils.addToCalendar(
+                    announcement.title,
+                    announcement.description,
+                    announcement.place,
+                    convertDateToTimestamp(announcement.startDate, announcement.startTime) ?: 0L,
+                    convertDateToTimestamp(announcement.endDate, announcement.endTime) ?: 0L
+                )
             )
         }
 
