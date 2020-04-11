@@ -39,27 +39,45 @@ class AnnouncementsDataSourceImpl(
                 val categoriesTypes = mapper.mapCategoriesToType(categories)
                 getQueryTask(ids, categoriesTypes)
                     .addOnSuccessListener { documentsSnapshots ->
-                        var announcements =
-                            documentsSnapshots.toObjects(AnnouncementResponseModel::class.java)
-                                .filterNotNull()
-                                .filter {
-                                    existsContent(it.title, it.description, it.place)
-                                            && checkAvailability(it.endTimestamp)
-                                }
-                                .map { mapper.mapResponseToDomain(it) }
-
-                        if (searchTerm.isNotEmpty()) {
-                            announcements = announcements.filter {
-                                it.title.contains(searchTerm, true)
-                                        || it.description.contains(searchTerm, true)
-                            }
-                        }
-
+                        val announcements = getAnnouncementsFromDocuments(
+                            documentsSnapshots,
+                            ids,
+                            searchTerm,
+                            categoriesTypes
+                        )
                         cont.resume(announcements)
                     }
                     .addOnFailureListener { error -> cont.resumeWithException(error) }
             }
         }
+
+    private fun getAnnouncementsFromDocuments(
+        documentsSnapshots: QuerySnapshot,
+        ids: List<String>,
+        searchTerm: String,
+        categories: List<Int>
+    ): List<AnnouncementModel> {
+        var announcements = documentsSnapshots.toObjects(AnnouncementResponseModel::class.java)
+            .filterNotNull()
+            .filter {
+                existsContent(it.title, it.description, it.place)
+                        && checkAvailability(it.endTimestamp)
+            }
+            .map { mapper.mapResponseToDomain(it) }
+
+        if (searchTerm.isNotEmpty()) {
+            announcements = announcements.filter {
+                it.title.contains(searchTerm, true)
+                        || it.description.contains(searchTerm, true)
+            }
+        }
+
+        if (ids.isNotEmpty() && categories.isNotEmpty()) {
+            announcements = announcements.filter { ids.contains(it.id) }
+        }
+
+        return announcements
+    }
 
     private fun getQueryTask(
         ids: List<String>,
@@ -71,8 +89,7 @@ class AnnouncementsDataSourceImpl(
             ids.isNotEmpty() && categoriesTypes.isEmpty() ->
                 collectionRef.whereIn(ID_KEY, ids).get()
             ids.isNotEmpty() && categoriesTypes.isNotEmpty() ->
-                collectionRef.whereIn(ID_KEY, ids)
-                    .whereArrayContainsAny(CATEGORIES_KEY, categoriesTypes)
+                collectionRef.whereArrayContainsAny(CATEGORIES_KEY, categoriesTypes)
                     .get()
             ids.isEmpty() && categoriesTypes.isNotEmpty() ->
                 collectionRef.whereArrayContainsAny(CATEGORIES_KEY, categoriesTypes).get()

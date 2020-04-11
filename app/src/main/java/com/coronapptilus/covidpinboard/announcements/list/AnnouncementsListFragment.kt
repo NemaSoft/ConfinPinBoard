@@ -44,7 +44,7 @@ class AnnouncementsListFragment : Fragment(R.layout.fragment_announcement_list),
     private fun initPresenter() {
         presenter.apply {
             attachView(this@AnnouncementsListFragment)
-            presenter.getAnnouncements()
+            getAnnouncements()
         }
     }
 

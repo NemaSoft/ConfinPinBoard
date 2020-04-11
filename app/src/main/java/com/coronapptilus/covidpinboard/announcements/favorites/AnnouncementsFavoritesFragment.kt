@@ -23,10 +23,17 @@ class AnnouncementsFavoritesFragment : Fragment(R.layout.fragment_announcements_
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        activity?.toolbar?.init(ToolbarView.FAVORITES)
+        activity?.toolbar?.apply {
+            init(ToolbarView.FAVORITES)
+            setOnFilterButtonClicked { searchTerm, categories ->
+                presenter.getFavorites(searchTerm, categories)
+            }
+            setOnSearchInputFilled { searchTerm, categories ->
+                presenter.getFavorites(searchTerm, categories)
+            }
+        }
 
         initList()
-
         initPresenter()
     }
 
@@ -38,16 +45,27 @@ class AnnouncementsFavoritesFragment : Fragment(R.layout.fragment_announcements_
     private fun initPresenter() {
         presenter.apply {
             attachView(this@AnnouncementsFavoritesFragment)
-            init()
+            getFavorites()
         }
     }
 
     override fun update(favorites: List<AnnouncementModel>) {
         adapter.setData(favorites)
         if (favorites.isEmpty()) {
-            announcement_list.visibility = View.GONE
-            fallback_image.visibility = View.VISIBLE
+            showEmptyScreen()
+        } else {
+            hideEmptyScreen()
         }
+    }
+
+    private fun showEmptyScreen() {
+        announcement_list.visibility = View.GONE
+        fallback_image.visibility = View.VISIBLE
+    }
+
+    private fun hideEmptyScreen() {
+        announcement_list.visibility = View.VISIBLE
+        fallback_image.visibility = View.GONE
     }
 
     override fun showAnnouncementDetail(announcement: AnnouncementModel) {

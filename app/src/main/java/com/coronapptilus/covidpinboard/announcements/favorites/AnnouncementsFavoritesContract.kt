@@ -16,7 +16,10 @@ interface AnnouncementsFavoritesContract {
 
     interface Presenter : BaseContract.Presenter<View> {
 
-        fun init()
+        fun getFavorites(
+            searchTerm: String = "",
+            categories: List<AnnouncementModel.Category> = emptyList()
+        )
 
         fun onAnnouncementItemClicked(announcement: AnnouncementModel)
 

@@ -26,10 +26,6 @@ class AnnouncementsFavoritesPresenter(
         coroutineScope.cancel()
     }
 
-    override fun init() {
-        getFavorites()
-    }
-
     override fun onAnnouncementItemClicked(announcement: AnnouncementModel) {
         view?.showAnnouncementDetail(announcement)
     }
@@ -39,14 +35,21 @@ class AnnouncementsFavoritesPresenter(
         getFavorites()
     }
 
-    private fun getFavorites() {
+    override fun getFavorites(
+        searchTerm: String,
+        categories: List<AnnouncementModel.Category>
+    ) {
         coroutineScope.launch {
             val favoriteAnnouncements: List<AnnouncementModel> = getFavoritesUseCase.execute()
                 .favoritesAnnouncementsIds
                 .takeIf { it.isNotEmpty() }
                 ?.let { announcementsIds ->
                     withContext(Dispatchers.IO) {
-                        val response = getAnnouncementsUseCase.execute(announcementsIds)
+                        val response = getAnnouncementsUseCase.execute(
+                            announcementsIds,
+                            searchTerm,
+                            categories
+                        )
                         (response as? ResponseState.Success)?.result
                     }
                 } ?: emptyList()
