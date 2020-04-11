@@ -26,3 +26,6 @@
 -keepattributes *Annotation*                       ## Keep Crashlytics annotations
 -keepattributes SourceFile,LineNumberTable         ## Keep file names/line numbers
 -keep public class * extends java.lang.Exception   ## Keep custom exceptions (opt)
+
+# To keep DataSource "data class" models (needed to work with Firebase Firestore)
+-keepclassmembers class com.coronapptilus.covidpinboard.datasources.models.** { *; }
