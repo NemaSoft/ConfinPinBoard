@@ -50,7 +50,7 @@ class AnnouncementMapper {
                 AnnouncementModel.Category.Cinema -> AnnouncementModel.Category.Cinema.type
                 AnnouncementModel.Category.Conference -> AnnouncementModel.Category.Conference.type
                 AnnouncementModel.Category.Interview -> AnnouncementModel.Category.Interview.type
-                AnnouncementModel.Category.WorkShop -> AnnouncementModel.Category.WorkShop.type
+                AnnouncementModel.Category.Workshop -> AnnouncementModel.Category.Workshop.type
                 AnnouncementModel.Category.Formation -> AnnouncementModel.Category.Formation.type
                 AnnouncementModel.Category.Donation -> AnnouncementModel.Category.Donation.type
                 AnnouncementModel.Category.Crafts -> AnnouncementModel.Category.Crafts.type
@@ -71,7 +71,7 @@ class AnnouncementMapper {
                 AnnouncementModel.Category.Cinema.type -> AnnouncementModel.Category.Cinema
                 AnnouncementModel.Category.Conference.type -> AnnouncementModel.Category.Conference
                 AnnouncementModel.Category.Interview.type -> AnnouncementModel.Category.Interview
-                AnnouncementModel.Category.WorkShop.type -> AnnouncementModel.Category.WorkShop
+                AnnouncementModel.Category.Workshop.type -> AnnouncementModel.Category.Workshop
                 AnnouncementModel.Category.Formation.type -> AnnouncementModel.Category.Formation
                 AnnouncementModel.Category.Donation.type -> AnnouncementModel.Category.Donation
                 AnnouncementModel.Category.Crafts.type -> AnnouncementModel.Category.Crafts

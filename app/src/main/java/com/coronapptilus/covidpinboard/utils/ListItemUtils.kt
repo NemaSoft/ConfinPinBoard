@@ -122,7 +122,7 @@ object ListItemUtils {
                     AnnouncementModel.Category.Cinema -> categoriesNames.add(context.getString(R.string.cinema))
                     AnnouncementModel.Category.Conference -> categoriesNames.add(context.getString(R.string.conference))
                     AnnouncementModel.Category.Interview -> categoriesNames.add(context.getString(R.string.interview))
-                    AnnouncementModel.Category.WorkShop -> categoriesNames.add(context.getString(R.string.workshop))
+                    AnnouncementModel.Category.Workshop -> categoriesNames.add(context.getString(R.string.workshop))
                     AnnouncementModel.Category.Formation -> categoriesNames.add(context.getString(R.string.formation))
                     AnnouncementModel.Category.Donation -> categoriesNames.add(context.getString(R.string.donation))
                     AnnouncementModel.Category.Crafts -> categoriesNames.add(context.getString(R.string.crafts))
@@ -153,7 +153,7 @@ object ListItemUtils {
                     AnnouncementModel.Category.Cinema -> R.drawable.ic_category_cinema
                     AnnouncementModel.Category.Conference -> R.drawable.ic_category_conference
                     AnnouncementModel.Category.Interview -> R.drawable.ic_category_interview
-                    AnnouncementModel.Category.WorkShop -> R.drawable.ic_category_workshop
+                    AnnouncementModel.Category.Workshop -> R.drawable.ic_category_workshop
                     AnnouncementModel.Category.Formation -> R.drawable.ic_category_formation
                     AnnouncementModel.Category.Donation -> R.drawable.ic_category_donation
                     AnnouncementModel.Category.Crafts -> R.drawable.ic_category_crafts

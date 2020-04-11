@@ -122,7 +122,7 @@ object DetailDialogUtils {
                     AnnouncementModel.Category.Cinema -> categoriesNames.add(context.getString(R.string.cinema))
                     AnnouncementModel.Category.Conference -> categoriesNames.add(context.getString(R.string.conference))
                     AnnouncementModel.Category.Interview -> categoriesNames.add(context.getString(R.string.interview))
-                    AnnouncementModel.Category.WorkShop -> categoriesNames.add(context.getString(R.string.workshop))
+                    AnnouncementModel.Category.Workshop -> categoriesNames.add(context.getString(R.string.workshop))
                     AnnouncementModel.Category.Formation -> categoriesNames.add(context.getString(R.string.formation))
                     AnnouncementModel.Category.Donation -> categoriesNames.add(context.getString(R.string.donation))
                     AnnouncementModel.Category.Crafts -> categoriesNames.add(context.getString(R.string.crafts))

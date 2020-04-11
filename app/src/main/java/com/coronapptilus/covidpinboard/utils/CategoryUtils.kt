@@ -18,7 +18,7 @@ object CategoryUtils {
             AnnouncementModel.Category.Cinema -> R.drawable.ic_category_cinema
             AnnouncementModel.Category.Conference -> R.drawable.ic_category_conference
             AnnouncementModel.Category.Interview -> R.drawable.ic_category_interview
-            AnnouncementModel.Category.WorkShop -> R.drawable.ic_category_workshop
+            AnnouncementModel.Category.Workshop -> R.drawable.ic_category_workshop
             AnnouncementModel.Category.Formation -> R.drawable.ic_category_formation
             AnnouncementModel.Category.Donation -> R.drawable.ic_category_donation
             AnnouncementModel.Category.Crafts -> R.drawable.ic_category_crafts
@@ -39,7 +39,7 @@ object CategoryUtils {
                 AnnouncementModel.Category.Cinema -> R.string.cinema
                 AnnouncementModel.Category.Conference -> R.string.conference
                 AnnouncementModel.Category.Interview -> R.string.interview
-                AnnouncementModel.Category.WorkShop -> R.string.workshop
+                AnnouncementModel.Category.Workshop -> R.string.workshop
                 AnnouncementModel.Category.Formation -> R.string.formation
                 AnnouncementModel.Category.Donation -> R.string.donation
                 AnnouncementModel.Category.Crafts -> R.string.crafts
@@ -62,7 +62,7 @@ object CategoryUtils {
                 AnnouncementModel.Category.Cinema -> R.color.cinema
                 AnnouncementModel.Category.Conference -> R.color.conference
                 AnnouncementModel.Category.Interview -> R.color.interview
-                AnnouncementModel.Category.WorkShop -> R.color.workshop
+                AnnouncementModel.Category.Workshop -> R.color.workshop
                 AnnouncementModel.Category.Formation -> R.color.formation
                 AnnouncementModel.Category.Donation -> R.color.donation
                 AnnouncementModel.Category.Crafts -> R.color.crafts
@@ -83,7 +83,7 @@ object CategoryUtils {
             AnnouncementModel.Category.Cinema,
             AnnouncementModel.Category.Conference,
             AnnouncementModel.Category.Interview,
-            AnnouncementModel.Category.WorkShop,
+            AnnouncementModel.Category.Workshop,
             AnnouncementModel.Category.Formation,
             AnnouncementModel.Category.Donation,
             AnnouncementModel.Category.Crafts,

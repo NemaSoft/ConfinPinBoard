@@ -26,7 +26,7 @@ data class AnnouncementModel(
         object Cinema : Category(7)
         object Conference : Category(8)
         object Interview : Category(9)
-        object WorkShop : Category(10)
+        object Workshop : Category(10)
         object Formation : Category(11)
         object Donation : Category(12)
         object Crafts : Category(13)
