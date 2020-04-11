@@ -73,7 +73,6 @@ dependencies {
     implementation "com.google.firebase:firebase-perf:$firebase_performance_version"
     implementation "com.google.firebase:firebase-messaging:$firebase_messaging_version"
     implementation "com.google.firebase:firebase-firestore:$firebase_firestore_version"
-    implementation "com.google.firebase:firebase-auth:$firebase_auth_version"
 
     // Testing
     testImplementation "io.mockk:mockk:$mockk_version"
