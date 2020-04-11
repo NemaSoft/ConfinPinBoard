@@ -18,7 +18,6 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.coronapptilus.covidpinboard.R
@@ -293,9 +292,19 @@ class AnnouncementFormFragment : Fragment(R.layout.fragment_announcement_form),
         }
     }
 
-    override fun navigateToBoardFragment() {
-        view?.findNavController()?.navigate(R.id.action_form_fragment_to_list_fragment)
-        // TODO. investigar porqué se quedan las tabs activas
+    override fun clearForm() {
+        addForm_title.setText("")
+        addForm_announcer.setText("")
+        addForm_place.setText("")
+        addForm_startingDate.setText("")
+        addForm_startingTime.setText("")
+        addForm_endingDate.setText("")
+        addForm_endingTime.setText("")
+        addForm_categories.setText("")
+        addForm_targetSpinner.setSelection(0)
+        addForm_description.setText("")
+        dateForm_error.visibility = View.GONE
+        targetForm_error.visibility = View.GONE
     }
 
     companion object {
