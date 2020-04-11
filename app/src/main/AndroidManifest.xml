@@ -5,7 +5,7 @@
     <application
         android:name=".CovidPinBoardApplication"
         android:allowBackup="false"
-        android:icon="@mipmap/ic_covid_pin_board"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
