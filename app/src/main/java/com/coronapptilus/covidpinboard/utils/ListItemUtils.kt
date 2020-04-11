@@ -16,7 +16,7 @@ object ListItemUtils {
             item_title.text = ""
             item_place.text = ""
             item_announcer.text = ""
-            item_image.setImageResource(R.drawable.ic_category_others)
+            item_image.setImageResource(R.drawable.ic_report)
             item_image.background = null
             item_categories_list.text = ""
             item_target_image.setImageResource(R.drawable.ic_target_adults)
@@ -67,6 +67,7 @@ object ListItemUtils {
             title
         } else {
             context.resources.getString(R.string.error_message)
+                .plus(" ")
                 .plus(context.resources.getString(R.string.title).toLowerCase(Locale.getDefault()))
         }
 
@@ -75,6 +76,7 @@ object ListItemUtils {
             place
         } else {
             context.resources.getString(R.string.error_message)
+                .plus(" ")
                 .plus(context.resources.getString(R.string.place_header).toLowerCase(Locale.getDefault()))
         }
 
@@ -92,7 +94,7 @@ object ListItemUtils {
                 if (categoriesFormatted.isEmpty()) {
                     categoriesFormatted = it
                 } else {
-                    categoriesFormatted.plus(", $it")
+                    categoriesFormatted += ", $it"
                 }
             }
             categoriesFormatted
@@ -138,7 +140,7 @@ object ListItemUtils {
 
     private fun getIconId(categories: List<AnnouncementModel.Category>): Int {
         return if (categories.isEmpty()) {
-            R.drawable.ic_category_others
+            R.drawable.ic_report
         } else {
             categories[0].let {
                 when (it) {
@@ -181,7 +183,8 @@ object ListItemUtils {
                 context,
                 R.color.storyteller
             )
-            else -> ContextCompat.getColor(context, R.color.others)
+            R.drawable.ic_category_others -> ContextCompat.getColor(context, R.color.others)
+            else -> ContextCompat.getColor(context, R.color.sport)
         }
 
 

@@ -3,6 +3,7 @@ package com.coronapptilus.covidpinboard.announcements.list
 import com.coronapptilus.covidpinboard.datasources.ResponseState
 import com.coronapptilus.covidpinboard.domain.models.AnnouncementModel
 import com.coronapptilus.covidpinboard.domain.usecases.GetAnnouncementsUseCase
+import com.coronapptilus.covidpinboard.utils.CategoryUtils
 import kotlinx.coroutines.*
 
 class AnnouncementsListPresenter(
@@ -37,11 +38,32 @@ class AnnouncementsListPresenter(
                     announcements = response.result
                 }
             }
-            view?.update(announcements)
+            view?.update(listOf(mockAnnouncementModel))
         }
     }
 
     override fun onAnnouncementItemClicked(announcement: AnnouncementModel) {
         view?.showAnnouncementDetail(announcement)
     }
+
+
+    private val categories = emptyList<AnnouncementModel.Category>()
+    private val target = AnnouncementModel.Target.Undefined
+
+
+    // TODO: Check different casuistics with this mockk model
+    private val mockAnnouncementModel = AnnouncementModel(
+        id = "123",
+        announcer = "",
+        title = "",
+        description = "",
+        place = "",
+        categories = categories,
+        target = target,
+        startDate = "",
+        startTime = "",
+        endDate = "",
+        endTime = ""
+    )
+
 }
