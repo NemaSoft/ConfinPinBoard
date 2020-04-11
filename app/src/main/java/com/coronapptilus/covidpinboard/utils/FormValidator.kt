@@ -5,41 +5,21 @@ import java.util.*
 
 object FormValidator {
 
-    private const val TITLE_MAX_LENGTH = 60
-    private const val ANNOUNCER_MAX_LENGTH = 60
-    private const val PLACE_MAX_LENGTH = 140
-    private const val DESCRIPTION_MAX_LENGTH = 140
-
     fun isValidTitle(title: String): Boolean {
-        if (!title.isBlank()) {
-            if (title.length <= TITLE_MAX_LENGTH) {
-                return true
-            }
-        }
-        return false
+        return !title.isBlank()
     }
 
     fun isValidAnnouncer(announcer: String): Boolean {
-        if (!announcer.isBlank()) {
-            if (announcer.length <= ANNOUNCER_MAX_LENGTH) {
-                return true
-            }
-        }
-        return false
+        return !announcer.isBlank()
     }
 
     fun isValidPlace(location: String): Boolean {
-        if (!location.isBlank()) {
-            if (location.length <= PLACE_MAX_LENGTH) {
-                return true
-            }
-        }
-        return false
+        return !location.isBlank()
     }
 
-
     fun isValidDescription(location: String): Boolean {
-        return location.length <= DESCRIPTION_MAX_LENGTH
+        // Actually an empty description is accepted.
+        return true
     }
 
 
