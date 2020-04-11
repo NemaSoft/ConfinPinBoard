@@ -2,13 +2,13 @@ package com.coronapptilus.covidpinboard.announcements.favorites
 
 import com.coronapptilus.covidpinboard.datasources.ResponseState
 import com.coronapptilus.covidpinboard.domain.models.AnnouncementModel
-import com.coronapptilus.covidpinboard.domain.usecases.GetAnnouncementsByIdsUseCase
+import com.coronapptilus.covidpinboard.domain.usecases.GetAnnouncementsUseCase
 import com.coronapptilus.covidpinboard.domain.usecases.GetFavoritesUseCase
 import kotlinx.coroutines.*
 
 class AnnouncementsFavoritesPresenter(
     private val getFavoritesUseCase: GetFavoritesUseCase,
-    private val getAnnouncementsByIdsUseCase: GetAnnouncementsByIdsUseCase
+    private val getAnnouncementsUseCase: GetAnnouncementsUseCase
 ) : AnnouncementsFavoritesContract.Presenter {
 
     override var view: AnnouncementsFavoritesContract.View? = null
@@ -26,10 +26,6 @@ class AnnouncementsFavoritesPresenter(
         coroutineScope.cancel()
     }
 
-    override fun init() {
-        getFavorites()
-    }
-
     override fun onAnnouncementItemClicked(announcement: AnnouncementModel) {
         view?.showAnnouncementDetail(announcement)
     }
@@ -39,18 +35,27 @@ class AnnouncementsFavoritesPresenter(
         getFavorites()
     }
 
-    private fun getFavorites() {
+    override fun getFavorites(
+        searchTerm: String,
+        categories: List<AnnouncementModel.Category>
+    ) {
+        view?.showProgress()
         coroutineScope.launch {
             val favoriteAnnouncements: List<AnnouncementModel> = getFavoritesUseCase.execute()
                 .favoritesAnnouncementsIds
                 .takeIf { it.isNotEmpty() }
                 ?.let { announcementsIds ->
                     withContext(Dispatchers.IO) {
-                        val response = getAnnouncementsByIdsUseCase.execute(announcementsIds)
+                        val response = getAnnouncementsUseCase.execute(
+                            announcementsIds,
+                            searchTerm,
+                            categories
+                        )
                         (response as? ResponseState.Success)?.result
                     }
                 } ?: emptyList()
             view?.update(favoriteAnnouncements)
+            view?.hideProgress()
         }
     }
 }

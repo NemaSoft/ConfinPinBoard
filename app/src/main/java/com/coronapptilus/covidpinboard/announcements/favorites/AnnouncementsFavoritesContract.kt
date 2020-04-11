@@ -12,11 +12,18 @@ interface AnnouncementsFavoritesContract {
         fun showAnnouncementDetail(announcement: AnnouncementModel)
 
         fun hideAnnouncementDetail()
+
+        fun showProgress()
+
+        fun hideProgress()
     }
 
     interface Presenter : BaseContract.Presenter<View> {
 
-        fun init()
+        fun getFavorites(
+            searchTerm: String = "",
+            categories: List<AnnouncementModel.Category> = emptyList()
+        )
 
         fun onAnnouncementItemClicked(announcement: AnnouncementModel)
 

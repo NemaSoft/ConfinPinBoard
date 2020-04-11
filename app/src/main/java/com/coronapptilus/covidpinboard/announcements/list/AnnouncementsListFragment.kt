@@ -15,34 +15,67 @@ import org.koin.android.ext.android.inject
 class AnnouncementsListFragment : Fragment(R.layout.fragment_announcement_list),
     AnnouncementsListContract.View {
 
-    private val adapter = AnnouncementsListAdapter()
-
     private val presenter: AnnouncementsListContract.Presenter by inject()
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        activity?.toolbar?.init(ToolbarView.HOME)
-        announcement_list.adapter = adapter
-        adapter.onItemClicked = { presenter.onAnnouncementItemClicked(it) }
+    private val adapter = AnnouncementsListAdapter()
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        activity?.toolbar?.apply {
+            init(ToolbarView.HOME)
+            setOnFilterButtonClicked { searchTerm, categories ->
+                presenter.getAnnouncements(searchTerm, categories)
+            }
+            setOnSearchInputFilled { searchTerm, categories ->
+                presenter.getAnnouncements(searchTerm, categories)
+            }
+        }
+
+        initList()
         initPresenter()
+    }
+
+    private fun initList() {
+        announcementList.adapter = adapter
+        adapter.onItemClicked = { presenter.onAnnouncementItemClicked(it) }
     }
 
     private fun initPresenter() {
         presenter.apply {
             attachView(this@AnnouncementsListFragment)
-            presenter.init()
+            getAnnouncements()
         }
     }
 
     override fun update(announcements: List<AnnouncementModel>) {
         adapter.setData(announcements)
         if (announcements.isEmpty()) {
-            announcement_list.visibility = View.GONE
-            fallback_image.visibility = View.VISIBLE
+            showEmptyScreen()
+        } else {
+            hideEmptyScreen()
         }
+    }
+
+    private fun showEmptyScreen() {
+        announcementList.visibility = View.GONE
+        fallbackImage.visibility = View.VISIBLE
+    }
+
+    private fun hideEmptyScreen() {
+        announcementList.visibility = View.VISIBLE
+        fallbackImage.visibility = View.GONE
     }
 
     override fun showAnnouncementDetail(announcement: AnnouncementModel) {
         context?.let { AnnouncementDetailDialog(it, announcement).show() }
+    }
+
+    override fun showProgress() {
+        progressView.visibility = View.VISIBLE
+    }
+
+    override fun hideProgress() {
+        progressView.visibility = View.GONE
     }
 }

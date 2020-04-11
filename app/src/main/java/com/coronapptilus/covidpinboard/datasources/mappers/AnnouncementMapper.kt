@@ -38,7 +38,7 @@ class AnnouncementMapper {
             endTime = convertTimestampToTime(responseModel?.endTimestamp)
         )
 
-    private fun mapCategoriesToType(categories: List<AnnouncementModel.Category>): List<Int> =
+    fun mapCategoriesToType(categories: List<AnnouncementModel.Category>): List<Int> =
         categories.map {
             when (it) {
                 AnnouncementModel.Category.Sport -> AnnouncementModel.Category.Sport.type

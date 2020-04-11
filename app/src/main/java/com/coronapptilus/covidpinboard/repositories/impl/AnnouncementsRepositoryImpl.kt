@@ -11,10 +11,10 @@ class AnnouncementsRepositoryImpl(private val dataSource: AnnouncementsDataSourc
     override suspend fun addAnnouncement(announcement: AnnouncementModel): ResponseState<String> =
         dataSource.addAnnouncement(announcement)
 
-    override suspend fun getAnnouncementsByIds(ids: List<String>):
-            ResponseState<List<AnnouncementModel>> =
-        dataSource.getAnnouncementsByIds(ids)
-
-    override suspend fun getAnnouncements(): ResponseState<List<AnnouncementModel>> =
-        dataSource.getAnnouncements()
+    override suspend fun getAnnouncements(
+        ids: List<String>,
+        searchTerm: String,
+        categories: List<AnnouncementModel.Category>
+    ): ResponseState<List<AnnouncementModel>> =
+        dataSource.getAnnouncements(ids, searchTerm, categories)
 }

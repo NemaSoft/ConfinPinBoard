@@ -23,20 +23,24 @@ class AnnouncementsListPresenter(private val getAnnouncementsUseCase: GetAnnounc
         coroutineScope.cancel()
     }
 
-    override fun init() {
-        getAnnouncements()
-    }
-
-    private fun getAnnouncements() {
+    override fun getAnnouncements(
+        searchTerm: String,
+        categories: List<AnnouncementModel.Category>
+    ) {
+        view?.showProgress()
         coroutineScope.launch {
             var announcements: List<AnnouncementModel> = emptyList()
             withContext(Dispatchers.IO) {
-                val response = getAnnouncementsUseCase.execute()
+                val response = getAnnouncementsUseCase.execute(
+                    searchTerm = searchTerm,
+                    categories = categories
+                )
                 if (response is ResponseState.Success) {
                     announcements = response.result
                 }
             }
             view?.update(announcements)
+            view?.hideProgress()
         }
     }
 

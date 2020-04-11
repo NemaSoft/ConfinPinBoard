@@ -2,6 +2,8 @@ package com.coronapptilus.covidpinboard.announcements.favorites
 
 import android.os.Bundle
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import androidx.fragment.app.Fragment
 import com.coronapptilus.covidpinboard.R
 import com.coronapptilus.covidpinboard.announcements.detail.AnnouncementDetailDialog
@@ -23,31 +25,49 @@ class AnnouncementsFavoritesFragment : Fragment(R.layout.fragment_announcements_
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        activity?.toolbar?.init(ToolbarView.FAVORITES)
+        activity?.toolbar?.apply {
+            init(ToolbarView.FAVORITES)
+            setOnFilterButtonClicked { searchTerm, categories ->
+                presenter.getFavorites(searchTerm, categories)
+            }
+            setOnSearchInputFilled { searchTerm, categories ->
+                presenter.getFavorites(searchTerm, categories)
+            }
+        }
 
         initList()
-
         initPresenter()
     }
 
     private fun initList() {
-        announcement_list.adapter = adapter
+        announcementList.adapter = adapter
         adapter.onItemClicked = { presenter.onAnnouncementItemClicked(it) }
     }
 
     private fun initPresenter() {
         presenter.apply {
             attachView(this@AnnouncementsFavoritesFragment)
-            init()
+            getFavorites()
         }
     }
 
     override fun update(favorites: List<AnnouncementModel>) {
         adapter.setData(favorites)
         if (favorites.isEmpty()) {
-            announcement_list.visibility = View.GONE
-            fallback_image.visibility = View.VISIBLE
+            showEmptyScreen()
+        } else {
+            hideEmptyScreen()
         }
+    }
+
+    private fun showEmptyScreen() {
+        announcementList.visibility = View.GONE
+        fallbackImage.visibility = View.VISIBLE
+    }
+
+    private fun hideEmptyScreen() {
+        announcementList.visibility = View.VISIBLE
+        fallbackImage.visibility = View.GONE
     }
 
     override fun showAnnouncementDetail(announcement: AnnouncementModel) {
@@ -61,5 +81,13 @@ class AnnouncementsFavoritesFragment : Fragment(R.layout.fragment_announcements_
 
     override fun hideAnnouncementDetail() {
         announcementDetailDialog?.dismiss()
+    }
+
+    override fun showProgress() {
+        progressView.visibility = VISIBLE
+    }
+
+    override fun hideProgress() {
+        progressView.visibility = GONE
     }
 }
