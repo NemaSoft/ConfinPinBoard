@@ -84,7 +84,7 @@ class AnnouncementMapper {
         when (target) {
             AnnouncementModel.Target.Adults -> AnnouncementModel.Target.Adults.type
             AnnouncementModel.Target.Children -> AnnouncementModel.Target.Children.type
-            AnnouncementModel.Target.Family -> AnnouncementModel.Target.Family.type
+            AnnouncementModel.Target.Familiar -> AnnouncementModel.Target.Familiar.type
             AnnouncementModel.Target.Undefined -> AnnouncementModel.Target.Undefined.type
         }
 
@@ -92,7 +92,7 @@ class AnnouncementMapper {
         when (type) {
             AnnouncementModel.Target.Adults.type -> AnnouncementModel.Target.Adults
             AnnouncementModel.Target.Children.type -> AnnouncementModel.Target.Children
-            AnnouncementModel.Target.Family.type -> AnnouncementModel.Target.Family
+            AnnouncementModel.Target.Familiar.type -> AnnouncementModel.Target.Familiar
             else -> AnnouncementModel.Target.Undefined
         }
 }
