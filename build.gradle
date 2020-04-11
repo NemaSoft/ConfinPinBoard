@@ -15,12 +15,12 @@ buildscript {
         // Google
         google_services_plugin_version = '4.3.3'
         // TODO: Check for an stable version of Crashlytics
-        crashlytics_plugin_version = '2.0.0-beta03'
+        crashlytics_plugin_version = '2.0.0-beta04'
         performance_plugin_version = '1.3.1'
         firebase_analytics_version = '17.3.0'
         // TODO: Check for an stable version of Crashlytics
-        firebase_crashlytics_version = '17.0.0-beta03'
-        firebase_performance_version = '19.0.5'
+        firebase_crashlytics_version = '17.0.0-beta04'
+        firebase_performance_version = '19.0.6'
         firebase_messaging_version = '20.1.5'
         firebase_firestore_version = '21.4.2'
 
