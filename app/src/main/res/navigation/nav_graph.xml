@@ -15,11 +15,7 @@
         android:id="@+id/form_fragment"
         android:name="com.coronapptilus.covidpinboard.announcements.form.AnnouncementFormFragment"
         android:label="form_fragment"
-        tools:layout="@layout/fragment_announcement_form">
-        <action
-            android:id="@+id/action_form_fragment_to_list_fragment"
-            app:destination="@id/list_fragment" />
-    </fragment>
+        tools:layout="@layout/fragment_announcement_form"/>
 
     <fragment
         android:id="@+id/favorites_fragment"

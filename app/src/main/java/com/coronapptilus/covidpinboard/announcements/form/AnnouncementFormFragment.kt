@@ -18,7 +18,6 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.coronapptilus.covidpinboard.R
@@ -69,11 +68,11 @@ class AnnouncementFormFragment : Fragment(R.layout.fragment_announcement_form),
     }
 
     override fun showProgress() {
-        progressView.visibility = View.VISIBLE
+        progressView?.visibility = View.VISIBLE
     }
 
     override fun hideProgress() {
-        progressView.visibility = View.GONE
+        progressView?.visibility = View.GONE
     }
 
     private fun setupPickersViews() {
@@ -272,12 +271,12 @@ class AnnouncementFormFragment : Fragment(R.layout.fragment_announcement_form),
     private fun String.toEditable(): Editable = Editable.Factory.getInstance().newEditable(this)
 
     override fun showMessage(message: String) {
-        Toast.makeText(context, message, Toast.LENGTH_LONG).show()
+        context?.let { Toast.makeText(it, message, Toast.LENGTH_LONG).show() }
     }
 
     override fun navigateToBoardFragment() {
-        view?.findNavController()?.navigate(R.id.action_form_fragment_to_list_fragment)
-        // TODO. investigar porqué se quedan las tabs activas
+//        view?.findNavController()?.navigate(R.id.action_form_fragment_to_list_fragment)
+        // TODO("investigar porqué se quedan las tabs activas")
     }
 
     companion object {
