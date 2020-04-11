@@ -2,8 +2,16 @@ package com.coronapptilus.covidpinboard.utils
 
 import android.content.Intent
 import android.provider.CalendarContract
+import android.util.Log
+import java.text.ParseException
+import java.text.SimpleDateFormat
+import java.util.*
 
 object CalendarUtils {
+
+    private const val STRING_DAY_FORMAT: String = "dd/MM/yyyy"
+    private const val STRING_HOUR_FORMAT: String = "HH:mm"
+    private const val STRING_DATE_FORMAT: String = "$STRING_DAY_FORMAT $STRING_HOUR_FORMAT"
 
     /**
      * Opens the google Calendar app for creating an event with its data.
@@ -35,5 +43,25 @@ object CalendarUtils {
 
     fun twoDigits(digit: Int): String? {
         return if (digit <= 9) "0$digit" else digit.toString()
+    }
+
+    fun fromStringToDate(dateString: String): Date? {
+        val sdf = SimpleDateFormat(STRING_DAY_FORMAT)
+        try {
+            return sdf.parse(dateString)
+        } catch (exception: ParseException) {
+            Log.w("Exception", "Date couldn't be parsed -- " + exception.localizedMessage)
+        }
+        return null
+    }
+
+    fun fromStringToFullDate(dateString: String): Date? {
+        val sdf = SimpleDateFormat(STRING_DATE_FORMAT)
+        try {
+            return sdf.parse(dateString)
+        } catch (exception: ParseException) {
+            Log.w("Exception", "Date couldn't be parsed -- " + exception.localizedMessage)
+        }
+        return null
     }
 }
