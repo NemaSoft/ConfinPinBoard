@@ -197,8 +197,7 @@ object ListItemUtils {
         when (target) {
             AnnouncementModel.Target.Adults -> context.resources.getString(R.string.adults)
             AnnouncementModel.Target.Children -> context.resources.getString(R.string.children)
-            AnnouncementModel.Target.Family -> context.resources.getString(R.string.families)
+            AnnouncementModel.Target.Familiar -> context.resources.getString(R.string.families)
             AnnouncementModel.Target.Undefined -> ""
         }
-
 }

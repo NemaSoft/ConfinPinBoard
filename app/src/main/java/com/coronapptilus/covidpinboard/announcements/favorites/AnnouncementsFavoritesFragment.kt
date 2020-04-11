@@ -11,8 +11,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_announcement_list.*
 import org.koin.android.ext.android.inject
 
-class AnnouncementsFavoritesFragment :
-    Fragment(R.layout.fragment_announcements_favorites), AnnouncementsFavoritesContract.View {
+class AnnouncementsFavoritesFragment : Fragment(R.layout.fragment_announcements_favorites),
+    AnnouncementsFavoritesContract.View {
 
     private val presenter: AnnouncementsFavoritesContract.Presenter by inject()
 

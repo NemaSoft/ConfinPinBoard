@@ -6,6 +6,7 @@ import com.coronapptilus.covidpinboard.R
 import com.coronapptilus.covidpinboard.commons.extensions.formatDate
 import com.coronapptilus.covidpinboard.domain.models.AnnouncementModel
 import kotlinx.android.synthetic.main.detail_dialog.view.*
+import java.util.*
 
 object DetailDialogUtils {
 
@@ -38,7 +39,7 @@ object DetailDialogUtils {
                 dialog_start_date_header.visibility = View.GONE
                 dialog_start_date.visibility = View.GONE
             }
-            if (dialog_end_date.text.isEmpty()){
+            if (dialog_end_date.text.isEmpty()) {
                 dialog_end_date_image.visibility = View.GONE
                 dialog_end_date_header.visibility = View.GONE
                 dialog_end_date.visibility = View.GONE
@@ -64,7 +65,8 @@ object DetailDialogUtils {
             description
         } else {
             context.resources.getString(R.string.error_message) +
-                    context.resources.getString(R.string.description_header).toLowerCase()
+                    context.resources.getString(R.string.description_header)
+                        .toLowerCase(Locale.getDefault())
         }
 
     private fun getFormattedPlace(context: Context, place: String) =
@@ -72,7 +74,8 @@ object DetailDialogUtils {
             place
         } else {
             context.resources.getString(R.string.error_message) +
-                    context.resources.getString(R.string.place_header).toLowerCase()
+                    context.resources.getString(R.string.place_header)
+                        .toLowerCase(Locale.getDefault())
         }
 
     private fun getFormattedCategories(categoriesNames: List<String>): String {
@@ -137,7 +140,7 @@ object DetailDialogUtils {
         when (target) {
             AnnouncementModel.Target.Adults -> R.drawable.ic_target_adults
             AnnouncementModel.Target.Children -> R.drawable.ic_target_kids
-            AnnouncementModel.Target.Family -> R.drawable.ic_target_families
+            AnnouncementModel.Target.Familiar -> R.drawable.ic_target_families
             AnnouncementModel.Target.Undefined -> 0
         }
 
@@ -146,7 +149,7 @@ object DetailDialogUtils {
         when (target) {
             AnnouncementModel.Target.Adults -> context.resources.getString(R.string.adults)
             AnnouncementModel.Target.Children -> context.resources.getString(R.string.children)
-            AnnouncementModel.Target.Family -> context.resources.getString(R.string.families)
+            AnnouncementModel.Target.Familiar -> context.resources.getString(R.string.families)
             AnnouncementModel.Target.Undefined -> ""
         }
 }
