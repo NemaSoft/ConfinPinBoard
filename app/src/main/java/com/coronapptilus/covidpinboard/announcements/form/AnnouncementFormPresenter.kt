@@ -38,9 +38,13 @@ class AnnouncementFormPresenter(
                 val response = addAnnouncementUseCase.execute(announcement)
                 if (response is ResponseState.Success) {
 //                 Announcement was added
-                    //TODO mostrar toast y cambiar al listado general
+                    view?.showMessage("Mensaje respuesta") // TODO ESPECIFICAR MENSAJE. Validaciones?
+                    view?.navigateToBoardFragment()
+                } else {
+                    view?.showMessage("Mensaje respuesta") // TODO ESPECIFICAR MENSAJE. Validaciones?
                 }
 
+                view?.navigateToBoardFragment() //TODO eliminar. sólo para pruebas mientras no esté el
                 view?.hideProgress()
             }
         }
@@ -120,6 +124,4 @@ class AnnouncementFormPresenter(
         // TODO MARIA. Validar target no sea null.
         return true
     }
-
-
 }

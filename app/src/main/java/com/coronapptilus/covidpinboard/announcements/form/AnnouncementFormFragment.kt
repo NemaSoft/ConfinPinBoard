@@ -13,10 +13,12 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.coronapptilus.covidpinboard.R
@@ -268,4 +270,13 @@ class AnnouncementFormFragment : Fragment(R.layout.fragment_announcement_form),
     }
 
     private fun String.toEditable(): Editable = Editable.Factory.getInstance().newEditable(this)
+
+    override fun showMessage(message: String){
+        Toast.makeText(context, message, Toast.LENGTH_LONG).show()
+    }
+
+    override fun navigateToBoardFragment() {
+        view?.findNavController()?.navigate(R.id.action_form_fragment_to_list_fragment)
+        // TODO. investigar porqué se quedan las tabs activas
+    }
 }

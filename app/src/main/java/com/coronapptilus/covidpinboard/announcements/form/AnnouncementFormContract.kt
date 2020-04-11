@@ -12,6 +12,10 @@ interface AnnouncementFormContract {
 
         fun hideProgress()
 
+        fun showMessage(message: String)
+
+        fun navigateToBoardFragment()
+
     }
 
     interface Presenter : BaseContract.Presenter<View> {
@@ -27,7 +31,7 @@ interface AnnouncementFormContract {
             place: String,
             categories: List<AnnouncementModel.Category>,
             target: AnnouncementModel.Target?,
-            startingdate: String,
+            startingDate: String,
             startingTime: String,
             endingDate: String,
             endingTime: String
