@@ -2,18 +2,11 @@ package com.coronapptilus.covidpinboard.announcements.list
 
 import com.coronapptilus.covidpinboard.datasources.ResponseState
 import com.coronapptilus.covidpinboard.domain.models.AnnouncementModel
-import com.coronapptilus.covidpinboard.domain.usecases.AddFavoriteUseCase
 import com.coronapptilus.covidpinboard.domain.usecases.GetAnnouncementsUseCase
-import com.coronapptilus.covidpinboard.domain.usecases.IsFavoriteUseCase
-import com.coronapptilus.covidpinboard.domain.usecases.RemoveFavoriteUseCase
 import kotlinx.coroutines.*
 
-class AnnouncementsListPresenter(
-    private val getAnnouncementsUseCase: GetAnnouncementsUseCase,
-    private val isFavoriteUseCase: IsFavoriteUseCase,
-    private val addFavoriteUseCase: AddFavoriteUseCase,
-    private val removeFavoriteUseCase: RemoveFavoriteUseCase
-) : AnnouncementsListContract.Presenter {
+class AnnouncementsListPresenter(private val getAnnouncementsUseCase: GetAnnouncementsUseCase) :
+    AnnouncementsListContract.Presenter {
 
     override var view: AnnouncementsListContract.View? = null
 
@@ -48,15 +41,6 @@ class AnnouncementsListPresenter(
     }
 
     override fun onAnnouncementItemClicked(announcement: AnnouncementModel) {
-        val isFavorite = isFavoriteUseCase.execute(announcement.id)
-        view?.showAnnouncementDetail(announcement, isFavorite)
-    }
-
-    override fun onFavoriteButtonClicked(announcementId: String, isFavoriteSelected: Boolean) {
-        if (isFavoriteSelected) {
-            addFavoriteUseCase.execute(announcementId)
-        } else {
-            removeFavoriteUseCase.execute(announcementId)
-        }
+        view?.showAnnouncementDetail(announcement)
     }
 }

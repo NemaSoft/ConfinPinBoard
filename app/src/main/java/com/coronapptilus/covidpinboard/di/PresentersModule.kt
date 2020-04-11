@@ -1,5 +1,7 @@
 package com.coronapptilus.covidpinboard.di
 
+import com.coronapptilus.covidpinboard.announcements.detail.AnnouncementDetailContract
+import com.coronapptilus.covidpinboard.announcements.detail.AnnouncementDetailPresenter
 import com.coronapptilus.covidpinboard.announcements.favorites.AnnouncementsFavoritesContract
 import com.coronapptilus.covidpinboard.announcements.favorites.AnnouncementsFavoritesPresenter
 import com.coronapptilus.covidpinboard.announcements.form.AnnouncementFormContract
@@ -15,11 +17,12 @@ object PresentersModule {
     val presentersModule = module {
         factory<SplashContract.Presenter> { SplashPresenter() }
         factory<AnnouncementFormContract.Presenter> { AnnouncementFormPresenter(get()) }
-        factory<AnnouncementsListContract.Presenter> {
-            AnnouncementsListPresenter(get(), get(), get(), get())
-        }
+        factory<AnnouncementsListContract.Presenter> { AnnouncementsListPresenter(get()) }
         factory<AnnouncementsFavoritesContract.Presenter> {
             AnnouncementsFavoritesPresenter(get(), get(), get())
+        }
+        factory<AnnouncementDetailContract.Presenter> {
+            AnnouncementDetailPresenter(get(), get(), get())
         }
     }
 }
