@@ -15,7 +15,6 @@ import android.widget.ArrayAdapter
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.AppCompatButton
-import androidx.appcompat.widget.AppCompatEditText
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
@@ -24,6 +23,7 @@ import com.coronapptilus.covidpinboard.R
 import com.coronapptilus.covidpinboard.announcements.commons.filter.adapter.FilterGridAdapter
 import com.coronapptilus.covidpinboard.commons.components.ToolbarView
 import com.coronapptilus.covidpinboard.domain.models.AnnouncementModel
+import com.coronapptilus.covidpinboard.utils.CalendarUtils
 import com.coronapptilus.covidpinboard.utils.CategoryUtils
 import com.coronapptilus.covidpinboard.utils.CategoryUtils.getCategoryString
 import kotlinx.android.synthetic.main.activity_main.*
@@ -43,7 +43,6 @@ class AnnouncementFormFragment : Fragment(R.layout.fragment_announcement_form),
 
         this.presenter.attachView(this)
         setupPickersViews()
-        // TODO retocar formatos hora/día
         setupSpinnerView()
 
         addForm_addButton.setOnClickListener {
@@ -55,7 +54,8 @@ class AnnouncementFormFragment : Fragment(R.layout.fragment_announcement_form),
                 showFilterDialog { list ->
                     categories.clear()
                     categories.addAll(list)
-                    addForm_categories.text = list.joinToString { getCategoryString(it) }.toEditable()
+                    addForm_categories.text =
+                        list.joinToString { getCategoryString(it) }.toEditable()
                 }
             }
         }
@@ -152,13 +152,14 @@ class AnnouncementFormFragment : Fragment(R.layout.fragment_announcement_form),
                 DatePickerDialog.OnDateSetListener { _, dYear, dMonth, dDay ->
                     val formattedDate = String.format(
                         getString(R.string.form_formattedDate),
-                        dDay,
-                        dMonth + 1,
+                        CalendarUtils.twoDigits(dDay),
+                        CalendarUtils.twoDigits(dMonth + 1),
                         dYear
                     )
 
                     when (view) {
-                        addForm_startingDate -> addForm_startingDate.text = formattedDate.toEditable()
+                        addForm_startingDate -> addForm_startingDate.text =
+                            formattedDate.toEditable()
                         addForm_endingDate -> addForm_endingDate.text = formattedDate.toEditable()
                     }
                 },
@@ -185,12 +186,13 @@ class AnnouncementFormFragment : Fragment(R.layout.fragment_announcement_form),
                 TimePickerDialog.OnTimeSetListener { _, dHour, dMinute ->
                     val formattedHour = String.format(
                         getString(R.string.form_formattedHour),
-                        dHour,
-                        dMinute
+                        CalendarUtils.twoDigits(dHour),
+                        CalendarUtils.twoDigits(dMinute)
                     )
 
                     when (view) {
-                        addForm_startingTime -> addForm_startingTime.text = formattedHour.toEditable()
+                        addForm_startingTime -> addForm_startingTime.text =
+                            formattedHour.toEditable()
                         addForm_endingTime -> addForm_endingTime.text = formattedHour.toEditable()
                     }
                 },
@@ -233,20 +235,22 @@ class AnnouncementFormFragment : Fragment(R.layout.fragment_announcement_form),
 
     private fun Context.showFilterDialog(callBack: (List<AnnouncementModel.Category>) -> Unit) {
 
-        val dialogView = LayoutInflater.from(this).inflate(R.layout.filter_dialog,null)
-        val closeButton = dialogView.findViewById<AppCompatImageView>(R.id.filter_dialog_close_button)
+        val dialogView = LayoutInflater.from(this).inflate(R.layout.filter_dialog, null)
+        val closeButton =
+            dialogView.findViewById<AppCompatImageView>(R.id.filter_dialog_close_button)
         val okButton = dialogView.findViewById<AppCompatButton>(R.id.filter_dialog_ok_button)
         val recyclerView = dialogView.findViewById<RecyclerView>(R.id.filter_dialog_recyclerview)
 
 
-        val filterGridAdapter= FilterGridAdapter(this, CategoryUtils.getAllCategories())
+        val filterGridAdapter = FilterGridAdapter(this, CategoryUtils.getAllCategories())
         filterGridAdapter.setCheckedCategories(categories)
 
         val displayMetrics: DisplayMetrics = resources.displayMetrics
         val screenWidthDp = displayMetrics.widthPixels / displayMetrics.density
 
         recyclerView.adapter = filterGridAdapter
-        recyclerView.layoutManager = GridLayoutManager(context, (screenWidthDp / ToolbarView.COLUMN_WIDTH + 0.5).toInt())
+        recyclerView.layoutManager =
+            GridLayoutManager(context, (screenWidthDp / ToolbarView.COLUMN_WIDTH + 0.5).toInt())
 
 
         val mBuilder = AlertDialog.Builder(this).setView(dialogView).create()

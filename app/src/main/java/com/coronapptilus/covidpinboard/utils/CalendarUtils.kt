@@ -40,4 +40,8 @@ object CalendarUtils {
             )
         return intent
     }
+
+    fun twoDigits(digit: Int): String? {
+        return if (digit <= 9) "0$digit" else digit.toString()
+    }
 }
