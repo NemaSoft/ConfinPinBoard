@@ -54,7 +54,7 @@ class AnnouncementMapper {
                 AnnouncementModel.Category.Formation -> AnnouncementModel.Category.Formation.type
                 AnnouncementModel.Category.Donation -> AnnouncementModel.Category.Donation.type
                 AnnouncementModel.Category.Crafts -> AnnouncementModel.Category.Crafts.type
-                AnnouncementModel.Category.StoryTeller -> AnnouncementModel.Category.StoryTeller.type
+                AnnouncementModel.Category.StoryTelling -> AnnouncementModel.Category.StoryTelling.type
                 AnnouncementModel.Category.Others -> AnnouncementModel.Category.Others.type
             }
         }
@@ -75,7 +75,7 @@ class AnnouncementMapper {
                 AnnouncementModel.Category.Formation.type -> AnnouncementModel.Category.Formation
                 AnnouncementModel.Category.Donation.type -> AnnouncementModel.Category.Donation
                 AnnouncementModel.Category.Crafts.type -> AnnouncementModel.Category.Crafts
-                AnnouncementModel.Category.StoryTeller.type -> AnnouncementModel.Category.StoryTeller
+                AnnouncementModel.Category.StoryTelling.type -> AnnouncementModel.Category.StoryTelling
                 else -> AnnouncementModel.Category.Others
             }
         } ?: emptyList()

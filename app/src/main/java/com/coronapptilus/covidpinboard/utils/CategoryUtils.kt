@@ -1,8 +1,6 @@
 package com.coronapptilus.covidpinboard.utils
 
 import android.content.Context
-import android.graphics.Color
-import android.graphics.drawable.Drawable
 import androidx.core.content.ContextCompat
 import com.coronapptilus.covidpinboard.R
 import com.coronapptilus.covidpinboard.domain.models.AnnouncementModel
@@ -24,7 +22,7 @@ object CategoryUtils {
             AnnouncementModel.Category.Formation -> R.drawable.ic_category_formation
             AnnouncementModel.Category.Donation -> R.drawable.ic_category_donation
             AnnouncementModel.Category.Crafts -> R.drawable.ic_category_crafts
-            AnnouncementModel.Category.StoryTeller -> R.drawable.ic_category_storyteller
+            AnnouncementModel.Category.StoryTelling -> R.drawable.ic_category_storyteller
             AnnouncementModel.Category.Others -> R.drawable.ic_category_others
         }
     }
@@ -45,15 +43,15 @@ object CategoryUtils {
                 AnnouncementModel.Category.Formation -> R.string.formation
                 AnnouncementModel.Category.Donation -> R.string.donation
                 AnnouncementModel.Category.Crafts -> R.string.crafts
-                AnnouncementModel.Category.StoryTeller -> R.string.storyteller
+                AnnouncementModel.Category.StoryTelling -> R.string.storytelling
                 AnnouncementModel.Category.Others -> R.string.others
             }
         )
     }
 
-
     fun Context.getCategoryColor(category: AnnouncementModel.Category): Int {
-        return ContextCompat.getColor(this,
+        return ContextCompat.getColor(
+            this,
             when (category) {
                 AnnouncementModel.Category.Sport -> R.color.sport
                 AnnouncementModel.Category.Cook -> R.color.cook
@@ -68,28 +66,29 @@ object CategoryUtils {
                 AnnouncementModel.Category.Formation -> R.color.formation
                 AnnouncementModel.Category.Donation -> R.color.donation
                 AnnouncementModel.Category.Crafts -> R.color.crafts
-                AnnouncementModel.Category.StoryTeller -> R.color.storyteller
+                AnnouncementModel.Category.StoryTelling -> R.color.storyteller
                 AnnouncementModel.Category.Others -> R.color.others
             }
         )
     }
 
-    fun getAllCategories() : List<AnnouncementModel.Category> {
-        return mutableListOf<AnnouncementModel.Category>(AnnouncementModel.Category.Sport,
-                AnnouncementModel.Category.Cook,
-                AnnouncementModel.Category.Music,
-                AnnouncementModel.Category.Dance,
-                AnnouncementModel.Category.Theater,
-                AnnouncementModel.Category.Literature,
-                AnnouncementModel.Category.Cinema,
-                AnnouncementModel.Category.Conference,
-                AnnouncementModel.Category.Interview,
-                AnnouncementModel.Category.WorkShop,
-                AnnouncementModel.Category.Formation,
-                AnnouncementModel.Category.Donation,
-                AnnouncementModel.Category.Crafts,
-                AnnouncementModel.Category.StoryTeller,
-                AnnouncementModel.Category.Others
+    fun getAllCategories(): List<AnnouncementModel.Category> {
+        return mutableListOf<AnnouncementModel.Category>(
+            AnnouncementModel.Category.Sport,
+            AnnouncementModel.Category.Cook,
+            AnnouncementModel.Category.Music,
+            AnnouncementModel.Category.Dance,
+            AnnouncementModel.Category.Theater,
+            AnnouncementModel.Category.Literature,
+            AnnouncementModel.Category.Cinema,
+            AnnouncementModel.Category.Conference,
+            AnnouncementModel.Category.Interview,
+            AnnouncementModel.Category.WorkShop,
+            AnnouncementModel.Category.Formation,
+            AnnouncementModel.Category.Donation,
+            AnnouncementModel.Category.Crafts,
+            AnnouncementModel.Category.StoryTelling,
+            AnnouncementModel.Category.Others
         )
     }
 }

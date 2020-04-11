@@ -124,9 +124,9 @@ object ListItemUtils {
                     AnnouncementModel.Category.Formation -> categoriesNames.add(context.getString(R.string.formation))
                     AnnouncementModel.Category.Donation -> categoriesNames.add(context.getString(R.string.donation))
                     AnnouncementModel.Category.Crafts -> categoriesNames.add(context.getString(R.string.crafts))
-                    AnnouncementModel.Category.StoryTeller -> categoriesNames.add(
+                    AnnouncementModel.Category.StoryTelling -> categoriesNames.add(
                         context.getString(
-                            R.string.storyteller
+                            R.string.storytelling
                         )
                     )
                     AnnouncementModel.Category.Others -> categoriesNames.add(context.getString(R.string.others))
@@ -155,7 +155,7 @@ object ListItemUtils {
                     AnnouncementModel.Category.Formation -> R.drawable.ic_category_formation
                     AnnouncementModel.Category.Donation -> R.drawable.ic_category_donation
                     AnnouncementModel.Category.Crafts -> R.drawable.ic_category_crafts
-                    AnnouncementModel.Category.StoryTeller -> R.drawable.ic_category_storyteller
+                    AnnouncementModel.Category.StoryTelling -> R.drawable.ic_category_storyteller
                     AnnouncementModel.Category.Others -> R.drawable.ic_category_others
                 }
             }

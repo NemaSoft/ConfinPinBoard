@@ -124,9 +124,9 @@ object DetailDialogUtils {
                     AnnouncementModel.Category.Formation -> categoriesNames.add(context.getString(R.string.formation))
                     AnnouncementModel.Category.Donation -> categoriesNames.add(context.getString(R.string.donation))
                     AnnouncementModel.Category.Crafts -> categoriesNames.add(context.getString(R.string.crafts))
-                    AnnouncementModel.Category.StoryTeller -> categoriesNames.add(
+                    AnnouncementModel.Category.StoryTelling -> categoriesNames.add(
                         context.getString(
-                            R.string.storyteller
+                            R.string.storytelling
                         )
                     )
                     AnnouncementModel.Category.Others -> categoriesNames.add(context.getString(R.string.others))
