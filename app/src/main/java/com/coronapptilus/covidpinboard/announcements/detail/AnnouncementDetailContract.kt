@@ -17,6 +17,8 @@ interface AnnouncementDetailContract {
             endTimestamp: Long
         )
 
+        fun notifyFavoriteStatusChanged()
+
         fun exitView()
     }
 

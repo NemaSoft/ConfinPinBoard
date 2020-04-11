@@ -18,6 +18,7 @@ class AnnouncementsFavoritesFragment : Fragment(R.layout.fragment_announcements_
     private val presenter by inject<AnnouncementsFavoritesContract.Presenter>()
 
     private val adapter = AnnouncementsListAdapter()
+    private var announcementDetailDialog: AnnouncementDetailDialog? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -50,6 +51,15 @@ class AnnouncementsFavoritesFragment : Fragment(R.layout.fragment_announcements_
     }
 
     override fun showAnnouncementDetail(announcement: AnnouncementModel) {
-        context?.let { AnnouncementDetailDialog(it, announcement).show() }
+        context?.let {
+            announcementDetailDialog = AnnouncementDetailDialog(it, announcement) {
+                presenter.onFavoriteStatusChanged()
+            }
+            announcementDetailDialog?.show()
+        }
+    }
+
+    override fun hideAnnouncementDetail() {
+        announcementDetailDialog?.dismiss()
     }
 }

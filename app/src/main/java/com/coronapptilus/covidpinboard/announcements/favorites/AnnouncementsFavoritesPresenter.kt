@@ -34,6 +34,10 @@ class AnnouncementsFavoritesPresenter(
         view?.showAnnouncementDetail(announcement)
     }
 
+    override fun onFavoriteStatusChanged() {
+        view?.hideAnnouncementDetail()
+    }
+
     private fun getFavorites() {
         coroutineScope.launch {
             val favoriteAnnouncements: List<AnnouncementModel> = getFavoritesUseCase.execute()
