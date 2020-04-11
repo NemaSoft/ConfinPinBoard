@@ -54,7 +54,7 @@ class AnnouncementsListFragment : Fragment(R.layout.fragment_announcement_list),
         dialogView.dialog_favorites_button.apply {
             isSelected = isFavorite
             setOnClickListener {
-                isSelected != isSelected
+                isSelected = !isSelected
                 presenter.onFavoriteButtonClicked(announcement.id, isSelected)
             }
         }
