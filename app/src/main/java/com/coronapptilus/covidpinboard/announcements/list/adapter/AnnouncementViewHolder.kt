@@ -35,7 +35,7 @@ class AnnouncementViewHolder(private val parent: ViewGroup) :
         var isFavoritesClicked = false
 
         val dialogView =
-            LayoutInflater.from(itemView.context).inflate(R.layout.detail_dialog, parent)
+            LayoutInflater.from(itemView.context).inflate(R.layout.detail_dialog, parent,false)
 
         val filledDialog = DetailDialogUtils.getFilledDialog(item, dialogView)
 

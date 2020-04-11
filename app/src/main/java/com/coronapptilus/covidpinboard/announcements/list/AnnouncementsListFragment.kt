@@ -25,8 +25,9 @@ class AnnouncementsListFragment : Fragment(R.layout.fragment_announcement_list),
         initPresenter()
     }
 
-    override fun update(announcement: List<AnnouncementModel>) {
-        if (announcement.isEmpty()){
+    override fun update(announcements: List<AnnouncementModel>) {
+        adapter.setData(announcements)
+        if (announcements.isEmpty()){
             home_event_list.visibility = View.GONE
             fallback_image.visibility = View.VISIBLE
         }
