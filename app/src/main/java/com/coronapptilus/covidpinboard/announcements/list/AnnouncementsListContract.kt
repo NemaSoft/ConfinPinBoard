@@ -7,7 +7,7 @@ interface AnnouncementsListContract {
 
     interface View : BaseContract.View {
 
-        fun update(announcement: List<AnnouncementModel>)
+        fun update(announcements: List<AnnouncementModel>)
     }
 
     interface Presenter : BaseContract.Presenter<View> {

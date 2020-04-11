@@ -4,42 +4,32 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.coronapptilus.covidpinboard.R
+import com.coronapptilus.covidpinboard.announcements.list.adapter.AnnouncementsListAdapter
 import com.coronapptilus.covidpinboard.commons.components.ToolbarView
 import com.coronapptilus.covidpinboard.domain.models.AnnouncementModel
-import com.coronapptilus.covidpinboard.commons.extensions.convertDateToTimestamp
-import com.coronapptilus.covidpinboard.utils.CalendarUtils
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_announcements_favorites.*
+import kotlinx.android.synthetic.main.fragment_announcement_list.*
 import org.koin.android.ext.android.inject
-import java.util.*
 
 class AnnouncementsFavoritesFragment :
     Fragment(R.layout.fragment_announcements_favorites), AnnouncementsFavoritesContract.View {
 
     private val presenter: AnnouncementsFavoritesContract.Presenter by inject()
 
+    private val adapter = AnnouncementsListAdapter()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         activity?.toolbar?.init(ToolbarView.FAVORITES)
 
-        //TODO BORRAR: botón de ejemplo y el startActivity cuando se aplique el addToCalendar donde corresponda.
-        button.setOnClickListener {
-            val beginTime= convertDateToTimestamp("09/03/2020","19:30") ?: 0
-
-            val endTime = convertDateToTimestamp("09/03/2020","20:30") ?: 0
-
-            val calendarIntent =
-                CalendarUtils.addToCalendar(
-                    "Zumba",
-                    "Clase diaria de Zumba",
-                    "En mi guarida",
-                    beginTime, endTime
-                )
-            startActivity(calendarIntent)
-        }
+        initList()
 
         initPresenter()
+    }
+
+    private fun initList() {
+        announcement_list.adapter = adapter
     }
 
     private fun initPresenter() {
@@ -50,6 +40,10 @@ class AnnouncementsFavoritesFragment :
     }
 
     override fun update(favorites: List<AnnouncementModel>) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        adapter.setData(favorites)
+        if (favorites.isEmpty()) {
+            announcement_list.visibility = View.GONE
+            fallback_image.visibility = View.VISIBLE
+        }
     }
 }

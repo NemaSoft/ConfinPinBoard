@@ -20,7 +20,7 @@ class AnnouncementsListFragment : Fragment(R.layout.fragment_announcement_list),
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         activity?.toolbar?.init(ToolbarView.HOME)
-        home_event_list.adapter = adapter
+        announcement_list.adapter = adapter
 
         initPresenter()
     }
@@ -28,7 +28,7 @@ class AnnouncementsListFragment : Fragment(R.layout.fragment_announcement_list),
     override fun update(announcements: List<AnnouncementModel>) {
         adapter.setData(announcements)
         if (announcements.isEmpty()){
-            home_event_list.visibility = View.GONE
+            announcement_list.visibility = View.GONE
             fallback_image.visibility = View.VISIBLE
         }
     }
