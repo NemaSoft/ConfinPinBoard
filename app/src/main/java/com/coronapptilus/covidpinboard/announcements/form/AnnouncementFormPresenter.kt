@@ -5,6 +5,7 @@ import com.coronapptilus.covidpinboard.R
 import com.coronapptilus.covidpinboard.datasources.ResponseState
 import com.coronapptilus.covidpinboard.domain.models.AnnouncementModel
 import com.coronapptilus.covidpinboard.domain.usecases.AddAnnouncementUseCase
+import com.coronapptilus.covidpinboard.utils.FormValidator
 import kotlinx.coroutines.*
 import java.util.*
 
@@ -83,7 +84,7 @@ class AnnouncementFormPresenter(
         place: String,
         categories: List<AnnouncementModel.Category>,
         target: AnnouncementModel.Target?,
-        startingdate: String,
+        startingDate: String,
         startingTime: String,
         endingDate: String,
         endingTime: String
@@ -91,11 +92,23 @@ class AnnouncementFormPresenter(
 
         view?.showProgress()
 
-        if (!validateForm()) {
+
+        if (!isValidForm(
+                announcer,
+                title,
+                description,
+                place,
+                categories,
+                target,
+                startingDate,
+                startingTime,
+                endingDate,
+                endingTime
+            )
+        ) {
             view?.hideProgress()
             return
         }
-
         val id = UUID.randomUUID().toString()
 
         val announcement = AnnouncementModel(
@@ -106,7 +119,7 @@ class AnnouncementFormPresenter(
             place,
             categories,
             target!!,
-            startingdate,
+            startingDate,
             startingTime,
             endingDate,
             endingTime
@@ -115,13 +128,25 @@ class AnnouncementFormPresenter(
         addAnnouncement(announcement)
     }
 
-    private fun validateForm(): Boolean {
-        // TODO MARIA
-        return validateInputForms()
-    }
+    private fun isValidForm(
+        announcer: String,
+        title: String,
+        description: String,
+        place: String,
+        categories: List<AnnouncementModel.Category>,
+        target: AnnouncementModel.Target?,
+        startingDate: String,
+        startingTime: String,
+        endingDate: String,
+        endingTime: String
+    ): Boolean {
 
-    private fun validateInputForms(): Boolean {
-        // TODO MARIA. Validar target no sea null.
-        return true
+        return FormValidator.isValidAnnouncer(announcer)
+                && FormValidator.isValidTitle(title)
+                && FormValidator.isValidPlace(place)
+                && FormValidator.isValidDescription(description)
+                && FormValidator.isValidTarget(target)
+                && FormValidator.isValidCategoryList(categories)
+                && FormValidator.isValidDate(startingDate, startingTime, endingDate, endingTime)
     }
 }
