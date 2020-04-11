@@ -43,9 +43,12 @@ class AnnouncementFormPresenter(
             }
 
             if (announcementAdded) {
-                view?.showMessage("Mensaje respuesta") // TODO ESPECIFICAR MENSAJE. Validaciones?
+                // TODO: mejora futura. Realizar navegación de pantalla.
+                // Announcement was added
+                view?.showMessage(R.string.pin_created_OK)
+                view?.clearForm()
             } else {
-                view?.showMessage("Mensaje respuesta") // TODO ESPECIFICAR MENSAJE. Validaciones?
+                view?.showMessage(R.string.pin_created_Fail)
             }
 
             view?.hideProgress()
@@ -110,6 +113,7 @@ class AnnouncementFormPresenter(
             view?.hideProgress()
             return
         }
+
         val id = UUID.randomUUID().toString()
 
         val announcement = AnnouncementModel(
@@ -142,12 +146,48 @@ class AnnouncementFormPresenter(
         endingTime: String
     ): Boolean {
 
-        return FormValidator.isValidAnnouncer(announcer)
-                && FormValidator.isValidTitle(title)
-                && FormValidator.isValidPlace(place)
-                && FormValidator.isValidDescription(description)
-                && FormValidator.isValidTarget(target)
-                && FormValidator.isValidCategoryList(categories)
-                && FormValidator.isValidDate(startingDate, startingTime, endingDate, endingTime)
+        val isAnnouncerValid = FormValidator.isValidAnnouncer(announcer)
+        if (!isAnnouncerValid) {
+            view?.setErrorMessage(R.string.mandatory_field_error, FormItem.ANNOUNCER)
+        }
+
+        val isTitleValid = FormValidator.isValidTitle(title)
+        if (!isTitleValid) {
+            view?.setErrorMessage(R.string.mandatory_field_error, FormItem.TITLE)
+        }
+
+        val isPlaceValid = FormValidator.isValidPlace(place)
+        if (!isPlaceValid) {
+            view?.setErrorMessage(R.string.mandatory_field_error, FormItem.PLACE)
+        }
+
+        val isDescriptionValid = FormValidator.isValidDescription(description)
+        if (!isDescriptionValid) {
+            view?.setErrorMessage(R.string.description_error, FormItem.DESCRIPTION)
+        }
+
+        val isTargetValid = FormValidator.isValidTarget(target)
+        if (!isTargetValid) {
+            view?.setErrorMessage(R.string.target_error, FormItem.TARGET)
+        }
+
+        val isCategoryValid = FormValidator.isValidCategoryList(categories)
+        if (!isTargetValid) {
+            view?.setErrorMessage(R.string.category_error, FormItem.CATEGORIES)
+        }
+
+        val isDateValid =
+            FormValidator.isValidDate(startingDate, startingTime, endingDate, endingTime)
+        if (!isDateValid) {
+            view?.setErrorMessage(R.string.dateTime_error, FormItem.DATE)
+        }
+
+        return isAnnouncerValid
+                && isTitleValid
+                && isPlaceValid
+                && isDescriptionValid
+                && isTargetValid
+                && isCategoryValid
+                && isDateValid
     }
 }

@@ -6,6 +6,7 @@ import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
+import android.text.TextWatcher
 import android.util.DisplayMetrics
 import android.view.LayoutInflater
 import android.view.View
@@ -43,6 +44,25 @@ class AnnouncementFormFragment : Fragment(R.layout.fragment_announcement_form),
         activity?.toolbar?.init(ToolbarView.FORM)
 
         this.presenter.attachView(this)
+
+        setUpViews()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        this.presenter.detachView()
+    }
+
+    override fun showProgress() {
+        progressView.visibility = View.VISIBLE
+    }
+
+    override fun hideProgress() {
+        progressView.visibility = View.GONE
+    }
+
+    private fun setUpViews() {
+        setupEditTexts()
         setupPickersViews()
         setupSpinnerView()
 
@@ -51,6 +71,7 @@ class AnnouncementFormFragment : Fragment(R.layout.fragment_announcement_form),
         }
 
         addForm_categories.setOnClickListener {
+            categoriesEditTextParent.error = null
             context?.apply {
                 showFilterDialog { list ->
                     categories.clear()
@@ -62,17 +83,58 @@ class AnnouncementFormFragment : Fragment(R.layout.fragment_announcement_form),
         }
     }
 
-    override fun onPause() {
-        super.onPause()
-        this.presenter.detachView()
-    }
+    private fun setupEditTexts() {
+        // Title
+        addForm_title.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+            }
 
-    override fun showProgress() {
-        progressView?.visibility = View.VISIBLE
-    }
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                titleEditTextParent.error = null
+            }
 
-    override fun hideProgress() {
-        progressView?.visibility = View.GONE
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            }
+        })
+
+        // Announcer
+        addForm_announcer.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                announcerEditTextParent.error = null
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            }
+        })
+
+        // Place
+        addForm_place.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                placeEditTextParent.error = null
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            }
+        })
+
+        // Description
+        addForm_description.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                descriptionEditTextParent.error = null
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            }
+        })
     }
 
     private fun setupPickersViews() {
@@ -93,6 +155,7 @@ class AnnouncementFormFragment : Fragment(R.layout.fragment_announcement_form),
     }
 
     private fun setupSpinnerView() {
+
         val targetListNames = presenter.getSpinnerTargetList(context!!)
 
         val adapter = object :
@@ -125,7 +188,7 @@ class AnnouncementFormFragment : Fragment(R.layout.fragment_announcement_form),
         addForm_targetSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             // TODO cambiar el color del texto original en el textview una vez se clicka
             override fun onNothingSelected(parent: AdapterView<*>?) {
-                //TODO("Not yet implemented")
+                clearTargetError()
             }
 
             override fun onItemSelected(
@@ -134,7 +197,7 @@ class AnnouncementFormFragment : Fragment(R.layout.fragment_announcement_form),
                 position: Int,
                 id: Long
             ) {
-                //TODO("Not yet implemented")
+                clearTargetError()
             }
         }
     }
@@ -145,6 +208,8 @@ class AnnouncementFormFragment : Fragment(R.layout.fragment_announcement_form),
         val year = calendar.get(Calendar.YEAR)
         val month = calendar.get(Calendar.MONTH)
         val day = calendar.get(Calendar.DAY_OF_MONTH)
+
+        clearDateTimeError()
 
         // Picker launch
         if (context != null) {
@@ -179,6 +244,8 @@ class AnnouncementFormFragment : Fragment(R.layout.fragment_announcement_form),
         val calendar: Calendar = Calendar.getInstance(Locale.getDefault())
         val hour = calendar.get(Calendar.HOUR_OF_DAY)
         val minute = calendar.get(Calendar.MINUTE)
+
+        clearDateTimeError()
 
         // Picker launch
         if (context != null) {
@@ -270,13 +337,47 @@ class AnnouncementFormFragment : Fragment(R.layout.fragment_announcement_form),
 
     private fun String.toEditable(): Editable = Editable.Factory.getInstance().newEditable(this)
 
-    override fun showMessage(message: String) {
-        context?.let { Toast.makeText(it, message, Toast.LENGTH_LONG).show() }
+    override fun showMessage(message: Int) {
+        context?.let { Toast.makeText(it, getString(message), Toast.LENGTH_LONG).show() }
     }
 
-    override fun navigateToBoardFragment() {
-//        view?.findNavController()?.navigate(R.id.action_form_fragment_to_list_fragment)
-        // TODO("investigar porqué se quedan las tabs activas")
+    override fun setErrorMessage(message: Int, formItem: FormItem) {
+        when (formItem) {
+            FormItem.ANNOUNCER -> announcerEditTextParent.error = getString(message)
+            FormItem.TITLE -> titleEditTextParent.error = getString(message)
+            FormItem.PLACE -> placeEditTextParent.error = getString(message)
+            FormItem.DATE -> {
+                dateForm_error.text = getString(message)
+                dateForm_error.visibility = View.VISIBLE
+            }
+            FormItem.TARGET -> {
+                targetForm_error.text = getString(message)
+                targetForm_error.visibility = View.VISIBLE
+            }
+            FormItem.CATEGORIES -> categoriesEditTextParent.error = getString(message)
+            FormItem.DESCRIPTION -> descriptionEditTextParent.error = getString(message)
+        }
+    }
+
+    private fun clearDateTimeError() {
+        dateForm_error.visibility = View.GONE
+    }
+
+    private fun clearTargetError() {
+        targetForm_error.visibility = View.GONE
+    }
+
+    override fun clearForm() {
+        addForm_title.setText("")
+        addForm_announcer.setText("")
+        addForm_place.setText("")
+        addForm_startingDate.setText("")
+        addForm_startingTime.setText("")
+        addForm_endingDate.setText("")
+        addForm_endingTime.setText("")
+        addForm_categories.setText("")
+        addForm_targetSpinner.setSelection(0)
+        addForm_description.setText("")
     }
 
     companion object {

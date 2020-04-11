@@ -39,13 +39,14 @@
     <string name="formation">Formación</string>
     <string name="donation">Donación</string>
     <string name="crafts">Manualidades</string>
-    <string name="storyteller">Cuenta cuentos</string>
+    <string name="storytelling">Cuentacuentos</string>
     <string name="others">Otros</string>
 
     <!-- Targets -->
     <string name="adults">Adultos</string>
     <string name="children">Niños</string>
     <string name="familiar">Familiar</string>
+    <string name="families">Familias</string>
 
     <!--AddForm-->
     <string name="addForm_TitleStatement">Añade tu pin</string>
@@ -66,9 +67,15 @@
 
     <string name="chooseATarget">Selecciona un público</string>
     <string name="addButton">Añadir</string>
-    <string name="families">Familias</string>
+    <string name="pin_created_OK">Tu pin se ha creado correctamente</string>
+    <string name="pin_created_Fail">Se produjo un error al crear tu pin</string>
 
     <!-- Filter -->
     <string name="category_filter">Filtro por categorías</string>
+    <string name="mandatory_field_error">Este campo es obligatorio</string>
+    <string name="target_error">Es necesario especificar un público</string>
+    <string name="category_error">Selecciona mínimo una categoría</string>
+    <string name="dateTime_error">Fecha u hora incorrectas</string>
+    <string name="description_error">Especifica una descripción correcta</string>
 
 </resources>

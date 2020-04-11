@@ -30,7 +30,7 @@ data class AnnouncementModel(
         object Formation : Category(11)
         object Donation : Category(12)
         object Crafts : Category(13)
-        object StoryTeller : Category(14)
+        object StoryTelling : Category(14)
         object Others : Category(15)
     }
 

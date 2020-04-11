@@ -39,13 +39,14 @@
     <string name="formation">Formation</string>
     <string name="donation">Donation</string>
     <string name="crafts">Crafts</string>
-    <string name="storyteller">StoryTeller</string>
+    <string name="storytelling">Storytelling</string>
     <string name="others">Others</string>
 
     <!-- Targets -->
     <string name="adults">Adults</string>
     <string name="children">Children</string>
     <string name="familiar">Familiar</string>
+    <string name="families">Families</string>
 
     <!--AddForm-->
     <string name="addForm_TitleStatement">Add your pin</string>
@@ -66,9 +67,17 @@
 
     <string name="chooseATarget">Choose a target</string>
     <string name="addButton">Add</string>
-    <string name="families">Families</string>
+    <string name="pin_created_OK">Your pin was created successfully</string>
+    <string name="pin_created_Fail">An error occurred while creating your pin</string>
 
     <!-- Filter -->
     <string name="category_filter">Category Filter</string>
+
+    <!-- Form errors -->
+    <string name="mandatory_field_error">This field is mandatory</string>
+    <string name="target_error">A target should be specified</string>
+    <string name="category_error">You should choose one category al least</string>
+    <string name="dateTime_error">Incorrect date or time</string>
+    <string name="description_error">Specify a proper description</string>
 
 </resources>

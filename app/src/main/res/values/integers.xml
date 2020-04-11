@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Text lengths -->
+    <integer name="formTitle_max_length">60</integer>
+    <integer name="formAnnouncer_max_length">60</integer>
+    <integer name="formPlace_max_length">140</integer>
+    <integer name="formDescription_max_length">280</integer>
+</resources>

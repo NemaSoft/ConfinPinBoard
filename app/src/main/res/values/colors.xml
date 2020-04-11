@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#55321a</color>
     <color name="colorAccent">#ffaf40</color>
     <color name="ic_launcher_background">@android:color/white</color>
+    <color name="textError">#ff5724</color>
 
     <color name="recycler_background">#999999</color>
 
