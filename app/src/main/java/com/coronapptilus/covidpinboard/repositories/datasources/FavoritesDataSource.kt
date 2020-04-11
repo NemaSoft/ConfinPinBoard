@@ -6,7 +6,9 @@ interface FavoritesDataSource {
 
     fun addFavorite(announcementId: String)
 
-    fun getFavorites() : FavoritesModel
+    fun getFavorites(): FavoritesModel
 
     fun removeFavorite(announcementId: String)
+
+    fun isFavorite(announcementId: String): Boolean
 }

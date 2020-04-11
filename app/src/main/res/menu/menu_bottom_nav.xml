@@ -4,7 +4,7 @@
 
     <item
         android:id="@+id/favorites_fragment"
-        android:icon="@drawable/selector_favorites_nav_view"
+        android:icon="@drawable/selector_favorites"
         android:orderInCategory="1"
         android:title="@string/favorites_label"
         app:showAsAction="always" />

@@ -9,4 +9,6 @@ interface FavoritesRepository {
     fun getFavorites(): FavoritesModel
 
     fun removeFavorite(announcementId: String)
+
+    fun isFavorite(announcementId: String): Boolean
 }

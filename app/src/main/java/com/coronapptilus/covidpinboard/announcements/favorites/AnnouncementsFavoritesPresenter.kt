@@ -4,12 +4,10 @@ import com.coronapptilus.covidpinboard.datasources.ResponseState
 import com.coronapptilus.covidpinboard.domain.models.AnnouncementModel
 import com.coronapptilus.covidpinboard.domain.usecases.GetAnnouncementsByIdsUseCase
 import com.coronapptilus.covidpinboard.domain.usecases.GetFavoritesUseCase
-import com.coronapptilus.covidpinboard.domain.usecases.RemoveFavoriteUseCase
 import kotlinx.coroutines.*
 
 class AnnouncementsFavoritesPresenter(
     private val getFavoritesUseCase: GetFavoritesUseCase,
-    private val removeFavoriteUseCase: RemoveFavoriteUseCase,
     private val getAnnouncementsByIdsUseCase: GetAnnouncementsByIdsUseCase
 ) : AnnouncementsFavoritesContract.Presenter {
 
@@ -36,11 +34,6 @@ class AnnouncementsFavoritesPresenter(
         view?.showAnnouncementDetail(announcement)
     }
 
-    override fun onRemoveFromFavoritesButtonClicked(announcementId: String) {
-        removeFavorite(announcementId)
-        getFavorites()
-    }
-
     private fun getFavorites() {
         coroutineScope.launch {
             val favoriteAnnouncements: List<AnnouncementModel> = getFavoritesUseCase.execute()
@@ -54,9 +47,5 @@ class AnnouncementsFavoritesPresenter(
                 } ?: emptyList()
             view?.update(favoriteAnnouncements)
         }
-    }
-
-    private fun removeFavorite(announcementId: String) {
-        removeFavoriteUseCase.execute(announcementId)
     }
 }

@@ -6,9 +6,8 @@ import com.coronapptilus.covidpinboard.domain.usecases.GetAnnouncementsUseCase
 import com.coronapptilus.covidpinboard.utils.CategoryUtils
 import kotlinx.coroutines.*
 
-class AnnouncementsListPresenter(
-    private val getAnnouncementsUseCase: GetAnnouncementsUseCase
-) : AnnouncementsListContract.Presenter {
+class AnnouncementsListPresenter(private val getAnnouncementsUseCase: GetAnnouncementsUseCase) :
+    AnnouncementsListContract.Presenter {
 
     override var view: AnnouncementsListContract.View? = null
 

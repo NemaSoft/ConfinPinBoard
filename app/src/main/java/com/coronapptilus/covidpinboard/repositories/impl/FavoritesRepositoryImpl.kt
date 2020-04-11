@@ -15,4 +15,6 @@ class FavoritesRepositoryImpl(private val dataSource: FavoritesDataSource) : Fav
     override fun removeFavorite(announcementId: String) {
         dataSource.removeFavorite(announcementId)
     }
+
+    override fun isFavorite(announcementId: String): Boolean = dataSource.isFavorite(announcementId)
 }

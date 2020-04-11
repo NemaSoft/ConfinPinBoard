@@ -17,7 +17,5 @@ interface AnnouncementsFavoritesContract {
         fun init()
 
         fun onAnnouncementItemClicked(announcement: AnnouncementModel)
-
-        fun onRemoveFromFavoritesButtonClicked(announcementId: String)
     }
 }
