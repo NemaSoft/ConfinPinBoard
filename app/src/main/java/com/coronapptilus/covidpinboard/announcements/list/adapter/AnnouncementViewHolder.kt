@@ -44,10 +44,10 @@ class AnnouncementViewHolder(private val parent: ViewGroup) :
         dialogView.dialog_close_button.setOnClickListener { mBuilder.dismiss() }
 
         dialogView.dialog_favorites_button.setOnClickListener {
-            if (!isFavoritesClicked){
+            if (!isFavoritesClicked) {
                 isFavoritesClicked = true
                 dialogView.dialog_favorites_button.setImageResource(R.drawable.ic_favorite_active)
-            }else{
+            } else {
                 isFavoritesClicked = false
                 dialogView.dialog_favorites_button.setImageResource(R.drawable.ic_favorite_inactive)
             }

@@ -25,14 +25,17 @@ class AnnouncementsListFragment : Fragment(R.layout.fragment_announcement_list),
         initPresenter()
     }
 
+    override fun update(announcement: List<AnnouncementModel>) {
+        if (announcement.isEmpty()){
+            home_event_list.visibility = View.GONE
+            fallback_image.visibility = View.VISIBLE
+        }
+    }
+
     private fun initPresenter() {
         presenter.apply {
             attachView(this@AnnouncementsListFragment)
             presenter.init()
         }
-    }
-
-    override fun update(announcement: List<AnnouncementModel>) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }
