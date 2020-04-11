@@ -2,7 +2,6 @@ package com.coronapptilus.covidpinboard.utils
 
 import android.content.Intent
 import android.provider.CalendarContract
-import java.util.*
 
 object CalendarUtils {
 
@@ -18,19 +17,13 @@ object CalendarUtils {
         title: String,
         description: String,
         location: String,
-        beginTime: Calendar,
-        endTime: Calendar
+        beginTime: Long,
+        endTime: Long
     ): Intent {
-        val intent: Intent = Intent(Intent.ACTION_INSERT)
+        return Intent(Intent.ACTION_INSERT)
             .setData(CalendarContract.Events.CONTENT_URI)
-            .putExtra(
-                CalendarContract.EXTRA_EVENT_BEGIN_TIME,
-                beginTime.timeInMillis
-            )
-            .putExtra(
-                CalendarContract.EXTRA_EVENT_END_TIME,
-                endTime.timeInMillis
-            )
+            .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, beginTime)
+            .putExtra(CalendarContract.EXTRA_EVENT_END_TIME, endTime)
             .putExtra(CalendarContract.Events.TITLE, title)
             .putExtra(CalendarContract.Events.DESCRIPTION, description)
             .putExtra(CalendarContract.Events.EVENT_LOCATION, location)
@@ -38,6 +31,5 @@ object CalendarUtils {
                 CalendarContract.Events.AVAILABILITY,
                 CalendarContract.Events.AVAILABILITY_BUSY
             )
-        return intent
     }
 }

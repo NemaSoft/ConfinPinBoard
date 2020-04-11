@@ -4,6 +4,8 @@
     <color name="colorPrimaryDark">#55321a</color>
     <color name="colorAccent">#ffaf40</color>
 
+    <color name="recycler_background">#999999</color>
+
     <color name="sport">#A93226</color>
     <color name="cook">#AF7AC5</color>
     <color name="music">#D68910</color>
