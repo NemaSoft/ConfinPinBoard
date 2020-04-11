@@ -19,7 +19,7 @@ object PresentersModule {
         factory<AnnouncementFormContract.Presenter> { AnnouncementFormPresenter(get()) }
         factory<AnnouncementsListContract.Presenter> { AnnouncementsListPresenter(get()) }
         factory<AnnouncementsFavoritesContract.Presenter> {
-            AnnouncementsFavoritesPresenter(get(), get(), get())
+            AnnouncementsFavoritesPresenter(get(), get())
         }
         factory<AnnouncementDetailContract.Presenter> {
             AnnouncementDetailPresenter(get(), get(), get())
