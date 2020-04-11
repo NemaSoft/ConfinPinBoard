@@ -13,8 +13,11 @@ import kotlinx.android.synthetic.main.detail_dialog.*
 import org.koin.core.KoinComponent
 import org.koin.core.inject
 
-class AnnouncementDetailDialog(context: Context, private val announcement: AnnouncementModel) :
-    Dialog(context), KoinComponent, AnnouncementDetailContract.View {
+class AnnouncementDetailDialog(
+    context: Context,
+    private val announcement: AnnouncementModel,
+    private val onFavoriteStatusChanged: () -> Unit = {}
+) : Dialog(context), KoinComponent, AnnouncementDetailContract.View {
 
     private val presenter by inject<AnnouncementDetailContract.Presenter>()
 
@@ -52,6 +55,10 @@ class AnnouncementDetailDialog(context: Context, private val announcement: Annou
             CalendarUtils.addToCalendar(title, description, place, startTimestamp, endTimestamp),
             null
         )
+    }
+
+    override fun notifyFavoriteStatusChanged() {
+        onFavoriteStatusChanged.invoke()
     }
 
     override fun exitView() {

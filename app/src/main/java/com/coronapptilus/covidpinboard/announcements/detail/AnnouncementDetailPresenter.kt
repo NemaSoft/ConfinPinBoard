@@ -35,6 +35,7 @@ class AnnouncementDetailPresenter(
         } else {
             announcement?.let { removeFavoriteUseCase.execute(it.id) }
         }
+        view?.notifyFavoriteStatusChanged()
     }
 
     override fun onCalendarButtonClicked() {

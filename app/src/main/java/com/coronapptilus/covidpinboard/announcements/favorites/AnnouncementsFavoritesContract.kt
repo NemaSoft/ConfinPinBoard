@@ -10,6 +10,8 @@ interface AnnouncementsFavoritesContract {
         fun update(favorites: List<AnnouncementModel>)
 
         fun showAnnouncementDetail(announcement: AnnouncementModel)
+
+        fun hideAnnouncementDetail()
     }
 
     interface Presenter : BaseContract.Presenter<View> {
@@ -17,5 +19,7 @@ interface AnnouncementsFavoritesContract {
         fun init()
 
         fun onAnnouncementItemClicked(announcement: AnnouncementModel)
+
+        fun onFavoriteStatusChanged()
     }
 }
