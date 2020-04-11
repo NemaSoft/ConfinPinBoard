@@ -157,7 +157,7 @@ object ListItemUtils {
                     AnnouncementModel.Category.Formation -> R.drawable.ic_category_formation
                     AnnouncementModel.Category.Donation -> R.drawable.ic_category_donation
                     AnnouncementModel.Category.Crafts -> R.drawable.ic_category_crafts
-                    AnnouncementModel.Category.StoryTelling -> R.drawable.ic_category_storyteller
+                    AnnouncementModel.Category.StoryTelling -> R.drawable.ic_category_storytelling
                     AnnouncementModel.Category.Others -> R.drawable.ic_category_others
                 }
             }
@@ -179,9 +179,9 @@ object ListItemUtils {
             R.drawable.ic_category_formation -> ContextCompat.getColor(context, R.color.formation)
             R.drawable.ic_category_donation -> ContextCompat.getColor(context, R.color.donation)
             R.drawable.ic_category_crafts -> ContextCompat.getColor(context, R.color.crafts)
-            R.drawable.ic_category_storyteller -> ContextCompat.getColor(
+            R.drawable.ic_category_storytelling -> ContextCompat.getColor(
                 context,
-                R.color.storyteller
+                R.color.storytelling
             )
             R.drawable.ic_category_others -> ContextCompat.getColor(context, R.color.others)
             else -> ContextCompat.getColor(context, R.color.sport)

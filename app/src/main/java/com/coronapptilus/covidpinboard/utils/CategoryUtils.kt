@@ -22,7 +22,7 @@ object CategoryUtils {
             AnnouncementModel.Category.Formation -> R.drawable.ic_category_formation
             AnnouncementModel.Category.Donation -> R.drawable.ic_category_donation
             AnnouncementModel.Category.Crafts -> R.drawable.ic_category_crafts
-            AnnouncementModel.Category.StoryTelling -> R.drawable.ic_category_storyteller
+            AnnouncementModel.Category.StoryTelling -> R.drawable.ic_category_storytelling
             AnnouncementModel.Category.Others -> R.drawable.ic_category_others
         }
     }
@@ -66,7 +66,7 @@ object CategoryUtils {
                 AnnouncementModel.Category.Formation -> R.color.formation
                 AnnouncementModel.Category.Donation -> R.color.donation
                 AnnouncementModel.Category.Crafts -> R.color.crafts
-                AnnouncementModel.Category.StoryTelling -> R.color.storyteller
+                AnnouncementModel.Category.StoryTelling -> R.color.storytelling
                 AnnouncementModel.Category.Others -> R.color.others
             }
         )
