@@ -101,7 +101,7 @@ class AnnouncementFormPresenter(
             description,
             place,
             categories,
-            AnnouncementModel.Target.Familiar, // TODO conservar para que no pete. Borrar una vez esté validado y  poner el "target"
+            target!!,
             startingdate,
             startingTime,
             endingDate,
@@ -117,7 +117,7 @@ class AnnouncementFormPresenter(
     }
 
     private fun validateInputForms(): Boolean {
-        // TODO MARIA
+        // TODO MARIA. Validar target no sea null.
         return true
     }
 
