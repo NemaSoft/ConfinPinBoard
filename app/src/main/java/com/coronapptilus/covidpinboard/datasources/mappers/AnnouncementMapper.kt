@@ -78,7 +78,7 @@ class AnnouncementMapper {
                 AnnouncementModel.Category.StoryTeller.type -> AnnouncementModel.Category.StoryTeller
                 else -> AnnouncementModel.Category.Others
             }
-        } ?: listOf(AnnouncementModel.Category.Others)
+        } ?: emptyList()
 
     private fun mapTargetToType(target: AnnouncementModel.Target): Int =
         when (target) {

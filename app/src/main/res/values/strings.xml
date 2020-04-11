@@ -14,11 +14,13 @@
     <string name="date_time_pattern">%s at %s</string>
 
     <!-- Dialog -->
+    <string name="title">Title</string>
     <string name="description_header">Description</string>
     <string name="place_header">Place</string>
     <string name="category_header">Category / Categories</string>
     <string name="target_header">Target</string>
-    <string name="date_header">Date</string>
+    <string name="start_date_header">Start</string>
+    <string name="end_date_header">End</string>
     <string name="organizer_header">Organizer</string>
     <string name="error_message">This event has no </string>
 
@@ -48,7 +50,7 @@
     <!--AddForm-->
     <string name="addForm_TitleStatement">Add your pin</string>
     <string name="announcer">Announcer</string>
-    <string name="title">Title</string>
+    <string name="title_form">Title</string>
     <string name="place">Place</string>
     <string name="date">Date</string>
     <string name="time">Time</string>
@@ -67,5 +69,9 @@
     <string name="chooseATarget">Choose a target</string>
 
     <string name="addButton">Add</string>
+    <string name="families">Families</string>
+
+    <!-- Filter -->
+    <string name="category_filter">Category Filter</string>
 
 </resources>
