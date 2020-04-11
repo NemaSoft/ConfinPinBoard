@@ -36,6 +36,7 @@ class AnnouncementsFavoritesPresenter(
 
     override fun onFavoriteStatusChanged() {
         view?.hideAnnouncementDetail()
+        getFavorites()
     }
 
     private fun getFavorites() {
