@@ -37,7 +37,25 @@ class AnnouncementsListPresenter(
                     announcements = response.result
                 }
             }
-            view?.update(announcements)
+            view?.update(listOf(mockAnnouncementModel))
         }
     }
+
+    private val categories = listOf<AnnouncementModel.Category>(AnnouncementModel.Category.Sport)
+    private val target = AnnouncementModel.Target.Family
+
+    // TODO: Check different casuistics with this mockk model
+    private val mockAnnouncementModel = AnnouncementModel(
+        id = "123",
+        announcer = "Pepe",
+        title = "Hola",
+        description = "asdasfasdasd",
+        place = "asdasd",
+        categories = categories,
+        target = target,
+        startDate = "12/07/2020",
+        startTime = "12:00",
+        endDate = "12/07/2020",
+        endTime = "13:00"
+    )
 }

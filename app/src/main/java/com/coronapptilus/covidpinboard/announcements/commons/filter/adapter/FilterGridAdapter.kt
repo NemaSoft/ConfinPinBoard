@@ -12,7 +12,7 @@ import com.coronapptilus.covidpinboard.utils.CategoryUtils.getCategoryString
 class FilterGridAdapter(
     private val context: Context,
     private val dataList: List<AnnouncementModel.Category>
-) : BaseRecyclerViewAdapter<FilterViewHolder, FilterCategoryModel>() {
+) : BaseRecyclerViewAdapter<FilterCategoryModel, FilterViewHolder>() {
 
 
     val data = mutableListOf<FilterCategoryModel>()

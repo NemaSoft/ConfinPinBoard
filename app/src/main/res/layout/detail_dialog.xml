@@ -11,7 +11,7 @@
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/design_default_color_primary_dark"
+        android:background="@color/colorPrimaryDark"
         android:gravity="center"
         android:padding="@dimen/dialog_header_padding">
 
@@ -89,11 +89,13 @@
                     android:orientation="horizontal">
 
                     <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/dialog_categories_image"
                         android:layout_width="@dimen/dialog_header_image_size"
                         android:layout_height="@dimen/dialog_header_image_size"
                         android:src="@drawable/ic_tag" />
 
                     <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/dialog_categories_header"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/dialog_image_header_space"
@@ -123,6 +125,7 @@
                         tools:src="@drawable/ic_target_families" />
 
                     <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/dialog_target_header"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/dialog_image_header_space"
@@ -146,21 +149,23 @@
                     android:orientation="horizontal">
 
                     <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/dialog_start_date_image"
                         android:layout_width="@dimen/dialog_header_image_size"
                         android:layout_height="@dimen/dialog_header_image_size"
-                        android:src="@drawable/ic_time" />
+                        android:src="@drawable/ic_start_time" />
 
                     <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/dialog_start_date_header"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/dialog_image_header_space"
-                        android:text="@string/date_header"
+                        android:text="@string/start_date_header"
                         android:textStyle="bold" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/dialog_date"
+                    android:id="@+id/dialog_start_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/dialog_paragraph_break"
@@ -174,11 +179,43 @@
                     android:orientation="horizontal">
 
                     <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/dialog_end_date_image"
+                        android:layout_width="@dimen/dialog_header_image_size"
+                        android:layout_height="@dimen/dialog_header_image_size"
+                        android:src="@drawable/ic_end_time" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/dialog_end_date_header"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dialog_image_header_space"
+                        android:text="@string/end_date_header"
+                        android:textStyle="bold" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/dialog_end_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/dialog_paragraph_break"
+                    tools:text="Avui a les 17:00h" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dialog_headers_identation"
+                    android:layout_marginBottom="@dimen/dialog_line_break"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/dialog_organizer_image"
                         android:layout_width="@dimen/dialog_header_image_size"
                         android:layout_height="@dimen/dialog_header_image_size"
                         android:src="@drawable/ic_organizer" />
 
                     <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/dialog_organizer_header"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/dialog_image_header_space"
@@ -227,7 +264,7 @@
             android:id="@+id/dialog_share_button"
             android:layout_width="@dimen/dialog_bottom_buttons_size"
             android:layout_height="@dimen/dialog_bottom_buttons_size"
-            android:src="@drawable/ic_share" />
+            android:src="@drawable/ic_calendar" />
 
         <Space
             android:layout_width="0dp"
