@@ -32,6 +32,10 @@ class AnnouncementsFavoritesPresenter(
         getFavorites()
     }
 
+    override fun onAnnouncementItemClicked(announcement: AnnouncementModel) {
+        view?.showAnnouncementDetail(announcement)
+    }
+
     override fun onRemoveFromFavoritesButtonClicked(announcementId: String) {
         removeFavorite(announcementId)
         getFavorites()
