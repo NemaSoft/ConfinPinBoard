@@ -46,6 +46,7 @@
     <string name="adults">Adults</string>
     <string name="children">Children</string>
     <string name="familiar">Familiar</string>
+    <string name="families">Families</string>
 
     <!--AddForm-->
     <string name="addForm_TitleStatement">Add your pin</string>
@@ -66,7 +67,8 @@
 
     <string name="chooseATarget">Choose a target</string>
     <string name="addButton">Add</string>
-    <string name="families">Families</string>
+    <string name="pin_created_OK">Your pin was created successfully</string>
+    <string name="pin_created_Fail">An error occurred while creating your pin</string>
 
     <!-- Filter -->
     <string name="category_filter">Category Filter</string>

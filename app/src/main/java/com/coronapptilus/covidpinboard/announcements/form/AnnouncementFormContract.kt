@@ -12,11 +12,11 @@ interface AnnouncementFormContract {
 
         fun hideProgress()
 
-        fun showMessage(message: String)
+        fun showMessage(message: Int)
 
-        fun setErrorMessage(message : Int, formItem: FormItem)
+        fun setErrorMessage(message: Int, formItem: FormItem)
 
-        fun navigateToBoardFragment()
+        fun clearForm()
     }
 
     interface Presenter : BaseContract.Presenter<View> {

@@ -38,14 +38,14 @@ class AnnouncementFormPresenter(
             withContext(Dispatchers.IO) {
                 val response = addAnnouncementUseCase.execute(announcement)
                 if (response is ResponseState.Success) {
-//                 Announcement was added
-                    view?.showMessage("Mensaje respuesta") // TODO ESPECIFICAR MENSAJE. Validaciones?
-                    view?.navigateToBoardFragment()
+                    // TODO: mejora futura. Realizar navegación de pantalla.
+                    // Announcement was added
+                    view?.showMessage(R.string.pin_created_OK)
+                    view?.clearForm()
                 } else {
-                    view?.showMessage("Mensaje respuesta") // TODO ESPECIFICAR MENSAJE. Validaciones?
+                    view?.showMessage(R.string.pin_created_Fail)
                 }
 
-                view?.navigateToBoardFragment() //TODO eliminar. sólo para pruebas mientras no esté el
                 view?.hideProgress()
             }
         }

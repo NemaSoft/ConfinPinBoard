@@ -46,6 +46,7 @@
     <string name="adults">Adults</string>
     <string name="children">Nens</string>
     <string name="familiar">Familiar</string>
+    <string name="families">Famílies</string>
 
     <!--AddForm-->
     <string name="addForm_TitleStatement">Afegeix el teu pin</string>
@@ -66,7 +67,8 @@
 
     <string name="chooseATarget">Escull un públic</string>
     <string name="addButton">Afegir</string>
-    <string name="families">Famílies</string>
+    <string name="pin_created_OK">El teu pin s\'ha creat correctament</string>
+    <string name="pin_created_Fail">S\'ha produït un error a l\'hora de crear el teu pin</string>
 
     <!-- Filter -->
     <string name="category_filter">Filtre per categories</string>

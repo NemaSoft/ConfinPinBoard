@@ -271,8 +271,8 @@ class AnnouncementFormFragment : Fragment(R.layout.fragment_announcement_form),
 
     private fun String.toEditable(): Editable = Editable.Factory.getInstance().newEditable(this)
 
-    override fun showMessage(message: String) {
-        Toast.makeText(context, message, Toast.LENGTH_LONG).show()
+    override fun showMessage(message: Int) {
+        Toast.makeText(context, getString(message), Toast.LENGTH_LONG).show()
     }
 
     override fun setErrorMessage(message: Int, formItem: FormItem) {
