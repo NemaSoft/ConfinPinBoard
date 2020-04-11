@@ -10,6 +10,10 @@ interface AnnouncementsListContract {
         fun update(announcements: List<AnnouncementModel>)
 
         fun showAnnouncementDetail(announcement: AnnouncementModel)
+
+        fun showProgress()
+
+        fun hideProgress()
     }
 
     interface Presenter : BaseContract.Presenter<View> {

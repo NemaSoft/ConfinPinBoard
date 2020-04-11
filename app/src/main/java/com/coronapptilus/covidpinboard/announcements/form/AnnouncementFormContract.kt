@@ -15,7 +15,6 @@ interface AnnouncementFormContract {
         fun showMessage(message: String)
 
         fun navigateToBoardFragment()
-
     }
 
     interface Presenter : BaseContract.Presenter<View> {

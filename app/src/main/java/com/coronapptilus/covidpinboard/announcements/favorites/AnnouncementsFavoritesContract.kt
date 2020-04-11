@@ -12,6 +12,10 @@ interface AnnouncementsFavoritesContract {
         fun showAnnouncementDetail(announcement: AnnouncementModel)
 
         fun hideAnnouncementDetail()
+
+        fun showProgress()
+
+        fun hideProgress()
     }
 
     interface Presenter : BaseContract.Presenter<View> {

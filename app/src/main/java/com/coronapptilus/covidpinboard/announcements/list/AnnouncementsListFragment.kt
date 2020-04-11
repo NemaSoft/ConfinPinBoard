@@ -37,7 +37,7 @@ class AnnouncementsListFragment : Fragment(R.layout.fragment_announcement_list),
     }
 
     private fun initList() {
-        announcement_list.adapter = adapter
+        announcementList.adapter = adapter
         adapter.onItemClicked = { presenter.onAnnouncementItemClicked(it) }
     }
 
@@ -58,16 +58,24 @@ class AnnouncementsListFragment : Fragment(R.layout.fragment_announcement_list),
     }
 
     private fun showEmptyScreen() {
-        announcement_list.visibility = View.GONE
-        fallback_image.visibility = View.VISIBLE
+        announcementList.visibility = View.GONE
+        fallbackImage.visibility = View.VISIBLE
     }
 
     private fun hideEmptyScreen() {
-        announcement_list.visibility = View.VISIBLE
-        fallback_image.visibility = View.GONE
+        announcementList.visibility = View.VISIBLE
+        fallbackImage.visibility = View.GONE
     }
 
     override fun showAnnouncementDetail(announcement: AnnouncementModel) {
         context?.let { AnnouncementDetailDialog(it, announcement).show() }
+    }
+
+    override fun showProgress() {
+        progressView.visibility = View.VISIBLE
+    }
+
+    override fun hideProgress() {
+        progressView.visibility = View.GONE
     }
 }

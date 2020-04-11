@@ -27,6 +27,7 @@ class AnnouncementsListPresenter(private val getAnnouncementsUseCase: GetAnnounc
         searchTerm: String,
         categories: List<AnnouncementModel.Category>
     ) {
+        view?.showProgress()
         coroutineScope.launch {
             var announcements: List<AnnouncementModel> = emptyList()
             withContext(Dispatchers.IO) {
@@ -39,6 +40,7 @@ class AnnouncementsListPresenter(private val getAnnouncementsUseCase: GetAnnounc
                 }
             }
             view?.update(announcements)
+            view?.hideProgress()
         }
     }
 

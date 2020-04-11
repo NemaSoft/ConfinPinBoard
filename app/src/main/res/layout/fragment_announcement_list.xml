@@ -7,7 +7,7 @@
     android:orientation="vertical">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/announcement_list"
+        android:id="@+id/announcementList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/recycler_background"
@@ -16,12 +16,22 @@
         tools:listitem="@layout/announcement_item_list" />
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/fallback_image"
+        android:id="@+id/fallbackImage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:src="@drawable/ic_report"
         android:visibility="gone"
         tools:visibility="visible" />
+
+    <ProgressBar
+        android:id="@+id/progressView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>

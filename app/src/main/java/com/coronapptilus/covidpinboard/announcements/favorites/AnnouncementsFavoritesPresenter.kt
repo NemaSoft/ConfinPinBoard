@@ -39,6 +39,7 @@ class AnnouncementsFavoritesPresenter(
         searchTerm: String,
         categories: List<AnnouncementModel.Category>
     ) {
+        view?.showProgress()
         coroutineScope.launch {
             val favoriteAnnouncements: List<AnnouncementModel> = getFavoritesUseCase.execute()
                 .favoritesAnnouncementsIds
@@ -54,6 +55,7 @@ class AnnouncementsFavoritesPresenter(
                     }
                 } ?: emptyList()
             view?.update(favoriteAnnouncements)
+            view?.hideProgress()
         }
     }
 }

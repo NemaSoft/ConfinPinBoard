@@ -2,6 +2,8 @@ package com.coronapptilus.covidpinboard.announcements.favorites
 
 import android.os.Bundle
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import androidx.fragment.app.Fragment
 import com.coronapptilus.covidpinboard.R
 import com.coronapptilus.covidpinboard.announcements.detail.AnnouncementDetailDialog
@@ -38,7 +40,7 @@ class AnnouncementsFavoritesFragment : Fragment(R.layout.fragment_announcements_
     }
 
     private fun initList() {
-        announcement_list.adapter = adapter
+        announcementList.adapter = adapter
         adapter.onItemClicked = { presenter.onAnnouncementItemClicked(it) }
     }
 
@@ -59,13 +61,13 @@ class AnnouncementsFavoritesFragment : Fragment(R.layout.fragment_announcements_
     }
 
     private fun showEmptyScreen() {
-        announcement_list.visibility = View.GONE
-        fallback_image.visibility = View.VISIBLE
+        announcementList.visibility = View.GONE
+        fallbackImage.visibility = View.VISIBLE
     }
 
     private fun hideEmptyScreen() {
-        announcement_list.visibility = View.VISIBLE
-        fallback_image.visibility = View.GONE
+        announcementList.visibility = View.VISIBLE
+        fallbackImage.visibility = View.GONE
     }
 
     override fun showAnnouncementDetail(announcement: AnnouncementModel) {
@@ -79,5 +81,13 @@ class AnnouncementsFavoritesFragment : Fragment(R.layout.fragment_announcements_
 
     override fun hideAnnouncementDetail() {
         announcementDetailDialog?.dismiss()
+    }
+
+    override fun showProgress() {
+        progressView.visibility = VISIBLE
+    }
+
+    override fun hideProgress() {
+        progressView.visibility = GONE
     }
 }
