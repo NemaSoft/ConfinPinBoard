@@ -18,7 +18,7 @@ object DetailDialogUtils {
             dialog_place.text = getFormattedPlace(context, item.place)
             dialog_categories.text =
                 getFormattedCategories(getCategoriesNames(context, item.categories))
-            dialog_target_header.setCompoundDrawables(
+            dialog_target_header.setCompoundDrawablesWithIntrinsicBounds(
                 context.getDrawable(setTargetIcon(item.target)),
                 null,
                 null,
