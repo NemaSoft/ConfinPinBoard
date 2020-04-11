@@ -14,10 +14,11 @@ interface AnnouncementsListContract {
 
     interface Presenter : BaseContract.Presenter<View> {
 
-        fun init()
-
         fun onAnnouncementItemClicked(announcement: AnnouncementModel)
 
-        fun getAnnouncementsByCategories(categories: List<AnnouncementModel.Category>)
+        fun getAnnouncements(
+            searchTerm: String = "",
+            categories: List<AnnouncementModel.Category> = emptyList()
+        )
     }
 }

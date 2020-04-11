@@ -31,6 +31,7 @@ class AnnouncementsDataSourceImpl(
 
     override suspend fun getAnnouncements(
         ids: List<String>,
+        searchTerm: String,
         categories: List<AnnouncementModel.Category>
     ): ResponseState<List<AnnouncementModel>> =
         safeCall {
@@ -38,7 +39,7 @@ class AnnouncementsDataSourceImpl(
                 val categoriesTypes = mapper.mapCategoriesToType(categories)
                 getQueryTask(ids, categoriesTypes)
                     .addOnSuccessListener { documentsSnapshots ->
-                        val announcements =
+                        var announcements =
                             documentsSnapshots.toObjects(AnnouncementResponseModel::class.java)
                                 .filterNotNull()
                                 .filter {
@@ -46,6 +47,14 @@ class AnnouncementsDataSourceImpl(
                                             && checkAvailability(it.endTimestamp)
                                 }
                                 .map { mapper.mapResponseToDomain(it) }
+
+                        if (searchTerm.isNotEmpty()) {
+                            announcements = announcements.filter {
+                                it.title.contains(searchTerm, true)
+                                        || it.description.contains(searchTerm, true)
+                            }
+                        }
+
                         cont.resume(announcements)
                     }
                     .addOnFailureListener { error -> cont.resumeWithException(error) }
@@ -59,14 +68,14 @@ class AnnouncementsDataSourceImpl(
         val collectionRef = database.collection(COLLECTION_NAME)
 
         return when {
-            ids.isEmpty() && categoriesTypes.isNotEmpty() ->
-                collectionRef.whereArrayContainsAny(CATEGORIES_KEY, categoriesTypes).get()
             ids.isNotEmpty() && categoriesTypes.isEmpty() ->
                 collectionRef.whereIn(ID_KEY, ids).get()
             ids.isNotEmpty() && categoriesTypes.isNotEmpty() ->
                 collectionRef.whereIn(ID_KEY, ids)
                     .whereArrayContainsAny(CATEGORIES_KEY, categoriesTypes)
                     .get()
+            ids.isEmpty() && categoriesTypes.isNotEmpty() ->
+                collectionRef.whereArrayContainsAny(CATEGORIES_KEY, categoriesTypes).get()
             else -> collectionRef.get()
         }
     }

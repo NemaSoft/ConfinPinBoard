@@ -1,6 +1,8 @@
 package com.coronapptilus.covidpinboard.commons.components
 
 import android.content.Context
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.AttributeSet
 import android.util.DisplayMetrics
 import android.view.LayoutInflater
@@ -21,10 +23,10 @@ import kotlinx.android.synthetic.main.toolbar_view.view.*
 
 class ToolbarView(context: Context, attrs: AttributeSet? = null) : LinearLayout(context, attrs) {
 
+    private var searchTerm: String = ""
     private var checkedCategories = listOf<AnnouncementModel.Category>()
-    private var onFilterButtonClicked: (List<AnnouncementModel.Category>) -> Unit = {
-        checkedCategories = it
-    }
+    private var onFilterButtonClicked: (String, List<AnnouncementModel.Category>) -> Unit = { _, _ ->}
+    private var onSearchInputFilled: (String, List<AnnouncementModel.Category>) -> Unit = { _, _ ->}
 
     init {
         LayoutInflater.from(context).inflate(R.layout.toolbar_view, this)
@@ -40,8 +42,16 @@ class ToolbarView(context: Context, attrs: AttributeSet? = null) : LinearLayout(
         }
     }
 
-    fun setOnFilterButtonClicked(onFilterButtonClicked: (List<AnnouncementModel.Category>) -> Unit) {
+    fun setOnFilterButtonClicked(
+        onFilterButtonClicked: (String, List<AnnouncementModel.Category>) -> Unit
+    ) {
         this.onFilterButtonClicked = onFilterButtonClicked
+    }
+
+    fun setOnSearchInputFilled(
+        onSearchInputFilled: (String, List<AnnouncementModel.Category>) -> Unit
+    ) {
+        this.onSearchInputFilled = onSearchInputFilled
     }
 
     fun getSearchTerm() = search_input.text ?: ""
@@ -77,6 +87,7 @@ class ToolbarView(context: Context, attrs: AttributeSet? = null) : LinearLayout(
         headtitle.text = (resources.getString(R.string.app_name))
         search_input.visibility = View.GONE
         search_input.setText("")
+        addTextChangeListener()
         search_button.visibility = View.VISIBLE
         search_button.setImageResource(R.drawable.ic_search)
         filter_button.visibility = View.VISIBLE
@@ -88,6 +99,7 @@ class ToolbarView(context: Context, attrs: AttributeSet? = null) : LinearLayout(
         headtitle.text = (resources.getString(R.string.favorites_label))
         search_input.visibility = View.GONE
         search_input.setText("")
+        addTextChangeListener()
         search_button.visibility = View.VISIBLE
         search_button.setImageResource(R.drawable.ic_search)
         filter_button.visibility = View.VISIBLE
@@ -99,9 +111,28 @@ class ToolbarView(context: Context, attrs: AttributeSet? = null) : LinearLayout(
         headtitle.text = (resources.getString(R.string.app_name))
         search_input.visibility = View.GONE
         search_input.setText("")
+        addTextChangeListener()
         filter_button.visibility = View.GONE
         search_button.visibility = View.GONE
         checkedCategories = listOf()
+    }
+
+    private fun addTextChangeListener() {
+        search_input.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                val searchText = s?.toString()
+                searchText?.let {
+                    searchTerm = searchText
+                    onSearchInputFilled.invoke(searchTerm, checkedCategories)
+                }
+            }
+        })
     }
 
     companion object {
@@ -111,7 +142,7 @@ class ToolbarView(context: Context, attrs: AttributeSet? = null) : LinearLayout(
         const val COLUMN_WIDTH = 120f
     }
 
-    private fun showFilterDialog(callBack: (List<AnnouncementModel.Category>) -> Unit) {
+    private fun showFilterDialog(callBack: (String, List<AnnouncementModel.Category>) -> Unit) {
 
         val dialogView = LayoutInflater.from(context).inflate(R.layout.filter_dialog,null)
         val closeButton = dialogView.findViewById<AppCompatImageView>(R.id.filter_dialog_close_button)
@@ -136,7 +167,7 @@ class ToolbarView(context: Context, attrs: AttributeSet? = null) : LinearLayout(
         }
         okButton.setOnClickListener {
             checkedCategories = filterGridAdapter.getCheckedCategories()
-            callBack.invoke(checkedCategories)
+            callBack.invoke(searchTerm, checkedCategories)
             mBuilder.dismiss()
         }
 

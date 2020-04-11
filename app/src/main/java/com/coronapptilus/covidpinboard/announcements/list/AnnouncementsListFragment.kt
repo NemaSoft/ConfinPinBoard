@@ -24,20 +24,31 @@ class AnnouncementsListFragment : Fragment(R.layout.fragment_announcement_list),
     private val adapter = AnnouncementsListAdapter()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         activity?.toolbar?.apply {
             init(ToolbarView.HOME)
-            setOnFilterButtonClicked { presenter.getAnnouncementsByCategories(it) }
+            setOnFilterButtonClicked { searchTerm, categories ->
+                presenter.getAnnouncements(searchTerm, categories)
+            }
+            setOnSearchInputFilled { searchTerm, categories ->
+                presenter.getAnnouncements(searchTerm, categories)
+            }
         }
+
+        initList()
+        initPresenter()
+    }
+
+    private fun initList() {
         announcement_list.adapter = adapter
         adapter.onItemClicked = { presenter.onAnnouncementItemClicked(it) }
-
-        initPresenter()
     }
 
     private fun initPresenter() {
         presenter.apply {
             attachView(this@AnnouncementsListFragment)
-            presenter.init()
+            presenter.getAnnouncements()
         }
     }
 

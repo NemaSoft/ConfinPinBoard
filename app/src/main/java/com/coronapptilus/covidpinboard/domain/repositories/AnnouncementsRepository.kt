@@ -9,6 +9,7 @@ interface AnnouncementsRepository {
 
     suspend fun getAnnouncements(
         ids: List<String>,
+        searchTerm: String,
         categories: List<AnnouncementModel.Category>
     ): ResponseState<List<AnnouncementModel>>
 }

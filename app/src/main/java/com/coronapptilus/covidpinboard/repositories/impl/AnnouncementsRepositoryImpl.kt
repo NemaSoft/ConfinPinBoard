@@ -13,7 +13,8 @@ class AnnouncementsRepositoryImpl(private val dataSource: AnnouncementsDataSourc
 
     override suspend fun getAnnouncements(
         ids: List<String>,
+        searchTerm: String,
         categories: List<AnnouncementModel.Category>
     ): ResponseState<List<AnnouncementModel>> =
-        dataSource.getAnnouncements(ids, categories)
+        dataSource.getAnnouncements(ids, searchTerm, categories)
 }
