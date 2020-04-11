@@ -86,6 +86,7 @@ class ToolbarView(context: Context, attrs: AttributeSet? = null) : LinearLayout(
         headtitle.visibility = View.VISIBLE
         headtitle.text = (resources.getString(R.string.app_name))
         search_input.visibility = View.GONE
+        searchTerm = ""
         search_input.setText("")
         addTextChangeListener()
         search_button.visibility = View.VISIBLE
@@ -98,6 +99,7 @@ class ToolbarView(context: Context, attrs: AttributeSet? = null) : LinearLayout(
         headtitle.visibility = View.VISIBLE
         headtitle.text = (resources.getString(R.string.favorites_label))
         search_input.visibility = View.GONE
+        searchTerm = ""
         search_input.setText("")
         addTextChangeListener()
         search_button.visibility = View.VISIBLE
@@ -110,6 +112,7 @@ class ToolbarView(context: Context, attrs: AttributeSet? = null) : LinearLayout(
         headtitle.visibility = View.VISIBLE
         headtitle.text = (resources.getString(R.string.app_name))
         search_input.visibility = View.GONE
+        searchTerm = ""
         search_input.setText("")
         addTextChangeListener()
         filter_button.visibility = View.GONE

@@ -35,19 +35,23 @@ class AnnouncementFormPresenter(
 
     override fun addAnnouncement(announcement: AnnouncementModel) {
         coroutineScope.launch {
+            var announcementAdded = false
+
             withContext(Dispatchers.IO) {
                 val response = addAnnouncementUseCase.execute(announcement)
-                if (response is ResponseState.Success) {
-                    // TODO: mejora futura. Realizar navegación de pantalla.
-                    // Announcement was added
-                    view?.showMessage(R.string.pin_created_OK)
-                    view?.clearForm()
-                } else {
-                    view?.showMessage(R.string.pin_created_Fail)
-                }
-
-                view?.hideProgress()
+                announcementAdded = response is ResponseState.Success
             }
+
+            if (announcementAdded) {
+                // TODO: mejora futura. Realizar navegación de pantalla.
+                // Announcement was added
+                view?.showMessage(R.string.pin_created_OK)
+                view?.clearForm()
+            } else {
+                view?.showMessage(R.string.pin_created_Fail)
+            }
+
+            view?.hideProgress()
         }
     }
 
@@ -120,10 +124,10 @@ class AnnouncementFormPresenter(
             place,
             categories,
             target!!,
-            startingDate,
-            startingTime,
-            endingDate,
-            endingTime
+            startingDate.replace(" ", ""),
+            startingTime.replace(" ", ""),
+            endingDate.replace(" ", ""),
+            endingTime.replace(" ", "")
         )
 
         addAnnouncement(announcement)

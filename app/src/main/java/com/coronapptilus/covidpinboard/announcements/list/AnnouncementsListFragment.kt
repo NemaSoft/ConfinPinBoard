@@ -72,10 +72,10 @@ class AnnouncementsListFragment : Fragment(R.layout.fragment_announcement_list),
     }
 
     override fun showProgress() {
-        progressView.visibility = View.VISIBLE
+        progressView?.visibility = View.VISIBLE
     }
 
     override fun hideProgress() {
-        progressView.visibility = View.GONE
+        progressView?.visibility = View.GONE
     }
 }

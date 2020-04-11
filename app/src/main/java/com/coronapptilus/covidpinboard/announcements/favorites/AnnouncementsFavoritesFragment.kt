@@ -84,10 +84,10 @@ class AnnouncementsFavoritesFragment : Fragment(R.layout.fragment_announcements_
     }
 
     override fun showProgress() {
-        progressView.visibility = VISIBLE
+        progressView?.visibility = VISIBLE
     }
 
     override fun hideProgress() {
-        progressView.visibility = GONE
+        progressView?.visibility = GONE
     }
 }

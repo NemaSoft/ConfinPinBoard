@@ -18,34 +18,34 @@ object DetailDialogUtils {
             dialog_place.text = getFormattedPlace(context, item.place)
             dialog_categories.text =
                 getFormattedCategories(getCategoriesNames(context, item.categories))
-            dialog_target_image.setImageResource(setTargetIcon(item.target))
+            dialog_target_header.setCompoundDrawablesWithIntrinsicBounds(
+                context.getDrawable(setTargetIcon(item.target)),
+                null,
+                null,
+                null
+            )
             dialog_target.text = getFormattedTarget(context, item.target)
             dialog_start_date.text = dialogView.context.formatDate(item.startDate, item.startTime)
             dialog_end_date.text = dialogView.context.formatDate(item.endDate, item.endTime)
             dialog_organizer.text = item.announcer
 
             if (dialog_categories.text.isEmpty()) {
-                dialog_categories_image.visibility = View.GONE
                 dialog_categories_header.visibility = View.GONE
                 dialog_categories.visibility = View.GONE
             }
             if (dialog_target.text.isEmpty()) {
-                dialog_target_image.visibility = View.GONE
                 dialog_target_header.visibility = View.GONE
                 dialog_target.visibility = View.GONE
             }
             if (dialog_start_date.text.isEmpty()) {
-                dialog_start_date_image.visibility = View.GONE
                 dialog_start_date_header.visibility = View.GONE
                 dialog_start_date.visibility = View.GONE
             }
             if (dialog_end_date.text.isEmpty()) {
-                dialog_end_date_image.visibility = View.GONE
                 dialog_end_date_header.visibility = View.GONE
                 dialog_end_date.visibility = View.GONE
             }
             if (dialog_organizer.text.isEmpty()) {
-                dialog_organizer_image.visibility = View.GONE
                 dialog_organizer_header.visibility = View.GONE
                 dialog_organizer.visibility = View.GONE
             }
@@ -57,25 +57,27 @@ object DetailDialogUtils {
         if (title.isNotEmpty()) {
             title
         } else {
-            context.resources.getString(R.string.error_message) + "name"
+            context.resources.getString(R.string.error_message)
+                .plus(" ")
+                .plus(context.resources.getString(R.string.title).toLowerCase(Locale.getDefault()))
         }
 
     private fun getFormattedDescription(context: Context, description: String): String =
         if (description.isNotEmpty()) {
             description
         } else {
-            context.resources.getString(R.string.error_message) +
-                    context.resources.getString(R.string.description_header)
-                        .toLowerCase(Locale.getDefault())
+            context.resources.getString(R.string.error_message)
+                .plus(" ")
+                .plus(context.resources.getString(R.string.description_header).toLowerCase(Locale.getDefault()))
         }
 
     private fun getFormattedPlace(context: Context, place: String) =
         if (place.isNotEmpty()) {
             place
         } else {
-            context.resources.getString(R.string.error_message) +
-                    context.resources.getString(R.string.place_header)
-                        .toLowerCase(Locale.getDefault())
+            context.resources.getString(R.string.error_message)
+                .plus(" ")
+                .plus(context.resources.getString(R.string.place_header).toLowerCase(Locale.getDefault()))
         }
 
     private fun getFormattedCategories(categoriesNames: List<String>): String {
@@ -140,8 +142,8 @@ object DetailDialogUtils {
         when (target) {
             AnnouncementModel.Target.Adults -> R.drawable.ic_target_adults
             AnnouncementModel.Target.Children -> R.drawable.ic_target_kids
-            AnnouncementModel.Target.Familiar -> R.drawable.ic_target_families
-            AnnouncementModel.Target.Undefined -> 0
+            else -> R.drawable.ic_target_families
+
         }
 
 
