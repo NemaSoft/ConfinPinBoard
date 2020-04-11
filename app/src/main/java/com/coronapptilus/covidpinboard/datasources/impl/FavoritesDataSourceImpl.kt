@@ -13,8 +13,8 @@ class FavoritesDataSourceImpl(
     private val mapper: FavoritesMapper
 ) : FavoritesDataSource {
 
-    override fun addFavorite(id: String) {
-        val favoritesJson = getFavoritesJson(id)
+    override fun addFavorite(announcementId: String) {
+        val favoritesJson = getFavoritesJson(announcementId)
         with(sharedPreferences.edit()) {
             putString(FAVORITES_KEY, favoritesJson)
             commit()
@@ -31,26 +31,26 @@ class FavoritesDataSourceImpl(
         }
     }
 
-    override fun removeFavorite(id: String) {
-        val favoritesJson = removeFavoriteFromJson(id)
+    override fun removeFavorite(announcementId: String) {
+        val favoritesJson = removeFavoriteFromJson(announcementId)
         with(sharedPreferences.edit()) {
             putString(FAVORITES_KEY, favoritesJson)
             commit()
         }
     }
 
-    private fun getFavoritesJson(id: String): String {
-        val favorites: MutableList<String> = getFavorites().favorites
+    private fun getFavoritesJson(announcementId: String): String {
+        val favorites: MutableList<String> = getFavorites().favoritesAnnouncementsIds
                 .toMutableList()
-                .apply { if (!contains(id)) { add(id) } }
+                .apply { if (!contains(announcementId)) { add(announcementId) } }
         val response = FavoritesResponseModel(favorites)
         return gson.toJson(response)
     }
 
-    private fun removeFavoriteFromJson(id: String): String {
-        val favorites: MutableList<String> = getFavorites().favorites
+    private fun removeFavoriteFromJson(announcementId: String): String {
+        val favorites: MutableList<String> = getFavorites().favoritesAnnouncementsIds
                 .toMutableList()
-                .apply { if (contains(id)) { remove(id) } }
+                .apply { if (contains(announcementId)) { remove(announcementId) } }
         val response = FavoritesResponseModel(favorites)
         return gson.toJson(response)
     }

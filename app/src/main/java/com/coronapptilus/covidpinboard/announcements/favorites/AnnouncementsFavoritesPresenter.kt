@@ -32,24 +32,27 @@ class AnnouncementsFavoritesPresenter(
         getFavorites()
     }
 
-    override fun removeFavorite(id: String) {
-        removeFavoriteUseCase.execute(id)
+    override fun onRemoveFromFavoritesButtonClicked(announcementId: String) {
+        removeFavorite(announcementId)
         getFavorites()
     }
 
     private fun getFavorites() {
         coroutineScope.launch {
-            var favorites: List<AnnouncementModel> = emptyList()
-            val favoritesIds = getFavoritesUseCase.execute().favorites
-            favoritesIds.takeIf { it.isNotEmpty() }?.let { ids ->
-                withContext(Dispatchers.IO) {
-                    val response = getAnnouncementsByIdsUseCase.execute(ids)
-                    if (response is ResponseState.Success) {
-                        favorites = response.result
+            val favoriteAnnouncements: List<AnnouncementModel> = getFavoritesUseCase.execute()
+                .favoritesAnnouncementsIds
+                .takeIf { it.isNotEmpty() }
+                ?.let { announcementsIds ->
+                    withContext(Dispatchers.IO) {
+                        val response = getAnnouncementsByIdsUseCase.execute(announcementsIds)
+                        (response as? ResponseState.Success)?.result
                     }
-                }
-            }
-            view?.update(favorites)
+                } ?: emptyList()
+            view?.update(favoriteAnnouncements)
         }
+    }
+
+    private fun removeFavorite(announcementId: String) {
+        removeFavoriteUseCase.execute(announcementId)
     }
 }
