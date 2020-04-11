@@ -13,26 +13,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
-        android:gravity="center"
+        android:gravity="center_vertical"
         android:padding="@dimen/dialog_header_padding">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/dialog_title"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:textColor="@android:color/white"
             android:textSize="@dimen/primary_l"
-            tools:text="@string/title" />
-
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            tools:text="123456789012345678901234567890123456789012345678901234567890" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/dialog_close_button"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:paddingStart="@dimen/dialog_header_padding"
+            android:layout_height="wrap_content"
             android:src="@drawable/ic_clear"
             android:tint="@android:color/white" />
 
