@@ -14,7 +14,7 @@
         android:layout_marginStart="@dimen/default_margin_16"
         android:layout_marginTop="@dimen/default_margin_16"
         android:layout_marginEnd="@dimen/default_margin_16"
-        android:layout_marginBottom="@dimen/default_margin_bottom"
+        android:layout_marginBottom="@dimen/default_margin_8"
         android:text="@string/addForm_TitleStatement"
         android:textAlignment="viewStart"
         android:textSize="@dimen/default_titleFormSize"
@@ -28,8 +28,10 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/addForm_titleStatement">
+        app:layout_constraintTop_toBottomOf="@id/addForm_titleStatement"
+        app:layout_constraintVertical_bias="1.0">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -43,7 +45,7 @@
                 android:id="@+id/titleEditTextParent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/default_margin_S">
+                android:layout_marginTop="@dimen/default_margin_4">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/addForm_title"
@@ -63,7 +65,7 @@
                 android:id="@+id/announcerEditTextParent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/default_margin_S">
+                android:layout_marginTop="@dimen/default_margin_4">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/addForm_announcer"
@@ -82,7 +84,7 @@
                 android:id="@+id/placeEditTextParent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/default_margin_S">
+                android:layout_marginTop="@dimen/default_margin_4">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/addForm_place"
@@ -187,7 +189,7 @@
                 android:id="@+id/dateForm_error"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/default_margin_S"
+                android:layout_marginStart="@dimen/default_margin_4"
                 android:textAlignment="textStart"
                 android:textColor="@color/textError"
                 android:textSize="@dimen/primary_m"
@@ -206,7 +208,7 @@
                 android:id="@+id/targetForm_error"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/default_margin_S"
+                android:layout_marginStart="@dimen/default_margin_4"
                 android:textAlignment="textStart"
                 android:textColor="@color/textError"
                 android:textSize="@dimen/primary_m"
@@ -218,7 +220,7 @@
                 android:id="@+id/categoriesEditTextParent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/default_margin_S">
+                android:layout_marginTop="@dimen/default_margin_4">
 
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/addForm_categories"
@@ -243,7 +245,7 @@
                     android:id="@+id/addForm_description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/default_margin_S"
+                    android:layout_marginTop="@dimen/default_margin_4"
                     android:drawableStart="@drawable/ic_edit"
                     android:drawablePadding="10dp"
                     android:ems="10"
@@ -258,7 +260,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/default_margin_16"
-                android:layout_marginBottom="@dimen/default_margin_bottom"
+                android:layout_marginBottom="@dimen/default_margin_32"
                 android:text="@string/addButton"
                 android:textAlignment="center"
                 android:textAllCaps="false"
