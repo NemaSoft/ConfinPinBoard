@@ -172,6 +172,13 @@ class AnnouncementFormFragment : Fragment(R.layout.fragment_announcement_form),
                 val view: View = super.getDropDownView(position, convertView, parent)
                 val item: TextView = view as TextView
 
+                when(item.text){
+                    context.resources.getString(R.string.adults) -> item.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_target_adults,0,0,0)
+                    context.resources.getString(R.string.children) -> item.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_target_kids,0,0,0)
+                    context.resources.getString(R.string.families) -> item.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_target_families,0,0,0)
+                }
+                item.compoundDrawablePadding = 8
+
                 if (position == 0) {
                     item.setTextColor(Color.GRAY)
                 } else {

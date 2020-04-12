@@ -14,25 +14,21 @@
     <dimen name="dialog_line_break">4dp</dimen>
     <dimen name="dialog_paragraph_break">12dp</dimen>
     <dimen name="dialog_image_header_space">4dp</dimen>
-    <dimen name="dialog_header_image_size">16dp</dimen>
     <dimen name="dialog_bottom_buttons_size">40dp</dimen>
 
-    <!--Text Sizes -->
+    <!-- Text Sizes -->
     <dimen name="primary_3xl">22sp</dimen>
+    <dimen name="primary_2xl">20sp</dimen>
     <dimen name="primary_l">16sp</dimen>
-    <dimen name="primary_m">12sp</dimen>
-    <dimen name="default_titleFormSize">20sp</dimen>
+    <dimen name="primary_2xs">12sp</dimen>
 
-    <!--Margins, paddings, spaces-->
-    <dimen name="default_margin_16">16dp</dimen>
-    <dimen name="default_margin_24">24dp</dimen>
-    <dimen name="default_margin_bottom">8dp</dimen>
-    <dimen name="default_margin_S">4dp</dimen>
+    <!-- Form -->
+    <dimen name="form_side_margin">16dp</dimen>
+    <dimen name="form_title_padding">8dp</dimen>
+    <dimen name="form_elements_margin">4dp</dimen>
+    <dimen name="form_padding_bottom_scroll">40dp</dimen>
 
-    <!--Progress bar-->
+    <!-- Progress bar -->
     <dimen name="progressbar_height">24dp</dimen>
-
-    <!--Buttons-->
-    <dimen name="dateSquaredButton">48dp</dimen>
 
 </resources>
