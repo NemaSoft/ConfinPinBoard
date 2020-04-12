@@ -54,8 +54,6 @@ class ToolbarView(context: Context, attrs: AttributeSet? = null) : LinearLayout(
         this.onSearchInputFilled = onSearchInputFilled
     }
 
-    fun getSearchTerm() = search_input.text ?: ""
-
     private fun refresh() {
         if (!isSearchBoxShowing()) {
             showSearchBox()
@@ -147,7 +145,7 @@ class ToolbarView(context: Context, attrs: AttributeSet? = null) : LinearLayout(
 
     private fun showFilterDialog(callBack: (String, List<AnnouncementModel.Category>) -> Unit) {
 
-        val dialogView = LayoutInflater.from(context).inflate(R.layout.filter_dialog,null)
+        val dialogView = View.inflate(context, R.layout.filter_dialog, null)
         val closeButton = dialogView.findViewById<AppCompatImageView>(R.id.filter_dialog_close_button)
         val okButton = dialogView.findViewById<AppCompatButton>(R.id.filter_dialog_ok_button)
         val recyclerView = dialogView.findViewById<RecyclerView>(R.id.filter_dialog_recyclerview)
@@ -177,5 +175,4 @@ class ToolbarView(context: Context, attrs: AttributeSet? = null) : LinearLayout(
         mBuilder.show()
 
     }
-
 }

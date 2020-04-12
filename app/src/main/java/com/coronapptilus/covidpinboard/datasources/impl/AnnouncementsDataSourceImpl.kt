@@ -1,6 +1,5 @@
 package com.coronapptilus.covidpinboard.datasources.impl
 
-import com.coronapptilus.covidpinboard.commons.extensions.convertDateToTimestamp
 import com.coronapptilus.covidpinboard.commons.extensions.isAvailable
 import com.coronapptilus.covidpinboard.commons.extensions.safeCall
 import com.coronapptilus.covidpinboard.datasources.ResponseState
@@ -22,6 +21,7 @@ class AnnouncementsDataSourceImpl(
 
     override suspend fun addAnnouncement(announcement: AnnouncementModel): ResponseState<String> =
         safeCall {
+            @Suppress("RemoveExplicitTypeArguments")
             suspendCoroutine<String> { cont ->
                 database.collection(COLLECTION_NAME)
                     .add(mapper.mapDomainToResponse(announcement))
@@ -36,6 +36,7 @@ class AnnouncementsDataSourceImpl(
         categories: List<AnnouncementModel.Category>
     ): ResponseState<List<AnnouncementModel>> =
         safeCall {
+            @Suppress("RemoveExplicitTypeArguments")
             suspendCoroutine<List<AnnouncementModel>> { cont ->
                 val categoriesTypes = mapper.mapCategoriesToType(categories)
                 getQueryTask(ids, categoriesTypes)

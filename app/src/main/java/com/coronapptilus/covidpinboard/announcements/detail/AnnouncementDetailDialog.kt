@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
+import android.view.Window
 import androidx.core.content.ContextCompat.startActivity
 import com.coronapptilus.covidpinboard.R
 import com.coronapptilus.covidpinboard.domain.models.AnnouncementModel
@@ -27,6 +28,7 @@ class AnnouncementDetailDialog(
         super.onCreate(savedInstanceState)
         val dialogView = View.inflate(context, R.layout.detail_dialog, null)
         val filledDialog = DetailDialogUtils.getFilledDialog(announcement, dialogView)
+        requestWindowFeature(Window.FEATURE_NO_TITLE)
         setContentView(filledDialog)
         setCancelable(true)
 

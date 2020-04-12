@@ -8,7 +8,6 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.DisplayMetrics
-import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
@@ -326,7 +325,7 @@ class AnnouncementFormFragment : Fragment(R.layout.fragment_announcement_form),
 
     private fun Context.showFilterDialog(callBack: (List<AnnouncementModel.Category>) -> Unit) {
 
-        val dialogView = LayoutInflater.from(this).inflate(R.layout.filter_dialog, null)
+        val dialogView = View.inflate(this, R.layout.filter_dialog, null)
         val closeButton =
             dialogView.findViewById<AppCompatImageView>(R.id.filter_dialog_close_button)
         val okButton = dialogView.findViewById<AppCompatButton>(R.id.filter_dialog_ok_button)

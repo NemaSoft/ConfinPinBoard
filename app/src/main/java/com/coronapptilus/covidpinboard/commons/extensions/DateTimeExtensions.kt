@@ -6,13 +6,6 @@ import com.coronapptilus.covidpinboard.R
 import java.text.SimpleDateFormat
 import java.util.*
 
-fun convertTimestampToDateTime(timestamp: Long?): String =
-    timestamp?.let {
-        val date = convertTimestampToDate(timestamp)
-        val time = convertTimestampToTime(timestamp)
-        date.plus(" ").plus(time)
-    } ?: ""
-
 fun convertTimestampToDate(timestamp: Long?): String =
     timestamp?.let {
         val calendar = Calendar.getInstance().apply {

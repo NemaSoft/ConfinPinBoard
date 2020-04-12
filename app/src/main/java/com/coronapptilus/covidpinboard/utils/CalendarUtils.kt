@@ -45,18 +45,8 @@ object CalendarUtils {
         return if (digit <= 9) "0$digit" else digit.toString()
     }
 
-    fun fromStringToDate(dateString: String): Date? {
-        val sdf = SimpleDateFormat(STRING_DAY_FORMAT)
-        try {
-            return sdf.parse(dateString)
-        } catch (exception: ParseException) {
-            Log.w("Exception", "Date couldn't be parsed -- " + exception.localizedMessage)
-        }
-        return null
-    }
-
     fun fromStringToFullDate(dateString: String): Date? {
-        val sdf = SimpleDateFormat(STRING_DATE_FORMAT)
+        val sdf = SimpleDateFormat(STRING_DATE_FORMAT, Locale.getDefault())
         try {
             return sdf.parse(dateString)
         } catch (exception: ParseException) {

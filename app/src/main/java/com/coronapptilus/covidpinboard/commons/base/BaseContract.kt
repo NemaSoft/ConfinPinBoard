@@ -2,7 +2,7 @@ package com.coronapptilus.covidpinboard.commons.base
 
 interface BaseContract {
 
-    interface View {}
+    interface View
 
     interface Presenter<V : View> {
 
