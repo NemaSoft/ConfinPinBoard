@@ -38,14 +38,14 @@ class AnnouncementsDataSourceImpl(
         safeCall {
             @Suppress("RemoveExplicitTypeArguments")
             suspendCoroutine<List<AnnouncementModel>> { cont ->
-                val categoriesTypes = mapper.mapCategoriesToType(categories)
-                getQueryTask(ids, categoriesTypes)
+                database.collection(COLLECTION_NAME)
+                    .get()
                     .addOnSuccessListener { documentsSnapshots ->
                         val announcements = getAnnouncementsFromDocuments(
                             documentsSnapshots,
                             ids,
                             searchTerm,
-                            categoriesTypes
+                            categories
                         )
                         cont.resume(announcements)
                     }
@@ -57,7 +57,7 @@ class AnnouncementsDataSourceImpl(
         documentsSnapshots: QuerySnapshot,
         ids: List<String>,
         searchTerm: String,
-        categories: List<Int>
+        categories: List<AnnouncementModel.Category>
     ): List<AnnouncementModel> {
         var announcements = documentsSnapshots.toObjects(AnnouncementResponseModel::class.java)
             .filterNotNull()
@@ -75,30 +75,24 @@ class AnnouncementsDataSourceImpl(
             }
         }
 
-        if (ids.isNotEmpty() && categories.isNotEmpty()) {
+        if (ids.isNotEmpty()) {
             announcements = announcements.filter { ids.contains(it.id) }
+        }
+
+        if (categories.isNotEmpty()) {
+            announcements = announcements.filter {
+                containsFilterCategories(categories, it.categories)
+            }
         }
 
         return announcements
     }
 
-    private fun getQueryTask(
-        ids: List<String>,
-        categoriesTypes: List<Int>
-    ): Task<QuerySnapshot> {
-        val collectionRef = database.collection(COLLECTION_NAME)
-
-        return when {
-            ids.isNotEmpty() && categoriesTypes.isEmpty() ->
-                collectionRef.whereIn(ID_KEY, ids).get()
-            ids.isNotEmpty() && categoriesTypes.isNotEmpty() ->
-                collectionRef.whereArrayContainsAny(CATEGORIES_KEY, categoriesTypes)
-                    .get()
-            ids.isEmpty() && categoriesTypes.isNotEmpty() ->
-                collectionRef.whereArrayContainsAny(CATEGORIES_KEY, categoriesTypes).get()
-            else -> collectionRef.get()
-        }
-    }
+    private fun containsFilterCategories(
+        filterCategories: List<AnnouncementModel.Category>,
+        announcementCategories: List<AnnouncementModel.Category>
+    ) : Boolean =
+        announcementCategories.firstOrNull { filterCategories.contains(it) }?.let { true } ?: false
 
     private fun existsContent(title: String?, description: String?, place: String?): Boolean =
         title != null && title.isNotEmpty()
@@ -111,7 +105,5 @@ class AnnouncementsDataSourceImpl(
 
     companion object {
         private const val COLLECTION_NAME = "announcements"
-        private const val ID_KEY = "id"
-        private const val CATEGORIES_KEY = "categoriesTypes"
     }
 }
