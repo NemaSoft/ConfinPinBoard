@@ -1,5 +1,6 @@
 package com.coronapptilus.covidpinboard.datasources.impl
 
+import com.coronapptilus.covidpinboard.commons.extensions.convertDateToTimestamp
 import com.coronapptilus.covidpinboard.commons.extensions.isAvailable
 import com.coronapptilus.covidpinboard.commons.extensions.safeCall
 import com.coronapptilus.covidpinboard.datasources.ResponseState
@@ -75,6 +76,8 @@ class AnnouncementsDataSourceImpl(
         if (ids.isNotEmpty() && categories.isNotEmpty()) {
             announcements = announcements.filter { ids.contains(it.id) }
         }
+
+        announcements = announcements.sortedBy { convertDateToTimestamp(it.startDate,it.startTime)}
 
         return announcements
     }

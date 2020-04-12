@@ -45,7 +45,6 @@
     <!-- Targets -->
     <string name="adults">Adults</string>
     <string name="children">Children</string>
-    <string name="familiar">Familiar</string>
     <string name="families">Families</string>
 
     <!--AddForm-->
@@ -69,9 +68,6 @@
     <string name="addButton">Add</string>
     <string name="pin_created_OK">Your pin was created successfully</string>
     <string name="pin_created_Fail">An error occurred while creating your pin</string>
-
-    <!-- Filter -->
-    <string name="category_filter">Category Filter</string>
 
     <!-- Form errors -->
     <string name="mandatory_field_error">This field is mandatory</string>

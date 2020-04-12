@@ -37,7 +37,7 @@ data class AnnouncementModel(
     sealed class Target(val type: Int, val name: Int?) {
         object Adults : Target(1, R.string.adults)
         object Children : Target(2, R.string.children)
-        object Familiar : Target(3, R.string.familiar)
+        object Familiar : Target(3, R.string.families)
         object Undefined : Target(4, null)
     }
 }
