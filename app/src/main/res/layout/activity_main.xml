@@ -12,11 +12,11 @@
         android:layout_height="?attr/actionBarSize"
         android:contentInsetStart="0dp"
         android:contentInsetEnd="0dp"
-        app:contentInsetStart="0dp"
         app:contentInsetEnd="0dp"
-        app:layout_constraintTop_toTopOf="parent"
+        app:contentInsetStart="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -26,16 +26,16 @@
                 android:id="@+id/toolbarTitle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textSize="24sp"
-                android:textColor="@android:color/black"
-                android:textStyle="bold"
+                android:foregroundGravity="center"
                 android:gravity="center"
                 android:text="@string/app_name"
-                android:foregroundGravity="center"
-                app:layout_constraintTop_toTopOf="parent"
+                android:textColor="@android:color/black"
+                android:textSize="24sp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -57,6 +57,9 @@
         android:id="@+id/bottomNav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        app:itemIconTint="@color/mtrl_bottom_nav_colored_item_tint"
+        app:itemTextColor="@color/mtrl_bottom_nav_colored_item_tint"
         app:labelVisibilityMode="selected"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
