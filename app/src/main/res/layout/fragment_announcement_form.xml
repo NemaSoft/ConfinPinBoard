@@ -38,8 +38,7 @@
             android:layout_marginStart="@dimen/form_side_margin"
             android:layout_marginTop="@dimen/form_side_margin"
             android:layout_marginEnd="@dimen/form_side_margin"
-            android:orientation="vertical"
-            android:paddingBottom="@dimen/form_padding_bottom_scroll">
+            android:orientation="vertical">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/titleEditTextParent"
@@ -260,9 +259,10 @@
                 android:id="@+id/addForm_addButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/default_margin_32"
-                android:layout_marginBottom="@dimen/default_margin_32"
+                android:layout_marginTop="@dimen/button_marginTop"
+                android:layout_marginBottom="@dimen/button_marginBottom"
                 android:backgroundTint="@color/colorAccent"
+                android:elevation="@dimen/button_elevation"
                 android:text="@string/addButton"
                 android:textAlignment="center"
                 android:textAllCaps="true"
