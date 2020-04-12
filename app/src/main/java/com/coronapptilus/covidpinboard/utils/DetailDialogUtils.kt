@@ -1,6 +1,7 @@
 package com.coronapptilus.covidpinboard.utils
 
 import android.content.Context
+import android.text.util.Linkify
 import android.view.View
 import com.coronapptilus.covidpinboard.R
 import com.coronapptilus.covidpinboard.commons.extensions.formatDate
@@ -15,7 +16,9 @@ object DetailDialogUtils {
         dialogView.apply {
             dialog_title.text = getFormattedTitle(context, item.title)
             dialog_description.text = getFormattedDescription(context, item.description)
+            Linkify.addLinks(dialog_description, Linkify.WEB_URLS)
             dialog_place.text = getFormattedPlace(context, item.place)
+            Linkify.addLinks(dialog_place, Linkify.WEB_URLS)
             dialog_categories.text =
                 getFormattedCategories(getCategoriesNames(context, item.categories))
             dialog_target_header.setCompoundDrawablesWithIntrinsicBounds(
