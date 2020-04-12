@@ -259,11 +259,13 @@
                 android:id="@+id/addForm_addButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/default_margin_16"
+                android:layout_marginTop="@dimen/default_margin_32"
                 android:layout_marginBottom="@dimen/default_margin_32"
+                android:backgroundTint="@color/colorAccent"
                 android:text="@string/addButton"
                 android:textAlignment="center"
-                android:textAllCaps="false"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="@dimen/default_titleFormSize" />
         </LinearLayout>
     </ScrollView>
