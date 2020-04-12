@@ -7,7 +7,7 @@ import com.coronapptilus.covidpinboard.domain.models.AnnouncementModel
 
 object CategoryUtils {
 
-    fun Context.getCategoryIcon(category: AnnouncementModel.Category): Int {
+    fun getCategoryIcon(category: AnnouncementModel.Category): Int {
         return when (category) {
             AnnouncementModel.Category.Sport -> R.drawable.ic_category_sport
             AnnouncementModel.Category.Cook -> R.drawable.ic_category_cook
@@ -73,7 +73,7 @@ object CategoryUtils {
     }
 
     fun getAllCategories(): List<AnnouncementModel.Category> {
-        return mutableListOf<AnnouncementModel.Category>(
+        return mutableListOf(
             AnnouncementModel.Category.Sport,
             AnnouncementModel.Category.Cook,
             AnnouncementModel.Category.Music,

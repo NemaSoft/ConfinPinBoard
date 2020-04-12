@@ -61,13 +61,13 @@ class AnnouncementsFavoritesFragment : Fragment(R.layout.fragment_announcements_
     }
 
     private fun showEmptyScreen() {
-        announcementList.visibility = View.GONE
-        fallbackImage.visibility = View.VISIBLE
+        announcementList.visibility = GONE
+        fallbackImage.visibility = VISIBLE
     }
 
     private fun hideEmptyScreen() {
-        announcementList.visibility = View.VISIBLE
-        fallbackImage.visibility = View.GONE
+        announcementList.visibility = VISIBLE
+        fallbackImage.visibility = GONE
     }
 
     override fun showAnnouncementDetail(announcement: AnnouncementModel) {

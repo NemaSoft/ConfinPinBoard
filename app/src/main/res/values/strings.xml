@@ -51,13 +51,8 @@
     <string name="addForm_TitleStatement">Add your pin</string>
     <string name="announcer">Announcer</string>
     <string name="title_form">Title</string>
-    <string name="place">Place</string>
-    <string name="date">Date</string>
-    <string name="time">Time</string>
-    <string name="target">Target</string>
-    <string name="category">Category</string>
     <string name="description">Description</string>
-    <string name="place_tip">URL link, telephone, e-mail</string>
+    <string name="place_tip">Place, URL link, telephone, e-mail…</string>
 
     <string name="date_start"> Starting date</string>
     <string name="date_end"> Ending date</string>
@@ -75,5 +70,6 @@
     <string name="category_error">You should choose one category al least</string>
     <string name="dateTime_error">Incorrect date or time</string>
     <string name="description_error">Specify a proper description</string>
+    <string name="nothing_here_yet">Nothing here yet</string>
 
 </resources>

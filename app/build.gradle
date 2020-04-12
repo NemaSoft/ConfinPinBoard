@@ -75,11 +75,4 @@ dependencies {
     implementation "com.google.firebase:firebase-perf:$firebase_performance_version"
     implementation "com.google.firebase:firebase-messaging:$firebase_messaging_version"
     implementation "com.google.firebase:firebase-firestore:$firebase_firestore_version"
-
-    // Testing
-    testImplementation "io.mockk:mockk:$mockk_version"
-    testImplementation "junit:junit:$junit_version"
-    androidTestImplementation "io.mockk:mockk-android:$mockk_version"
-    androidTestImplementation "androidx.test.ext:junit:$junit_ext_version"
-    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
 }

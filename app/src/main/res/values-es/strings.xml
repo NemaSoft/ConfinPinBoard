@@ -51,13 +51,8 @@
     <string name="addForm_TitleStatement">Añade tu pin</string>
     <string name="announcer">Anunciante</string>
     <string name="title_form">Título</string>
-    <string name="place">Lugar</string>
-    <string name="date">Fecha</string>
-    <string name="time">Hora</string>
-    <string name="target">Público</string>
-    <string name="category">Categoría</string>
     <string name="description">Descripción</string>
-    <string name="place_tip">Link URL, teléfono, correo electrónico</string>
+    <string name="place_tip">Lugar, link URL, teléfono, correo electrónico…</string>
 
     <string name="date_start">Fecha de inicio</string>
     <string name="date_end">Fecha final</string>
@@ -69,11 +64,12 @@
     <string name="pin_created_OK">Tu pin se ha creado correctamente</string>
     <string name="pin_created_Fail">Se produjo un error al crear tu pin</string>
 
-    <!-- Filter -->
+    <!-- Form errors -->
     <string name="mandatory_field_error">Este campo es obligatorio</string>
     <string name="target_error">Es necesario especificar un público</string>
     <string name="category_error">Selecciona mínimo una categoría</string>
     <string name="dateTime_error">Fecha u hora incorrectas</string>
     <string name="description_error">Especifica una descripción correcta</string>
+    <string name="nothing_here_yet">Aún no hay nada aquí</string>
 
 </resources>

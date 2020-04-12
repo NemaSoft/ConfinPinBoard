@@ -51,13 +51,8 @@
     <string name="addForm_TitleStatement">Afegeix el teu pin</string>
     <string name="announcer">Anunciant</string>
     <string name="title_form">Títol</string>
-    <string name="place">Lloc</string>
-    <string name="date">Data</string>
-    <string name="time">Hora</string>
-    <string name="target">Públic</string>
-    <string name="category">Categoria</string>
     <string name="description">Descripció</string>
-    <string name="place_tip">Link URL, telèfon, correu electrònic</string>
+    <string name="place_tip">Lloc, link URL, telèfon, correu electrònic…</string>
 
     <string name="date_start">Data d\'inici</string>
     <string name="date_end">Data final</string>
@@ -69,11 +64,12 @@
     <string name="pin_created_OK">El teu pin s\'ha creat correctament</string>
     <string name="pin_created_Fail">S\'ha produït un error a l\'hora de crear el teu pin</string>
 
-    <!-- Filter -->
+    <!-- Form errors -->
     <string name="mandatory_field_error">Aquest camp és obligatori</string>
     <string name="target_error">Es necessita especificar un públic</string>
     <string name="category_error">Escull una categoria com a mínim</string>
     <string name="dateTime_error">Data o hora incorrectes</string>
     <string name="description_error">Especifica una descripció correcta</string>
+    <string name="nothing_here_yet">Encara no hi ha res aquí</string>
 
 </resources>

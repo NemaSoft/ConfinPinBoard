@@ -23,7 +23,7 @@ class FilterGridAdapter(
                 addAll(dataList.map {
                     FilterCategoryModel(
                         it.type,
-                        context.getCategoryIcon(it),
+                        getCategoryIcon(it),
                         context.getCategoryString(it),
                         false,
                         context.getCategoryColor(it)
