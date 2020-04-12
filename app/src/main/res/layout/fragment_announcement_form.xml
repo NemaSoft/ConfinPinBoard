@@ -9,6 +9,7 @@
 
     <TextView
         android:id="@+id/addForm_titleStatement"
+        style="@style/form_header"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/form_side_margin"
@@ -16,7 +17,6 @@
         android:paddingBottom="@dimen/form_title_padding"
         android:text="@string/addForm_TitleStatement"
         android:textAlignment="viewStart"
-        style="@style/form_header"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -27,15 +27,16 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/addForm_titleStatement">
+        app:layout_constraintTop_toBottomOf="@id/addForm_titleStatement"
+        app:layout_constraintVertical_bias="1.0">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/form_side_margin"
             android:layout_marginTop="@dimen/form_side_margin"
-            android:paddingBottom="@dimen/form_padding_bottom_scroll"
             android:layout_marginEnd="@dimen/form_side_margin"
             android:orientation="vertical">
 
@@ -258,10 +259,14 @@
                 android:id="@+id/addForm_addButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/form_side_margin"
+                android:layout_marginTop="@dimen/button_marginTop"
+                android:layout_marginBottom="@dimen/button_marginBottom"
+                android:backgroundTint="@color/colorAccent"
+                android:elevation="@dimen/button_elevation"
                 android:text="@string/addButton"
                 android:textAlignment="center"
-                android:textAllCaps="false"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="@dimen/primary_2xl" />
         </LinearLayout>
 

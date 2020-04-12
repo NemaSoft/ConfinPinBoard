@@ -45,7 +45,6 @@
     <!-- Targets -->
     <string name="adults">Adultos</string>
     <string name="children">Niños</string>
-    <string name="familiar">Familiar</string>
     <string name="families">Familias</string>
 
     <!--AddForm-->
@@ -71,7 +70,6 @@
     <string name="pin_created_Fail">Se produjo un error al crear tu pin</string>
 
     <!-- Filter -->
-    <string name="category_filter">Filtro por categorías</string>
     <string name="mandatory_field_error">Este campo es obligatorio</string>
     <string name="target_error">Es necesario especificar un público</string>
     <string name="category_error">Selecciona mínimo una categoría</string>

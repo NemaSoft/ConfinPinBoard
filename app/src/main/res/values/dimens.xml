@@ -23,10 +23,14 @@
     <dimen name="primary_2xs">12sp</dimen>
 
     <!-- Form -->
-    <dimen name="form_side_margin">16dp</dimen>
-    <dimen name="form_title_padding">8dp</dimen>
     <dimen name="form_elements_margin">4dp</dimen>
-    <dimen name="form_padding_bottom_scroll">40dp</dimen>
+    <dimen name="form_title_padding">8dp</dimen>
+    <dimen name="form_side_margin">16dp</dimen>
+
+    <dimen name="button_marginTop">32dp</dimen>
+    <dimen name="button_marginBottom">40dp</dimen>
+    <dimen name="button_elevation">6dp</dimen>
+
 
     <!-- Progress bar -->
     <dimen name="progressbar_height">24dp</dimen>
