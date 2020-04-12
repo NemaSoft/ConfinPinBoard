@@ -2,9 +2,11 @@
 
 More info here: https://hackovid.cat/
 
-![CovidPinBoard logo](app/src/main/res/ic_launcher-playstore.png)
+![CovidPinBoard logo](app/src/main/res/mipmap-xxxhdpi/ic_covid_pin_board.png)
 
-Download it from ![Google Play](https://play.google.com/store/apps/details?id=com.coronapptilus.covidpinboard) and start surfing announcements. Don't be shy and get in touch with your community
+Download it from Google Play and start surfing announcements. Don't be shy and get in touch with your community:
+
+https://play.google.com/store/apps/details?id=com.coronapptilus.covidpinboard
 
 ## License
 **Apache License 2.0**
