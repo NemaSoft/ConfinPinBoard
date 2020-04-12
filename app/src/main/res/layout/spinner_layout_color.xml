@@ -3,9 +3,11 @@
     android:id="@+id/targetSpinnerLayout"
     style="?attr/spinnerDropDownItemStyle"
     android:layout_width="match_parent"
-    android:layout_height="?attr/dropdownListPreferredItemHeight"
+    android:layout_height="wrap_content"
     android:ellipsize="marquee"
     android:hint="@string/chooseATarget"
+    android:paddingTop="14dp"
+    android:paddingBottom="14dp"
     android:singleLine="true"
     android:textColor="@android:color/darker_gray"
     android:textSize="@dimen/primary_l" />

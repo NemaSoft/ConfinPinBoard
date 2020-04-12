@@ -16,7 +16,7 @@ object ListItemUtils {
             item_title.text = ""
             item_place.text = ""
             item_announcer.text = ""
-            item_image.setImageResource(R.drawable.ic_report)
+            item_image.setImageResource(R.drawable.ic_empty_screen)
             item_image.background = null
             item_categories_list.text = ""
             item_target_image.setImageResource(R.drawable.ic_target_adults)

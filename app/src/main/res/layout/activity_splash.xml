@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FCFCFC">
+    android:background="#FCFCFC"
+    tools:ignore="Overdraw">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/splash_icon"
