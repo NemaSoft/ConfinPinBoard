@@ -64,6 +64,7 @@ class AnnouncementsDataSourceImpl(
                 existsContent(it.title, it.description, it.place)
                         && checkAvailability(it.endTimestamp)
             }
+            .sortedBy { it.startTimestamp }
             .map { mapper.mapResponseToDomain(it) }
 
         if (searchTerm.isNotEmpty()) {
@@ -76,8 +77,6 @@ class AnnouncementsDataSourceImpl(
         if (ids.isNotEmpty() && categories.isNotEmpty()) {
             announcements = announcements.filter { ids.contains(it.id) }
         }
-
-        announcements = announcements.sortedBy { convertDateToTimestamp(it.startDate,it.startTime)}
 
         return announcements
     }

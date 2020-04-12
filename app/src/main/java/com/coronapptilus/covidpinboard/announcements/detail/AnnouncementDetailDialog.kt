@@ -4,6 +4,8 @@ import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
 import android.view.View
+import android.view.ViewGroup.LayoutParams.MATCH_PARENT
+import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import androidx.core.content.ContextCompat.startActivity
 import com.coronapptilus.covidpinboard.R
 import com.coronapptilus.covidpinboard.domain.models.AnnouncementModel
@@ -37,6 +39,11 @@ class AnnouncementDetailDialog(
         }
         dialog_share_button.setOnClickListener { presenter.onCalendarButtonClicked() }
         dialog_close_button.setOnClickListener { presenter.onCloseButtonClicked() }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        this.window?.setLayout(MATCH_PARENT, WRAP_CONTENT)
     }
 
     override fun updateFavoriteButtonStatus(isFavorite: Boolean) {
