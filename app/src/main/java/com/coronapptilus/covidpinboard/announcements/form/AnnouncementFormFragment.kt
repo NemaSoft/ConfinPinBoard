@@ -30,6 +30,7 @@ import com.coronapptilus.covidpinboard.utils.CategoryUtils
 import com.coronapptilus.covidpinboard.utils.CategoryUtils.getCategoryString
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_announcement_form.*
+import kotlinx.android.synthetic.main.spinner_layout_color.*
 import org.koin.android.ext.android.inject
 import java.util.*
 
@@ -172,10 +173,25 @@ class AnnouncementFormFragment : Fragment(R.layout.fragment_announcement_form),
                 val view: View = super.getDropDownView(position, convertView, parent)
                 val item: TextView = view as TextView
 
-                when(item.text){
-                    context.resources.getString(R.string.adults) -> item.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_target_adults,0,0,0)
-                    context.resources.getString(R.string.children) -> item.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_target_kids,0,0,0)
-                    context.resources.getString(R.string.families) -> item.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_target_families,0,0,0)
+                when (item.text) {
+                    context.resources.getString(R.string.adults) -> item.setCompoundDrawablesRelativeWithIntrinsicBounds(
+                        R.drawable.ic_target_adults,
+                        0,
+                        0,
+                        0
+                    )
+                    context.resources.getString(R.string.children) -> item.setCompoundDrawablesRelativeWithIntrinsicBounds(
+                        R.drawable.ic_target_kids,
+                        0,
+                        0,
+                        0
+                    )
+                    context.resources.getString(R.string.families) -> item.setCompoundDrawablesRelativeWithIntrinsicBounds(
+                        R.drawable.ic_target_families,
+                        0,
+                        0,
+                        0
+                    )
                 }
                 item.compoundDrawablePadding = 8
 
@@ -193,7 +209,6 @@ class AnnouncementFormFragment : Fragment(R.layout.fragment_announcement_form),
         adapter.notifyDataSetChanged()
 
         addForm_targetSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            // TODO cambiar el color del texto original en el textview una vez se clicka
             override fun onNothingSelected(parent: AdapterView<*>?) {
                 clearTargetError()
             }
@@ -205,6 +220,7 @@ class AnnouncementFormFragment : Fragment(R.layout.fragment_announcement_form),
                 id: Long
             ) {
                 clearTargetError()
+                targetSpinnerLayout?.setTextColor(Color.BLACK)
             }
         }
     }
