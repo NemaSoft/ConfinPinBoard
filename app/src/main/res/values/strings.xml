@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CovidPinBoard</string>
+    <string name="app_name">ConfinPinBoard</string>
 
     <!-- Labels NavBar -->
     <string name="favorites_label">Favorites</string>
