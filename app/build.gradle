@@ -19,8 +19,8 @@ android {
         applicationId "com.confinapptilus.confinpinboard"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 2
-        versionName "1.1"
+        versionCode 1
+        versionName "1.0"
 
         buildConfigField("String", "FIREBASE_PROJECT_ID", '"confin-pin-board-nema"')
 
