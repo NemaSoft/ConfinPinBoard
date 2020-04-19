@@ -22,7 +22,7 @@ android {
         versionCode 1
         versionName "1.0"
 
-        buildConfigField("String", "FIREBASE_PROJECT_ID", '"covid-pin-board-nema"')
+        buildConfigField("String", "FIREBASE_PROJECT_ID", '"confin-pin-board-nema"')
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "217538145645",
-    "firebase_url": "https://covid-pin-board-nema.firebaseio.com",
-    "project_id": "covid-pin-board-nema",
-    "storage_bucket": "covid-pin-board-nema.appspot.com"
+    "project_number": "745863434362",
+    "firebase_url": "https://confin-pin-board-nema.firebaseio.com",
+    "project_id": "confin-pin-board-nema",
+    "storage_bucket": "confin-pin-board-nema.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:217538145645:android:2a947baa2a61d9ad9bbe64",
+        "mobilesdk_app_id": "1:745863434362:android:a8b0121aecf91cd9f4ebc3",
         "android_client_info": {
           "package_name": "com.confinapptilus.confinpinboard"
         }
       },
       "oauth_client": [
         {
-          "client_id": "217538145645-g4r272rpghuhn2d45opop1khdjac9ugt.apps.googleusercontent.com",
+          "client_id": "745863434362-d7dlqtle5fqheq19c0k7o4rjsbiu6dbf.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBDBuy4UEFgZt-7qOmru7W0weKs5zRL7Z0"
+          "current_key": "AIzaSyB0xrAX2mjuBinBvNlZVb_9HZfVwVGNYFQ"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "217538145645-g4r272rpghuhn2d45opop1khdjac9ugt.apps.googleusercontent.com",
+              "client_id": "745863434362-d7dlqtle5fqheq19c0k7o4rjsbiu6dbf.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

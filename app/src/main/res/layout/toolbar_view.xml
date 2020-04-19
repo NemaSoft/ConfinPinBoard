@@ -12,7 +12,7 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginEnd="@dimen/toolbar_margin_elements"
-        android:src="@mipmap/ic_covid_pin_board" />
+        android:src="@mipmap/ic_pin_board" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/headtitle"
