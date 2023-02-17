@@ -9,18 +9,6 @@
         android:id="@+id/list_fragment"
         android:name="com.confinapptilus.confinpinboard.announcements.list.AnnouncementsListFragment"
         android:label="list_fragment"
-        tools:layout="@layout/fragment_announcement_list"/>
-
-    <fragment
-        android:id="@+id/form_fragment"
-        android:name="com.confinapptilus.confinpinboard.announcements.form.AnnouncementFormFragment"
-        android:label="form_fragment"
-        tools:layout="@layout/fragment_announcement_form"/>
-
-    <fragment
-        android:id="@+id/favorites_fragment"
-        android:name="com.confinapptilus.confinpinboard.announcements.favorites.AnnouncementsFavoritesFragment"
-        android:label="favorites_fragment"
-        tools:layout="@layout/fragment_announcements_favorites"/>
+        tools:layout="@layout/fragment_announcement_list" />
 
 </navigation>

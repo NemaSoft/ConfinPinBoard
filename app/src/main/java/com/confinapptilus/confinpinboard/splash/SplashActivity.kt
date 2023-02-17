@@ -5,25 +5,31 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.confinapptilus.confinpinboard.R
+import com.confinapptilus.confinpinboard.databinding.ActivitySplashBinding
 import com.confinapptilus.confinpinboard.main.MainActivity
-import kotlinx.android.synthetic.main.activity_splash.*
 import org.koin.android.ext.android.inject
 
 class SplashActivity : AppCompatActivity(), SplashContract.View {
+
+    private var viewBinding: ActivitySplashBinding? = null
 
     private val presenter: SplashContract.Presenter by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash)
+        viewBinding = ActivitySplashBinding.inflate(layoutInflater).also {
+            setContentView(it.root)
+        }
 
         presenter.attachView(this)
         presenter.applyDelay()
 
-        Glide.with(applicationContext)
-            .asGif()
-            .load(R.raw.splash)
-            .into(splash_icon)
+        viewBinding?.splashIcon?.let { icon ->
+            Glide.with(applicationContext)
+                .asGif()
+                .load(R.raw.splash)
+                .into(icon)
+        }
     }
 
     override fun onDestroy() {

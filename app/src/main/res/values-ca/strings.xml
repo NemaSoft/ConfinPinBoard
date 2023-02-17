@@ -2,27 +2,9 @@
     <string name="app_name">ConfinPinBoard</string>
 
     <!-- Labels NavBar -->
-    <string name="favorites_label">Favorits</string>
     <string name="results_label">Tauler</string>
-    <string name="form_label">Afegir</string>
 
     <string name="search">Cercar</string>
-
-    <!-- Date Formats -->
-    <string name="today_pattern">Avui a les %s</string>
-    <string name="tomorrow_pattern">Demà a les %s</string>
-    <string name="date_time_pattern">El %s a les %s</string>
-
-    <!-- Dialog -->
-    <string name="title">Títol</string>
-    <string name="description_header">Descripció</string>
-    <string name="place_header">Lloc</string>
-    <string name="category_header">Categoria/es</string>
-    <string name="target_header">Públic</string>
-    <string name="start_date_header">Inici</string>
-    <string name="end_date_header">Fi</string>
-    <string name="organizer_header">Organitzador</string>
-    <string name="error_message">Aquest esdeveniment no té </string>
 
     <!-- Categories -->
     <string name="categories">Categories</string>
@@ -42,34 +24,7 @@
     <string name="storytelling">Contacontes</string>
     <string name="others">Altres</string>
 
-    <!-- Targets -->
-    <string name="adults">Adults</string>
-    <string name="children">Nens</string>
-    <string name="families">Famílies</string>
-
-    <!--AddForm-->
-    <string name="addForm_TitleStatement">Afegeix el teu pin</string>
-    <string name="announcer">Anunciant</string>
-    <string name="title_form">Títol</string>
-    <string name="description">Descripció</string>
-    <string name="place_tip">Lloc, link URL, telèfon, correu electrònic…</string>
-
-    <string name="date_start">Data d\'inici</string>
-    <string name="date_end">Data final</string>
-    <string name="time_start">Hora d\'inici</string>
-    <string name="time_end">Hora final</string>
-
-    <string name="chooseATarget">Escull un públic</string>
-    <string name="addButton">Afegir</string>
-    <string name="pin_created_OK">El teu pin s\'ha creat correctament</string>
-    <string name="pin_created_Fail">S\'ha produït un error a l\'hora de crear el teu pin</string>
-
     <!-- Form errors -->
-    <string name="mandatory_field_error">Aquest camp és obligatori</string>
-    <string name="target_error">Es necessita especificar un públic</string>
-    <string name="category_error">Escull una categoria com a mínim</string>
-    <string name="dateTime_error">Data o hora incorrectes</string>
-    <string name="description_error">Especifica una descripció correcta</string>
     <string name="nothing_here_yet">Encara no hi ha res aquí</string>
 
 </resources>

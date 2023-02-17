@@ -1,36 +1,25 @@
 package com.confinapptilus.confinpinboard
 
 import android.app.Application
-import com.confinapptilus.confinpinboard.di.DataSourcesModule.dataSourcesModule
-import com.confinapptilus.confinpinboard.di.MappersModule.mappersModule
-import com.confinapptilus.confinpinboard.di.NetworkModule.networkModule
 import com.confinapptilus.confinpinboard.di.PresentersModule.presentersModule
-import com.confinapptilus.confinpinboard.di.RepositoriesModule.repositoriesModule
-import com.confinapptilus.confinpinboard.di.UseCasesModule.useCasesModule
+import org.koin.android.BuildConfig
 import org.koin.android.ext.koin.androidContext
+import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
+import org.koin.core.logger.Level
 
 class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
-
         initKoin()
     }
 
     private fun initKoin() {
         startKoin {
             androidContext(this@App)
-            modules(
-                arrayListOf(
-                    presentersModule,
-                    useCasesModule,
-                    repositoriesModule,
-                    mappersModule,
-                    dataSourcesModule,
-                    networkModule
-                )
-            )
+            androidLogger(if (BuildConfig.DEBUG) Level.DEBUG else Level.NONE)
+            modules(presentersModule)
         }
     }
 }

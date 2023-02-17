@@ -10,11 +10,4 @@
         <item name="colorControlNormal">@color/colorPrimary</item>
     </style>
 
-    <style name="form_header">
-        <item name="android:textSize">@dimen/primary_2xl</item>
-        <item name="android:textAllCaps">true</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/colorPrimary</item>
-    </style>
-
 </resources>

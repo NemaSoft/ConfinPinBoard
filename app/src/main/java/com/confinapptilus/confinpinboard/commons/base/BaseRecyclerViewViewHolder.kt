@@ -1,17 +1,15 @@
 package com.confinapptilus.confinpinboard.commons.base
 
-import android.view.View
-import android.view.ViewGroup
-import androidx.annotation.LayoutRes
 import androidx.recyclerview.widget.RecyclerView
-import com.confinapptilus.confinpinboard.commons.extensions.inflate
-import kotlinx.android.extensions.LayoutContainer
+import androidx.viewbinding.ViewBinding
 
-abstract class BaseRecyclerViewViewHolder<T>(parent: ViewGroup, @LayoutRes layoutResId: Int) :
-    RecyclerView.ViewHolder(parent.inflate(layoutResId)), LayoutContainer {
-
-    override val containerView: View?
-        get() = itemView
+/**
+ * Intended to offer a good abstraction point to simply pass a [ViewBinding] class [VB] in order to
+ * attach its root as the [RecyclerView.ViewHolder] view and offer a way to update it with [T].
+ */
+abstract class BaseRecyclerViewViewHolder<VB : ViewBinding, T>(
+    protected val viewBinding: VB
+) : RecyclerView.ViewHolder(viewBinding.root) {
 
     abstract fun update(item: T)
 }

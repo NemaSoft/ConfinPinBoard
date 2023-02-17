@@ -31,8 +31,4 @@
     <dimen name="button_marginBottom">40dp</dimen>
     <dimen name="button_elevation">6dp</dimen>
 
-
-    <!-- Progress bar -->
-    <dimen name="progressbar_height">24dp</dimen>
-
 </resources>

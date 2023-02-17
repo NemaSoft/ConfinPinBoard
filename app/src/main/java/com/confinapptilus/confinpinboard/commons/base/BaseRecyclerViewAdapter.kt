@@ -2,34 +2,47 @@ package com.confinapptilus.confinpinboard.commons.base
 
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import kotlin.properties.Delegates
 
 /**
  * Intended to offer an abstraction in order to create an adapter which will receive a list of [T]
- * models and a [V] ViewHolder, offering utility methods as updating the list [dataSet] items and/or
+ * models and a [VH] ViewHolder, offering utility methods as updating the list [items] and/or
  * updating the [onItemClicked] mainly.
  */
-abstract class BaseRecyclerViewAdapter<T, V : BaseRecyclerViewViewHolder<T>> :
-    RecyclerView.Adapter<V>() {
+abstract class BaseRecyclerViewAdapter<T, VH : RecyclerView.ViewHolder> :
+    RecyclerView.Adapter<VH>() {
 
-    private var dataSet: MutableList<T> = ArrayList()
+    var items: List<T> by Delegates.observable(
+        emptyList()
+    ) { _, oldItems, newItems -> computeAndNotifyDataSetChanged(oldItems, newItems) }
     var onItemClicked: (T) -> Unit = {}
 
-    override fun onBindViewHolder(holder: V, position: Int) {
-        val item = dataSet[position]
-        holder.update(item)
-        holder.itemView.setOnClickListener { onItemClicked.invoke(item) }
-    }
+    private fun computeAndNotifyDataSetChanged(oldItems: List<T>, newItems: List<T>) {
+        val diffCallback = object : DiffUtil.Callback() {
+            override fun getOldListSize(): Int = oldItems.size
 
-    override fun getItemCount(): Int = dataSet.size
+            override fun getNewListSize(): Int = newItems.size
 
-    fun setData(data: List<T>) {
-        updateAndNotifyDataListChanged(data.toMutableList())
-    }
+            override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean =
+                areItemsTheSame(oldItems[oldItemPosition], newItems[newItemPosition])
 
-    private fun updateAndNotifyDataListChanged(dataList: MutableList<T>) {
-        val diffResult = DiffUtil.calculateDiff(DiffCallBack(dataList, dataSet), true)
-        dataSet.clear()
-        dataSet.addAll(dataList)
+            override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean =
+                oldItems[oldItemPosition] == newItems[newItemPosition]
+        }
+        val diffResult = DiffUtil.calculateDiff(diffCallback)
         diffResult.dispatchUpdatesTo(this)
+    }
+
+    protected abstract fun areItemsTheSame(oldItem: T, newItem: T): Boolean
+
+    protected fun getItem(position: Int): T = items[position]
+
+    override fun getItemCount(): Int = items.size
+
+    @Suppress("UNCHECKED_CAST")
+    override fun onBindViewHolder(holder: VH, position: Int) {
+        val item = getItem(position)
+        (holder as? BaseRecyclerViewViewHolder<*, T>)?.update(item)
+        holder.itemView.setOnClickListener { onItemClicked.invoke(item) }
     }
 }

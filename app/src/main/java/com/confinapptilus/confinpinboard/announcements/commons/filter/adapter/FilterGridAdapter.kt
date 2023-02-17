@@ -14,23 +14,20 @@ class FilterGridAdapter(
     private val dataList: List<AnnouncementModel.Category>
 ) : BaseRecyclerViewAdapter<FilterCategoryModel, FilterViewHolder>() {
 
-
-    val data = mutableListOf<FilterCategoryModel>()
+    private val data = mutableListOf<FilterCategoryModel>()
 
     init {
-        super.setData(
-            data.apply {
-                addAll(dataList.map {
-                    FilterCategoryModel(
-                        it.type,
-                        getCategoryIcon(it),
-                        context.getCategoryString(it),
-                        false,
-                        context.getCategoryColor(it)
-                    )
-                })
-            }
-        )
+        items = data.apply {
+            addAll(dataList.map {
+                FilterCategoryModel(
+                    it.type,
+                    getCategoryIcon(it),
+                    context.getCategoryString(it),
+                    false,
+                    context.getCategoryColor(it)
+                )
+            })
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FilterViewHolder =
@@ -38,15 +35,17 @@ class FilterGridAdapter(
 
     override fun onBindViewHolder(holder: FilterViewHolder, position: Int) {
         super.onBindViewHolder(holder, position)
-        holder.containerView?.setOnClickListener {
-            toggleChecked(position)
-        }
+        holder.itemView.setOnClickListener { toggleChecked(position) }
     }
+
+    override fun areItemsTheSame(
+        oldItem: FilterCategoryModel,
+        newItem: FilterCategoryModel
+    ): Boolean = oldItem.id == newItem.id
 
     fun setCheckedCategories(checked: List<AnnouncementModel.Category>) {
         checked.forEach { catId -> data.find { it.id == catId.type }?.checked = true }
-        setData(data)
-        notifyDataSetChanged()
+        items = data
     }
 
     fun getCheckedCategories(): List<AnnouncementModel.Category> {
@@ -55,13 +54,12 @@ class FilterGridAdapter(
                 .map { it.id }
                 .forEach { id ->
                     dataList.find { it.type == id }?.let { category -> add(category) }
-            }
+                }
         }
     }
 
     private fun toggleChecked(position: Int) {
         data[position].checked = !data[position].checked
-        setData(data)
-        notifyDataSetChanged()
+        items = data
     }
 }

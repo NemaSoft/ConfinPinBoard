@@ -2,27 +2,9 @@
     <string name="app_name">ConfinPinBoard</string>
 
     <!-- Labels NavBar -->
-    <string name="favorites_label">Favorites</string>
     <string name="results_label">Board</string>
-    <string name="form_label">Add</string>
 
     <string name="search">Search</string>
-
-    <!-- Date Formats -->
-    <string name="today_pattern">Today at %s</string>
-    <string name="tomorrow_pattern">Tomorrow at %s</string>
-    <string name="date_time_pattern">%s at %s</string>
-
-    <!-- Dialog -->
-    <string name="title">Title</string>
-    <string name="description_header">Description</string>
-    <string name="place_header">Place</string>
-    <string name="category_header">Category / Categories</string>
-    <string name="target_header">Target</string>
-    <string name="start_date_header">Start</string>
-    <string name="end_date_header">End</string>
-    <string name="organizer_header">Organizer</string>
-    <string name="error_message">This event has no </string>
 
     <!-- Categories -->
     <string name="categories">Categories</string>
@@ -42,34 +24,7 @@
     <string name="storytelling">Storytelling</string>
     <string name="others">Others</string>
 
-    <!-- Targets -->
-    <string name="adults">Adults</string>
-    <string name="children">Children</string>
-    <string name="families">Families</string>
-
-    <!--AddForm-->
-    <string name="addForm_TitleStatement">Add your pin</string>
-    <string name="announcer">Announcer</string>
-    <string name="title_form">Title</string>
-    <string name="description">Description</string>
-    <string name="place_tip">Place, URL link, telephone, e-mail…</string>
-
-    <string name="date_start"> Starting date</string>
-    <string name="date_end"> Ending date</string>
-    <string name="time_start"> Starting time</string>
-    <string name="time_end"> Ending time</string>
-
-    <string name="chooseATarget">Choose a target</string>
-    <string name="addButton">Add</string>
-    <string name="pin_created_OK">Your pin was created successfully</string>
-    <string name="pin_created_Fail">An error occurred while creating your pin</string>
-
     <!-- Form errors -->
-    <string name="mandatory_field_error">This field is mandatory</string>
-    <string name="target_error">A target should be specified</string>
-    <string name="category_error">You should choose one category al least</string>
-    <string name="dateTime_error">Incorrect date or time</string>
-    <string name="description_error">Specify a proper description</string>
     <string name="nothing_here_yet">Nothing here yet</string>
 
 </resources>

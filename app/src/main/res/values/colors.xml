@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <color name="colorPrimary">#874f29</color>
     <color name="colorPrimaryDark">#55321a</color>
     <color name="colorAccent">#ffaf40</color>
     <color name="ic_launcher_background">@android:color/white</color>
-    <color name="textError">#ff5724</color>
-
-    <color name="recycler_background">#999999</color>
 
     <color name="sport">#A93226</color>
     <color name="cook">#AF7AC5</color>

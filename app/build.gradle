@@ -1,10 +1,5 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
-apply plugin: 'com.google.gms.google-services'
-apply plugin: 'com.google.firebase.crashlytics'
-apply plugin: 'com.google.firebase.firebase-perf'
 
 // Creates a keystore Properties intended to be used to sign our app
 def keystoreProperties = new Properties()
@@ -12,17 +7,15 @@ def keystorePropertiesFile = rootProject.file("keystore.properties")
 keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.3"
+    compileSdkVersion 33
+    buildToolsVersion "33.0.1"
 
     defaultConfig {
         applicationId "com.confinapptilus.confinpinboard"
         minSdkVersion 21
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
-
-        buildConfigField("String", "FIREBASE_PROJECT_ID", '"confin-pin-board-nema"')
+        targetSdkVersion 33
+        versionCode 2
+        versionName "1.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -44,35 +37,31 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_11
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_11.toString()
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "androidx.appcompat:appcompat:$appcompat_version"
     implementation "androidx.constraintlayout:constraintlayout:$constraint_version"
 
     // Koin
-    implementation "org.koin:koin-androidx-scope:$koin_version"
-    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
-    implementation "org.koin:koin-androidx-ext:$koin_version"
+    implementation "io.insert-koin:koin-android:$koin_version"
 
     // Navigation
     implementation "androidx.navigation:navigation-fragment-ktx:$navigation_version"
     implementation "androidx.navigation:navigation-ui-ktx:$navigation_version"
 
-    // Coroutines
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
-
-    // Gson
-    implementation "com.google.code.gson:gson:$gson_version"
-
     // Glide
     implementation "com.github.bumptech.glide:glide:$glide_version"
-
-    // Firebase
-    implementation "com.google.firebase:firebase-analytics:$firebase_analytics_version"
-    implementation "com.google.firebase:firebase-crashlytics:$firebase_crashlytics_version"
-    implementation "com.google.firebase:firebase-perf:$firebase_performance_version"
-    implementation "com.google.firebase:firebase-messaging:$firebase_messaging_version"
-    implementation "com.google.firebase:firebase-firestore:$firebase_firestore_version"
 }

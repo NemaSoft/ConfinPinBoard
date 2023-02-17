@@ -1,81 +1,40 @@
 package com.confinapptilus.confinpinboard.announcements.list
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.confinapptilus.confinpinboard.R
-import com.confinapptilus.confinpinboard.announcements.detail.AnnouncementDetailDialog
-import com.confinapptilus.confinpinboard.announcements.list.adapter.AnnouncementsListAdapter
 import com.confinapptilus.confinpinboard.commons.components.ToolbarView
-import com.confinapptilus.confinpinboard.domain.models.AnnouncementModel
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_announcement_list.*
+import com.confinapptilus.confinpinboard.databinding.FragmentAnnouncementListBinding
+import com.confinapptilus.confinpinboard.main.MainActivity
 import org.koin.android.ext.android.inject
 
-class AnnouncementsListFragment : Fragment(R.layout.fragment_announcement_list),
-    AnnouncementsListContract.View {
+class AnnouncementsListFragment : Fragment(), AnnouncementsListContract.View {
+
+    private var viewBinding: FragmentAnnouncementListBinding? = null
 
     private val presenter: AnnouncementsListContract.Presenter by inject()
 
-    private val adapter = AnnouncementsListAdapter()
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        viewBinding = FragmentAnnouncementListBinding.inflate(layoutInflater, container, false)
+        return viewBinding?.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        activity?.toolbar?.apply {
-            init(ToolbarView.HOME)
-            setOnFilterButtonClicked { searchTerm, categories ->
-                presenter.getAnnouncements(searchTerm, categories)
-            }
-            setOnSearchInputFilled { searchTerm, categories ->
-                presenter.getAnnouncements(searchTerm, categories)
-            }
-        }
+        (activity as? MainActivity)?.viewBinding?.toolbar?.init()
 
-        initList()
-        initPresenter()
-    }
-
-    private fun initList() {
-        announcementList.adapter = adapter
-        adapter.onItemClicked = { presenter.onAnnouncementItemClicked(it) }
-    }
-
-    private fun initPresenter() {
-        presenter.apply {
-            attachView(this@AnnouncementsListFragment)
-            getAnnouncements()
-        }
-    }
-
-    override fun update(announcements: List<AnnouncementModel>) {
-        adapter.setData(announcements)
-        if (announcements.isEmpty()) {
-            showEmptyScreen()
-        } else {
-            hideEmptyScreen()
-        }
+        presenter.attachView(this@AnnouncementsListFragment)
+        showEmptyScreen()
     }
 
     private fun showEmptyScreen() {
-        announcementList.visibility = View.GONE
-        fallbackImage.visibility = View.VISIBLE
-    }
-
-    private fun hideEmptyScreen() {
-        announcementList.visibility = View.VISIBLE
-        fallbackImage.visibility = View.GONE
-    }
-
-    override fun showAnnouncementDetail(announcement: AnnouncementModel) {
-        context?.let { AnnouncementDetailDialog(it, announcement).show() }
-    }
-
-    override fun showProgress() {
-        progressView?.visibility = View.VISIBLE
-    }
-
-    override fun hideProgress() {
-        progressView?.visibility = View.GONE
+        viewBinding?.fallbackImage?.visibility = View.VISIBLE
     }
 }

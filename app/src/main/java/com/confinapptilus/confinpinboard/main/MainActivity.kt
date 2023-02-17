@@ -5,19 +5,22 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.confinapptilus.confinpinboard.R
-import kotlinx.android.synthetic.main.activity_main.*
+import com.confinapptilus.confinpinboard.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
+    var viewBinding: ActivityMainBinding? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
+        viewBinding = ActivityMainBinding.inflate(layoutInflater).also {
+            setContentView(it.root)
+        }
         setupViews()
     }
 
     private fun setupViews() {
         val navController = findNavController(R.id.navHostFragment)
-        bottomNav.setupWithNavController(navController)
+        viewBinding?.bottomNav?.setupWithNavController(navController)
     }
 }
